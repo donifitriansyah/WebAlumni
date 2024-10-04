@@ -61,9 +61,9 @@ Login
                             <div class="text-center">
                                 <a class="small" href="{{ route('register-admin') }}">Create an Account Admin!</a>
                             </div>
-                            {{-- <div class="text-center">
+                            <div class="text-center">
                                 <a class="small" href="{{ route('register-alumni') }}">Create an Account Alumni!</a>
-                            </div> --}}
+                            </div>
                             <div class="text-center">
                                 <a class="small" href="{{ route('register') }}">Create an Account Perusahaan!</a>
                             </div>

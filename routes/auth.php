@@ -24,6 +24,12 @@ Route::middleware('guest')->group(function () {
 
     Route::post('register-admin', [RegisteredUserController::class, 'RegisterAdmin']);
 
+    // Rute untuk alumni
+    Route::get('register-alumni', [RegisteredUserController::class, 'FormRegisterAlumni'])
+        ->name('register-alumni');
+
+    Route::post('register-alumni', [RegisteredUserController::class, 'RegisterAlumni']);
+
 
     Route::get('login', [AuthenticatedSessionController::class, 'create'])
         ->name('login');
