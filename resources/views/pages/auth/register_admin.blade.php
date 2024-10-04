@@ -21,6 +21,17 @@ Register Admin
                             <form class="user" method="POST" action="{{ route('register') }}">
                                 @csrf
 
+                                <!-- Username Field -->
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-user @error('username') is-invalid @enderror"
+                                        name="username" value="{{ old('username') }}" placeholder="Username">
+                                    @error('username')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+
                                 <!-- Name Field -->
                                 <div class="form-group">
                                     <input type="text" class="form-control form-control-user @error('nama') is-invalid @enderror"

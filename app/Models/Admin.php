@@ -10,7 +10,11 @@ class Admin extends Model
     protected $table = 'admin';
 
     protected $fillable = [
-        'id_user', 'nama', 'nomor_induk', 'no_hp',
+        'id_user',
+        'nama',
+        'nomor_induk',
+        'no_hp',
+        'email',
     ];
 
     // Define relationship to User
