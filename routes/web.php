@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 // Tracer Study Routes
-Route::middleware(['auth', CheckTracerStudy::class])->group(function () {
+Route::middleware(['auth'])->group(function () {
     Route::get('/tracer-study/form', [TracerController::class, 'create'])->name('tracerstudy.form');
     Route::post('/tracer-study/store', [TracerController::class, 'store'])->name('tracerstudy.store');
 });
