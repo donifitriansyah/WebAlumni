@@ -38,7 +38,7 @@
                                     </div>
                                     <div class="form-group">
                                         <input type="text" class="form-control form-control-user @error('nim') is-invalid @enderror"
-                                            name="username" value="{{ old('nim') }}" placeholder="NIM" required>
+                                            name="nim" value="{{ old('nim') }}" placeholder="NIM" required>
                                         @error('nim')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
