@@ -11,7 +11,7 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        //
+        // You can add the CheckAdmin middleware to a route group later
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
