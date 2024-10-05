@@ -35,7 +35,7 @@
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                @yield('content')
+                @yield('content-admin')
                 <!-- /.container-fluid -->
 
             </div>
