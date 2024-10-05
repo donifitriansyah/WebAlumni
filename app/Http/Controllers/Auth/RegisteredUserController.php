@@ -112,7 +112,7 @@ class RegisteredUserController extends Controller
     $nimPrefix = (int) substr($request->nim, 0, 5);
 
     // Validasi jika NIM di atas 32022 tidak bisa mendaftar
-    if ($nimPrefix > 32022) {
+    if ($nimPrefix >= 32022) {
         return back()->withErrors(['nim' => 'NIM tidak valid, hanya mahasiswa dengan NIM 32021 dan di bawahnya yang bisa mendaftar.']);
     }
 
