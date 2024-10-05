@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('alamat', 255);
             $table->string('no_tlp', 15);
             $table->string('email', 255)->unique();
-            $table->boolean('status');
+            $table->string('status');
             $table->timestamps();
         });
     }
