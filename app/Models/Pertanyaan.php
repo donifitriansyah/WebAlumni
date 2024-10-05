@@ -17,4 +17,8 @@ class Pertanyaan extends Model
     ];
 
     public $timestamps = true; // Mengaktifkan timestamps (created_at, updated_at)
+    public function tracerStudies()
+    {
+        return $this->hasMany(TracerStudy::class, 'id_pertanyaan');
+    }
 }

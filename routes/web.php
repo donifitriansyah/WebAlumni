@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\PertanyaanController;
 use App\Http\Controllers\Alumni\TracerController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TracerStudyController;
 use App\Http\Middleware\CheckAdmin;
 use App\Http\Middleware\CheckAlumni;
 use App\Http\Middleware\CheckTracerStudy;
@@ -72,7 +73,7 @@ Route::middleware(['auth', CheckAdmin::class])->group(function () {
     Route::put('/pertanyaan/{id}', [PertanyaanController::class, 'update'])->name('pertanyaan.update');
 });
 
-
+Route::get('/tracer-study/export', [TracerStudyController::class, 'export'])->name('tracer.study.export');
 
 // Include the authentication routes
 require __DIR__.'/auth.php';
