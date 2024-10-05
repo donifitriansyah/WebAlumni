@@ -14,7 +14,7 @@ Login
                     <div class="col-lg-6">
                         <div class="p-5">
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                                <h1 class="h4 text-gray-900 mb-4">Selamat Datang!</h1>
                             </div>
 
                             <!-- Menampilkan error "Akun salah" jika ada -->
@@ -52,20 +52,14 @@ Login
                                 </button>
                             </form>
                             <hr>
-                            <div class="text-center">
+                            {{-- <div class="text-center">
                                 <a class="small" href="forgot-password.html">Forgot Password?</a>
+                            </div> --}}
+                            <div class="text-center">
+                                <a class="small" href="{{ route('register-alumni') }}">Buat Akun Alumni!</a>
                             </div>
                             <div class="text-center">
-                                <a class="small" href="{{ route('register') }}">Create an Account User!</a>
-                            </div>
-                            <div class="text-center">
-                                <a class="small" href="{{ route('register-admin') }}">Create an Account Admin!</a>
-                            </div>
-                            <div class="text-center">
-                                <a class="small" href="{{ route('register-alumni') }}">Create an Account Alumni!</a>
-                            </div>
-                            <div class="text-center">
-                                <a class="small" href="{{ route('register') }}">Create an Account Perusahaan!</a>
+                                <a class="small" href="{{ route('register') }}">Buat akun Perusahaan!</a>
                             </div>
                         </div>
                     </div>

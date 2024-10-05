@@ -11,7 +11,7 @@
 
     <title>@yield('title')</title>
 
-    @include('includes.style')
+    @include('includes.backend.style')
 
 </head>
 
@@ -21,7 +21,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        @include('includes.sidebar')
+        @include('includes.backend.sidebar')
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
@@ -31,7 +31,7 @@
             <div id="content">
 
                 <!-- Topbar -->
-                @include('includes.topbar')
+                @include('includes.backend.topbar')
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
@@ -42,7 +42,7 @@
             <!-- End of Main Content -->
 
             <!-- Footer -->
-            @include('includes.footer')
+            @include('includes.backend.footer')
             <!-- End of Footer -->
 
         </div>
@@ -76,7 +76,7 @@
         </div>
     </div>
 
-    @include('includes.script')
+    @include('includes.backend.script')
 
 </body>
 

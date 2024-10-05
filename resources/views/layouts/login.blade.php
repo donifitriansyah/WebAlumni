@@ -11,7 +11,7 @@
 
     <title>@yield('title')</title>
 
-    @include('includes.style')
+    @include('includes.backend.style')
 
 </head>
 
@@ -24,7 +24,7 @@
 
     </div>
 
-    @include('includes.script')
+    @include('includes.backend.script')
 
 </body>
 
