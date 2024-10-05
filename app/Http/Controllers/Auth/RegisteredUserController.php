@@ -96,39 +96,50 @@ class RegisteredUserController extends Controller
     }
 
     public function RegisterAlumni(Request $request): RedirectResponse
-    {
+{
+    // Validasi input dasar
+    $request->validate([
+        'nama_alumni' => 'required|string|max:255',
+        'nim' => 'required|string|unique:alumni', // unique:alumni karena nim disimpan di tabel alumni
+        'tanggal_lahir' => 'required|date',
+        'alamat' => 'required|string|max:255',
+        'no_tlp' => 'required|string|max:15',
+        'email' => 'required|string|email|max:255|unique:alumni',
+        'password' => 'required|string|confirmed',
+    ]);
 
-        $request->validate([
-            'nama_alumni' => 'required|string|max:255',
-            'tanggal_lahir' => 'required|date',
-            'alamat' => 'required|string|max:255',
-            'no_tlp' => 'required|string|max:15',
-            'email' => 'required|string|email|max:255|unique:alumni',
-            'password' => 'required|string|confirmed',
-        ]);
+    // Ekstraksi bagian awal dari NIM sebagai integer
+    $nimPrefix = (int) substr($request->nim, 0, 5);
 
-        // Buat user
-        $user = User::create([
-            'username' => $request->username,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'role' => 'alumni',
-        ]);
-
-        // Buat data alumni
-        Alumni::create([
-            'id_user' => $user->id,
-            'nama_alumni' => $request->nama_alumni,
-            'tanggal_lahir' => $request->tanggal_lahir,
-            'alamat' => $request->alamat,
-            'no_tlp' => $request->no_tlp,
-            'email' => $request->email,
-            'status' => 'aktif', // Atau sesuai kebutuhan
-        ]);
-
-        // Login user
-        Auth::login($user);
-
-        return redirect(route('dashboard'));
+    // Validasi jika NIM di atas 32022 tidak bisa mendaftar
+    if ($nimPrefix > 32022) {
+        return back()->withErrors(['nim' => 'NIM tidak valid, hanya mahasiswa dengan NIM 32021 dan di bawahnya yang bisa mendaftar.']);
     }
+
+    // Buat user
+    $user = User::create([
+        'username' => $request->username,
+        'email' => $request->email,
+        'password' => Hash::make($request->password),
+        'role' => 'alumni',
+    ]);
+
+    // Buat data alumni
+    Alumni::create([
+        'id_user' => $user->id,
+        'nama_alumni' => $request->nama_alumni,
+        'nim' => $request->nim,
+        'tanggal_lahir' => $request->tanggal_lahir,
+        'alamat' => $request->alamat,
+        'no_tlp' => $request->no_tlp,
+        'email' => $request->email,
+        'status' => 'aktif', // Atau sesuai kebutuhan
+    ]);
+
+    // Login user
+    Auth::login($user);
+
+    return redirect(route('dashboard'));
+}
+
 }

@@ -36,6 +36,15 @@
                                             </span>
                                         @enderror
                                     </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control form-control-user @error('nim') is-invalid @enderror"
+                                            name="username" value="{{ old('nim') }}" placeholder="NIM" required>
+                                        @error('nim')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
                                     <!-- Nama Alumni Field -->
                                     <div class="form-group">
                                         <input type="text"

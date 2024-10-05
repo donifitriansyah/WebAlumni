@@ -10,7 +10,7 @@ class Alumni extends Model
     protected $table = 'alumni';
 
     protected $fillable = [
-        'id_user', 'nama_alumni', 'tanggal_lahir', 'alamat', 'no_tlp', 'email', 'status',
+        'id_user', 'nim', 'nama_alumni', 'tanggal_lahir', 'alamat', 'no_tlp', 'email', 'status',
     ];
 
     // Define relationship to User
