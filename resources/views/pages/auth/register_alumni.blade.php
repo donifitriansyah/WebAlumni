@@ -108,7 +108,7 @@
                                     </div>
 
                                     <!-- Status Field -->
-                                    <div class="form-group">
+                                    <!-- <div class="form-group">
                                         <select class="form-control-user @error('status') is-invalid @enderror"
                                             name="status" required>
                                             <option value="">Pilih Status</option>
@@ -122,7 +122,7 @@
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
-                                    </div>
+                                    </div> -->
 
                                     <!-- Password Field -->
                                     <div class="form-group">

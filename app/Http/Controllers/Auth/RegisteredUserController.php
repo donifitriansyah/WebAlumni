@@ -133,7 +133,7 @@ class RegisteredUserController extends Controller
         'alamat' => $request->alamat,
         'no_tlp' => $request->no_tlp,
         'email' => $request->email,
-        'status' => 'aktif', // Atau sesuai kebutuhan
+        'status' => 'pasif', // Atau sesuai kebutuhan
     ]);
 
     // Login user
