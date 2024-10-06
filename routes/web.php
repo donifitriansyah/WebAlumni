@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AlumniController;
 use App\Http\Controllers\Admin\PertanyaanController;
 use App\Http\Controllers\Alumni\TracerController;
 use App\Http\Controllers\ProfileController;
@@ -71,6 +72,9 @@ Route::middleware(['auth', CheckAdmin::class])->group(function () {
     Route::get('/pertanyaan/create', [PertanyaanController::class, 'create'])->name('pertanyaan.create');
     Route::get('/pertanyaan/{id}/edit', [PertanyaanController::class, 'edit'])->name('pertanyaan.edit');
     Route::put('/pertanyaan/{id}', [PertanyaanController::class, 'update'])->name('pertanyaan.update');
+
+    Route::get('/alumni-aktif', [AlumniController::class, 'index'])->name('alumni.index');
+
 });
 
 Route::get('/tracer-study/export', [TracerStudyController::class, 'export'])->name('tracer.study.export');
