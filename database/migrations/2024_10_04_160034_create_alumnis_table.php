@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id('id_alumni');
             $table->foreignId('id_user')->constrained('users')->onDelete('cascade');
             $table->string('nama_alumni', 255);
+            $table->string('nim',255);
             $table->date('tanggal_lahir');
             $table->string('alamat', 255);
             $table->string('no_tlp', 15);
