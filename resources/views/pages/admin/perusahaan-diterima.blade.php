@@ -1,7 +1,6 @@
-@extends('layouts.admin')
+@extends('layouts.app')
 
-@section('content-perusahaan')
-<div class="container">
+@section('content')
     <h2>Perusahaan Diterima</h2>
     <table class="table">
         <thead>
@@ -14,14 +13,13 @@
         </thead>
         <tbody>
             @foreach($perusahaanDiterima as $perusahaan)
-            <tr>
-                <td>{{ $perusahaan->nama_perusahaan }}</td>
-                <td>{{ $perusahaan->sektor_bisnis }}</td>
-                <td>{{ $perusahaan->jumlah_karyawan }}</td>
-                <td><a href="{{ $perusahaan->website_perusahaan }}" target="_blank">{{ $perusahaan->website_perusahaan }}</a></td>
-            </tr>
+                <tr>
+                    <td>{{ $perusahaan->nama_perusahaan }}</td>
+                    <td>{{ $perusahaan->sektor_bisnis }}</td>
+                    <td>{{ $perusahaan->jumlah_karyawan }}</td>
+                    <td><a href="{{ $perusahaan->website_perusahaan }}" target="_blank">{{ $perusahaan->website_perusahaan }}</a></td>
+                </tr>
             @endforeach
         </tbody>
     </table>
-</div>
 @endsection

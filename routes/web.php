@@ -11,6 +11,9 @@ use App\Http\Middleware\CheckTracerStudy;
 use App\Models\TracerStudy;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\PerusahaanController;
+
+
 
 // Home Route
 Route::get('/', function () {
@@ -78,11 +81,13 @@ Route::middleware(['auth', CheckAdmin::class])->group(function () {
 
 //perusahaan routes
 Route::prefix('admin')->group(function () {
-    Route::get('/perusahaan-divalidasi', [PerusahaanController::class, 'index'])->name('perusahaan-divalidasi');
-    Route::get('/perusahaan/diterima', [PerusahaanController::class, 'diterima'])->name('admin.perusahaan.diterima');
-    Route::patch('/perusahaan/{id}/terima', [PerusahaanController::class, 'terima'])->name('admin.perusahaan.terima');
-    Route::delete('/perusahaan/{id}/tolak', [PerusahaanController::class, 'tolak'])->name('admin.perusahaan.tolak');
+    Route::get('/perusahaan/diterima', [PerusahaanController::class, 'index'])->name('admin.perusahaan.diterima');
+    Route::get('/perusahaan/divalidasi', [PerusahaanController::class, 'divalidasi'])->name('admin.perusahaan.divalidasi');
+    Route::post('/perusahaan/{id}/terima', [PerusahaanController::class, 'terima'])->name('admin.perusahaan.terima');
+    Route::post('/perusahaan/{id}/tolak', [PerusahaanController::class, 'tolak'])->name('admin.perusahaan.tolak');
 });
+
+
 Route::get('/tracer-study/export', [TracerStudyController::class, 'export'])->name('tracer.study.export');
 
 // Include the authentication routes

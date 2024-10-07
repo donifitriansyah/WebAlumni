@@ -10,33 +10,14 @@ class PerusahaanController extends Controller
 {
     public function index()
     {
-        $perusahaanDivalidasi = Perusahaan::where('status', 'divalidasi')->get();
-        return view('admin.perusahaan-divalidasi', compact('perusahaanDivalidasi'));
-    }
-
-    public function diterima()
-    {
         $perusahaanDiterima = Perusahaan::where('status', 'diterima')->get();
-        return view('admin.perusahaan-diterima', compact('perusahaanDiterima'));
+        return view('admin.perusahaan.diterima', compact('perusahaanDiterima'));
     }
 
-    public function store(Request $request)
+    public function divalidasi()
     {
-        $validatedData = $request->validate([
-            'nama_perusahaan' => 'required|string|max:255',
-            'sektor_bisnis' => 'required|string|max:255',
-            'nib' => 'required|integer',
-            'deskripsi_perusahaan' => 'required|string',
-            'jumlah_karyawan' => 'required|integer',
-            'no_tlp' => 'required|string|max:15',
-            'website_perusahaan' => 'required|url',
-        ]);
-
-        $validatedData['status'] = 'divalidasi';
-
-        Perusahaan::create($validatedData);
-
-        return redirect()->route('admin.perusahaan.index')->with('success', 'Perusahaan berhasil ditambahkan dan menunggu validasi.');
+        $perusahaanDivalidasi = Perusahaan::where('status', 'divalidasi')->get();
+        return view('admin.perusahaan.divalidasi', compact('perusahaanDivalidasi'));
     }
 
     public function terima($id)
@@ -44,15 +25,13 @@ class PerusahaanController extends Controller
         $perusahaan = Perusahaan::findOrFail($id);
         $perusahaan->status = 'diterima';
         $perusahaan->save();
-
-        return redirect()->route('admin.perusahaan.index')->with('success', 'Perusahaan berhasil diterima.');
+        return redirect()->route('admin.perusahaan.divalidasi')->with('success', 'Perusahaan berhasil diterima');
     }
 
     public function tolak($id)
     {
         $perusahaan = Perusahaan::findOrFail($id);
         $perusahaan->delete();
-
-        return redirect()->route('admin.perusahaan.index')->with('success', 'Perusahaan berhasil ditolak dan dihapus.');
+        return redirect()->route('admin.perusahaan.divalidasi')->with('success', 'Perusahaan berhasil ditolak');
     }
 }
