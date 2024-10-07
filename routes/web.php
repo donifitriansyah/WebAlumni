@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AlumniController;
 use App\Http\Controllers\Admin\PertanyaanController;
 use App\Http\Controllers\Alumni\TracerController;
 use App\Http\Controllers\ProfileController;
@@ -71,8 +72,17 @@ Route::middleware(['auth', CheckAdmin::class])->group(function () {
     Route::get('/pertanyaan/create', [PertanyaanController::class, 'create'])->name('pertanyaan.create');
     Route::get('/pertanyaan/{id}/edit', [PertanyaanController::class, 'edit'])->name('pertanyaan.edit');
     Route::put('/pertanyaan/{id}', [PertanyaanController::class, 'update'])->name('pertanyaan.update');
+    Route::get('/alumni-pasif', [AlumniController::class, 'showPasifAlumni'])->name('alumni-pasif');
+    Route::get('/alumni-aktif', [AlumniController::class, 'showAktifAlumni'])->name('alumni-aktif');
 });
 
+//perusahaan routes
+Route::prefix('admin')->group(function () {
+    Route::get('/perusahaan-divalidasi', [PerusahaanController::class, 'index'])->name('perusahaan-divalidasi');
+    Route::get('/perusahaan/diterima', [PerusahaanController::class, 'diterima'])->name('admin.perusahaan.diterima');
+    Route::patch('/perusahaan/{id}/terima', [PerusahaanController::class, 'terima'])->name('admin.perusahaan.terima');
+    Route::delete('/perusahaan/{id}/tolak', [PerusahaanController::class, 'tolak'])->name('admin.perusahaan.tolak');
+});
 Route::get('/tracer-study/export', [TracerStudyController::class, 'export'])->name('tracer.study.export');
 
 // Include the authentication routes
