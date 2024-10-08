@@ -84,6 +84,8 @@ Route::middleware(['auth', CheckAdmin::class])->group(function () {
     Route::put('/pertanyaan/{id}', [PertanyaanController::class, 'update'])->name('pertanyaan.update');
     Route::get('/alumni-pasif', [AlumniController::class, 'showPasifAlumni'])->name('alumni-pasif');
     Route::get('/alumni-aktif', [AlumniController::class, 'showAktifAlumni'])->name('alumni-aktif');
+    Route::get('/perusahaan/diterima', [PerusahaanController::class, 'terima'])->name('perusahaan-diterima');
+
 });
 
 //perusahaan routes
@@ -96,19 +98,19 @@ Route::middleware(['auth', CheckAdmin::class])->group(function () {
     // });
 
     // Routes for perusahaan with middleware
-Route::middleware(['auth', 'check.perusahaan'])->group(function () {
-    // Route for accepted companies
-    Route::get('/perusahaan/diterima', [PerusahaanController::class, 'index'])->name('perusahaan-diterima');
+// Route::middleware(['auth', 'check.perusahaan'])->group(function () {
+//     // Route for accepted companies
+//     Route::get('/perusahaan/diterima', [PerusahaanController::class, 'index'])->name('perusahaan-diterima');
 
-    // Route for companies being validated
-    Route::get('/perusahaan/divalidasi', [PerusahaanController::class, 'divalidasi'])->name('perusahaan-divalidasi');
+//     // Route for companies being validated
+//     Route::get('/perusahaan/divalidasi', [PerusahaanController::class, 'divalidasi'])->name('perusahaan-divalidasi');
 
-    // Route to accept a company
-    Route::patch('/perusahaan/{id}/terima', [PerusahaanController::class, 'terima'])->name('perusahaan-terima');
+//     // Route to accept a company
+//     Route::patch('/perusahaan/{id}/terima', [PerusahaanController::class, 'terima'])->name('perusahaan-terima');
 
-    // Route to reject a company
-    Route::delete('/perusahaan/{id}/tolak', [PerusahaanController::class, 'tolak'])->name('perusahaan-tolak');
-});
+//     // Route to reject a company
+//     Route::delete('/perusahaan/{id}/tolak', [PerusahaanController::class, 'tolak'])->name('perusahaan-tolak');
+// });
 
 
 

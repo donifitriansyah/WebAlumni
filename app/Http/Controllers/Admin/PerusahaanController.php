@@ -34,7 +34,7 @@ class PerusahaanController extends Controller
         $perusahaan->save();
 
         // Redirect to the page with a success message
-        return redirect()->route('admin.perusahaan-diterima')->with('success', 'Perusahaan berhasil diterima');
+        return redirect()->route('pages.admin.perusahaan-diterima')->with('success', 'Perusahaan berhasil diterima');
     }
 
     public function tolak($id)

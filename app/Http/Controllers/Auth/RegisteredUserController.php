@@ -138,21 +138,57 @@ class RegisteredUserController extends Controller
         ]);
 
         // Data perusahaan
-        Perusahaan::create([
-            'id_user' => $user->id,
-            'nama_perusahaan' => $request->nama_perusahaan,
-            'nib' => $request->nib,
-            'email_perusahaan' => $request->email_perusahaan,
-            'sektor_bisnis' => $request->sektor_bisnis,
-            'deskripsi_perusahaan' => $request->deskripsi_perusahaan,
-            'jumlah_karyawan' => $request->jumlah_karyawan,
-            'no_telp' => $request->no_telp,
-            'website_perusahaan' => $request->website_perusahaan,
-        ]);
+
 
         // Login user
         Auth::login($user);
 
         return redirect(route('dashboard'));
     }
+
+    public function RegisterPerusahaan(Request $request): RedirectResponse
+{
+    // Validasi input
+    $request->validate([
+        'nama_perusahaan' => 'required|string|max:255',
+        'nib' => 'required|string|unique:perusahaan',
+        'email_perusahaan' => 'required|string|email|max:255|unique:perusahaan',
+        'sektor_bisnis' => 'required|string|max:255',
+        'deskripsi_perusahaan' => 'required|string',
+        'jumlah_karyawan' => 'required|integer',
+        'no_telp' => 'required|string|max:20',
+        'website_perusahaan' => 'nullable|url|max:255',
+        'password' => 'required|string|confirmed',
+    ]);
+
+    // Buat user
+    $user = User::create([
+        'name' => $request->nama_perusahaan,
+        'email' => $request->email_perusahaan,
+        'password' => Hash::make($request->password),
+        'role' => 'perusahaan',
+    ]);
+
+    // Buat data perusahaan
+    Perusahaan::create([
+        'id_user' => $user->id,
+        'nama_perusahaan' => $request->nama_perusahaan,
+        'nib' => $request->nib,
+        'email_perusahaan' => $request->email_perusahaan,
+        'sektor_bisnis' => $request->sektor_bisnis,
+        'deskripsi_perusahaan' => $request->deskripsi_perusahaan,
+        'jumlah_karyawan' => $request->jumlah_karyawan,
+        'no_telp' => $request->no_telp,
+        'website_perusahaan' => $request->website_perusahaan,
+        'status' => 'divalidasi', // Status awal
+    ]);
+
+    // // Redirect dengan pesan sukses
+    // return redirect()->route('login')
+    //                  ->with('success', 'Registrasi perusahaan berhasil. Silahkan menunggu validasi dari admin.');
+    // Login user
+    Auth::login($user);
+
+    return redirect(route('dashboard'));
+}
 }
