@@ -42,7 +42,7 @@ class PerusahaanSeeder extends Seeder
                 'jumlah_karyawan' => 30,
                 'no_telp' => '022-87654321',
                 'website_perusahaan' => 'www.contohusaha.com',
-                'status' => 'active', // Add the status field
+                'status' => 'nonactive', // Add the status field
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
