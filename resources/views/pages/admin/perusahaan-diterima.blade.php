@@ -8,6 +8,7 @@ Dashboard
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Perusahaan</h1>
+            <a href="{{ route('dashboard') }}" class="btn btn-primary">Kembali ke Dashboard</a>
         </div>
 
         <!-- Tabel Perusahaan -->
@@ -28,15 +29,19 @@ Dashboard
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($perusahaanDiterima as $perusahaan)
+                            @forelse($perusahaan as $p)
                             <tr>
-                                <td>{{ $perusahaan->nama_perusahaan }}</td>
-                                <td>{{ $perusahaan->nib }}</td>
-                                <td>{{ $perusahaan->sektor_bisnis }}</td>
-                                <td>{{ $perusahaan->jumlah_karyawan }}</td>
-                                <td><a href="{{ $perusahaan->website_perusahaan }}" target="_blank">{{ $p->website_perusahaan }}</a></td>
+                                <td>{{ $p->nama_perusahaan }}</td>
+                                <td>{{ $p->nib }}</td>
+                                <td>{{ $p->sektor_bisnis }}</td>
+                                <td>{{ $p->jumlah_karyawan }}</td>
+                                <td><a href="{{ $p->website_perusahaan }}" target="_blank">{{ $p->website_perusahaan }}</a></td>
                             </tr>
-                            @endforeach
+                            @empty
+                            <tr>
+                                <td colspan="5" class="text-center">Tidak ada data perusahaan</td>
+                            </tr>
+                            @endforelse
                         </tbody>
                     </table>
                 </div>
