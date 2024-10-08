@@ -88,12 +88,28 @@ Route::middleware(['auth', CheckAdmin::class])->group(function () {
 
 //perusahaan routes
 
-    Route::middleware(['auth', CheckPerusahaan::class])->group(function () { // Tambahkan middleware CheckPerusahaan di sini
-        Route::get('/perusahaan/diterima', [PerusahaanController::class, 'index'])->name('perusahaan-diterima');
-        Route::get('/perusahaan/divalidasi', [PerusahaanController::class, 'divalidasi'])->name('perusahaan-divalidasi');
-        Route::post('/perusahaan/{id}/terima', [PerusahaanController::class, 'terima'])->name('perusahaan-terima');
-        Route::post('/perusahaan/{id}/tolak', [PerusahaanController::class, 'tolak'])->name('perusahaan-tolak');
-    });
+    // Route::middleware(['auth', CheckPerusahaan::class])->group(function () { // Tambahkan middleware CheckPerusahaan di sini
+    //     Route::get('/perusahaan/diterima', [PerusahaanController::class, 'index'])->name('perusahaan-diterima');
+    //     Route::get('/perusahaan/divalidasi', [PerusahaanController::class, 'divalidasi'])->name('perusahaan-divalidasi');
+    //     Route::post('/perusahaan/{id}/terima', [PerusahaanController::class, 'terima'])->name('perusahaan-terima');
+    //     Route::post('/perusahaan/{id}/tolak', [PerusahaanController::class, 'tolak'])->name('perusahaan-tolak');
+    // });
+
+    // Routes for perusahaan with middleware
+Route::middleware(['auth', 'check.perusahaan'])->group(function () {
+    // Route for accepted companies
+    Route::get('/perusahaan/diterima', [PerusahaanController::class, 'index'])->name('perusahaan-diterima');
+
+    // Route for companies being validated
+    Route::get('/perusahaan/divalidasi', [PerusahaanController::class, 'divalidasi'])->name('perusahaan-divalidasi');
+
+    // Route to accept a company
+    Route::patch('/perusahaan/{id}/terima', [PerusahaanController::class, 'terima'])->name('perusahaan-terima');
+
+    // Route to reject a company
+    Route::delete('/perusahaan/{id}/tolak', [PerusahaanController::class, 'tolak'])->name('perusahaan-tolak');
+});
+
 
 
 

@@ -9,19 +9,14 @@ use Illuminate\Support\Facades\Auth;
 
 class CheckPerusahaan
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
-     */
     public function handle(Request $request, Closure $next): Response
     {
-        // Cek jika pengguna yang terautentikasi adalah alumni
+        // Check if authenticated user is a company (perusahaan)
         if (Auth::check() && Auth::user()->role === 'perusahaan') {
-            return $next($request); // Izinkan akses jika role adalah alumni
+            return $next($request); // Allow access if the user is a company
         }
 
-        // Jika tidak, arahkan ke halaman yang sesuai
-        return redirect()->route('dashboard')->with('error', 'Akses ditolak. Hanya Perusahaan yang disetujui yang diizinkan.');
+        // If not, redirect to the dashboard with an error message
+        return redirect()->route('dashboard')->with('error', 'Akses ditolak. Hanya Perusahaan yang diizinkan.');
     }
 }

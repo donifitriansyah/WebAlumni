@@ -60,14 +60,14 @@
                         <i class="fas fa-fw fa-building"></i>
                         <span>Perusahaan</span>
                     </a>
-                    <div id="collapsePerusahaan" class="collapse" aria-labelledby="headingUtilities"
-                        data-parent="#accordionSidebar">
+                    <div id="collapsePerusahaan" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item" href="/perusahaan/diterima">Perusahaan Diterima</a>
-                            <a class="collapse-item" href="{{ route ('perusahaan-divalidasi')}}">Perusahaan Divalidasi</a>
+                            <a class="collapse-item" href="{{ route('perusahaan-diterima') }}">Perusahaan Diterima</a>
+                            <a class="collapse-item" href="{{ route('perusahaan-divalidasi') }}">Perusahaan Divalidasi</a>
                         </div>
                     </div>
                 </li>
+
 
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTracer"

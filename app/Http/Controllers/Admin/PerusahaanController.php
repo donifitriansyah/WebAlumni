@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Admin;  // Pastikan namespace sesuai dengan folder tempat controller ini berada
+namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;  // Pastikan juga controller ini extends ke Controller yang benar
+use App\Http\Controllers\Controller;
 use App\Models\Perusahaan;
 use Illuminate\Http\Request;
 
@@ -12,6 +12,7 @@ class PerusahaanController extends Controller
     {
         // Fetch all companies with status 'diterima'
         $perusahaanDiterima = Perusahaan::where('status', 'diterima')->get();
+
         // Return view inside the 'admin' folder
         return view('pages.admin.perusahaan-diterima', compact('perusahaanDiterima'));
     }
@@ -20,6 +21,7 @@ class PerusahaanController extends Controller
     {
         // Fetch all companies with status 'divalidasi'
         $perusahaanDivalidasi = Perusahaan::where('status', 'divalidasi')->get();
+
         // Return view inside the 'admin' folder
         return view('pages.admin.perusahaan-divalidasi', compact('perusahaanDivalidasi'));
     }
@@ -31,8 +33,8 @@ class PerusahaanController extends Controller
         $perusahaan->status = 'diterima';
         $perusahaan->save();
 
-        // Redirect to the validation page with a success message
-        return redirect()->route('perusahaan-diterima')->with('success', 'Perusahaan berhasil diterima');
+        // Redirect to the page with a success message
+        return redirect()->route('admin.perusahaan-diterima')->with('success', 'Perusahaan berhasil diterima');
     }
 
     public function tolak($id)
@@ -41,7 +43,7 @@ class PerusahaanController extends Controller
         $perusahaan = Perusahaan::findOrFail($id);
         $perusahaan->delete();
 
-        // Redirect to the validation page with a success message
+        // Redirect to the page with a success message
         return redirect()->route('admin.perusahaan.divalidasi')->with('success', 'Perusahaan berhasil ditolak');
     }
 }
