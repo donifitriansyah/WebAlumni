@@ -66,7 +66,7 @@ Route::get('/dashboard/admin', function () {
 // Dashboard Route for Perusahaan
 Route::get('/dashboard/perusahaan', function () {
     return view('pages.perusahaan.dashboard'); // Company dashboard
-})->middleware(['auth', CheckAlumni::class])->name('dashboard.perusahaan');
+})->middleware(['auth', CheckPerusahaan::class])->name('dashboard.perusahaan');
 
 // Profile Routes
 Route::middleware('auth')->group(function () {
@@ -84,8 +84,7 @@ Route::middleware(['auth', CheckAdmin::class])->group(function () {
     Route::put('/pertanyaan/{id}', [PertanyaanController::class, 'update'])->name('pertanyaan.update');
     Route::get('/alumni-pasif', [AlumniController::class, 'showPasifAlumni'])->name('alumni-pasif');
     Route::get('/alumni-aktif', [AlumniController::class, 'showAktifAlumni'])->name('alumni-aktif');
-    Route::get('/perusahaan/diterima', [PerusahaanController::class, 'terima'])->name('perusahaan-diterima');
-
+    Route::get('/perusahaan-diterima', [PerusahaanController::class, 'terima'])->name('perusahaan-diterima');
 });
 
 //perusahaan routes

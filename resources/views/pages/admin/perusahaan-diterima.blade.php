@@ -29,13 +29,13 @@ Dashboard
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse($perusahaan as $p)
+                            @forelse($perusahaanDiterima as $perusahaan)
                             <tr>
-                                <td>{{ $p->nama_perusahaan }}</td>
-                                <td>{{ $p->nib }}</td>
-                                <td>{{ $p->sektor_bisnis }}</td>
-                                <td>{{ $p->jumlah_karyawan }}</td>
-                                <td><a href="{{ $p->website_perusahaan }}" target="_blank">{{ $p->website_perusahaan }}</a></td>
+                                <td>{{ $perusahaan->nama_perusahaan }}</td>
+                                <td>{{ $perusahaan->nib }}</td>
+                                <td>{{ $perusahaan->sektor_bisnis }}</td>
+                                <td>{{ $perusahaan->jumlah_karyawan }}</td>
+                                <td><a href="{{ $perusahaan->website_perusahaan }}" target="_blank">{{ $perusahaan->website_perusahaan }}</a></td>
                             </tr>
                             @empty
                             <tr>
