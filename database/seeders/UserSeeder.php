@@ -22,7 +22,7 @@ class UserSeeder extends Seeder
                 'email' => 'admin1@mail.com',
                 'email_verified_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
-                'password' => Hash::make('password23'), // Use a hashed password
+                'password' => Hash::make('password123'), // Use a hashed password
                 'role' => 'admin',
                 'remember_token' => null,
                 'created_at' => Carbon::now(),
@@ -32,14 +32,14 @@ class UserSeeder extends Seeder
                 'email' => 'admin2@mail.com',
                 'email_verified_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
-                'password' => Hash::make('password23'), // Use a hashed password
+                'password' => Hash::make('password123'), // Use a hashed password
                 'role' => 'admin',
                 'remember_token' => null,
                 'created_at' => Carbon::now(),
             ],
             [
                 'username' => 'Septian',
-                'email' => 'alumni1@mail.com',
+                'email' => 'septian@mail.com',
                 'email_verified_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
                 'password' => Hash::make('password123'), // Use a hashed password
@@ -49,7 +49,7 @@ class UserSeeder extends Seeder
             ],
             [
                 'username' => 'Ferry',
-                'email' => 'alumni2@mail.com',
+                'email' => 'ferry@mail.com',
                 'email_verified_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
                 'password' => Hash::make('password123'), // Use a hashed password
