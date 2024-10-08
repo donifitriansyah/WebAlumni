@@ -65,14 +65,5 @@ class PerusahaanController extends Controller
         return view('pages.admin.perusahaan-divalidasi', compact('nonActivePerusahaan'));
     }
 
-    public function showDashboard()
-    {
-        // Count the number of active and non-active companies
-        $activeCompanies = Perusahaan::where('status', 'active')->count();
-        $nonActiveCompanies = Perusahaan::where('status', 'nonactive')->count();
-
-        // Pass the counts to the view
-        return view('pages.admin.dashboard', compact('activeCompanies', 'nonActiveCompanies'));
-    }
 
 }

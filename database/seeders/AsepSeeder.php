@@ -12,6 +12,6 @@ class AsepSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\AlumniController;
 use App\Http\Controllers\Admin\PertanyaanController;
 use App\Http\Controllers\Alumni\TracerController;
@@ -12,6 +13,7 @@ use App\Models\TracerStudy;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\PerusahaanController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Middleware\CheckPerusahaan;
 
 
@@ -174,8 +176,10 @@ Route::middleware(['auth', CheckAdmin::class])->group(function () {
     Route::put('/pertanyaan/{id}', [PertanyaanController::class, 'update'])->name('pertanyaan.update');
     Route::get('/alumni-pasif', [AlumniController::class, 'showPasifAlumni'])->name('alumni-pasif');
     Route::get('/alumni-aktif', [AlumniController::class, 'showAktifAlumni'])->name('alumni-aktif');
-    Route::get('/perusahaan/diterima', [PerusahaanController::class, 'create'])->name('perusahaan-diterima');
-    Route::get('/tracer-study/export', [TracerStudyController::class, 'export'])->name('tracer.study.export');
+    Route::get('/perusahaan/diterima', [PerusahaanController::class, 'showPerusahaanActive'])->name('perusahaan-diterima');
+    Route::get('/perusahaan/divalidasi', [PerusahaanController::class, 'showPerusahaanNonactive'])->name('perusahaan-divalidasi');
+    Route::get('/dashboard/admin', [AdminDashboardController::class, 'showDashboard'])->name('dashboard.admin');
+
 });
 
 
