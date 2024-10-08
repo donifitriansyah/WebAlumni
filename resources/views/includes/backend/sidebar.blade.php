@@ -32,14 +32,14 @@
         @switch(Auth::user()->role)
             @case('admin')
                 <!-- Navbar for Admin -->
-                <li class="nav-item active">
-                    <a class="nav-link" href="index.html">
+                <li class="nav-item {{ Route::is('dashboard.admin') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('dashboard.admin') }}">
                         <i class="fas fa-fw fa-tachometer-alt"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
 
-                <li class="nav-item">
+                <li class="nav-item {{ Route::is('alumni-aktif', 'alumni-pasif') ? 'active' : '' }}">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAlumni"
                         aria-expanded="true" aria-controls="collapseAlumni">
                         <i class="fas fa-fw fa-user-graduate"></i>
@@ -48,13 +48,13 @@
                     <div id="collapseAlumni" class="collapse" aria-labelledby="headingUtilities"
                         data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item" href="{{ route('alumni-aktif') }}">Alumni Aktif</a>
-                            <a class="collapse-item" href="{{ route('alumni-pasif') }}">Alumni Pasif</a>
+                            <a class="collapse-item {{ Route::is('alumni-aktif') ? 'active' : '' }}" href="{{ route('alumni-aktif') }}" >Alumni Aktif</a>
+                            <a class="collapse-item {{ Route::is('alumni-pasif') ? 'active' : '' }}" href="{{ route('alumni-pasif') }}">Alumni Pasif</a>
                         </div>
                     </div>
                 </li>
 
-                <li class="nav-item">
+                <li class="nav-item {{ Route::is('perusahaan-diterima', 'perusahaan-divalidasi') ? 'active' : '' }}">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePerusahaan"
                         aria-expanded="true" aria-controls="collapsePerusahaan">
                         <i class="fas fa-fw fa-building"></i>
@@ -62,8 +62,8 @@
                     </a>
                     <div id="collapsePerusahaan" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item" href="{{ route('perusahaan-diterima') }}">Perusahaan Diterima</a>
-                            <a class="collapse-item" href="{{ route('perusahaan-divalidasi') }}">Perusahaan Divalidasi</a>
+                            <a class="collapse-item {{ Route::is('perusahaan-diterima') ? 'active' : '' }}" href="{{ route('perusahaan-diterima') }}">Perusahaan Diterima</a>
+                            <a class="collapse-item {{ Route::is('perusahaan-divalidasi') ? 'active' : '' }}" href="{{ route('perusahaan-divalidasi') }}">Perusahaan Divalidasi</a>
                         </div>
                     </div>
                 </li>
