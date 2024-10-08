@@ -34,6 +34,7 @@ return new class extends Migration
             $table->foreignId('id_user')->constrained('users')->onDelete('cascade');
             $table->string('nama_perusahaan', 255);
             $table->string('nib', 255)->unique();
+            $table->string('alamat', 255);
             $table->string('email_perusahaan', 255);
             $table->string('sektor_bisnis');
             $table->string('deskripsi_perusahaan');

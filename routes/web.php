@@ -12,6 +12,13 @@ use App\Models\TracerStudy;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\PerusahaanController;
+use App\Http\Middleware\CheckPerusahaan;
+
+
+
+
+
+
 
 
 
@@ -80,12 +87,15 @@ Route::middleware(['auth', CheckAdmin::class])->group(function () {
 });
 
 //perusahaan routes
-Route::prefix('admin')->group(function () {
-    Route::get('/perusahaan/diterima', [PerusahaanController::class, 'index'])->name('admin.perusahaan.diterima');
-    Route::get('/perusahaan/divalidasi', [PerusahaanController::class, 'divalidasi'])->name('admin.perusahaan.divalidasi');
-    Route::post('/perusahaan/{id}/terima', [PerusahaanController::class, 'terima'])->name('admin.perusahaan.terima');
-    Route::post('/perusahaan/{id}/tolak', [PerusahaanController::class, 'tolak'])->name('admin.perusahaan.tolak');
-});
+
+    Route::middleware(['auth', CheckPerusahaan::class])->group(function () { // Tambahkan middleware CheckPerusahaan di sini
+        Route::get('/perusahaan/diterima', [PerusahaanController::class, 'index'])->name('perusahaan-diterima');
+        Route::get('/perusahaan/divalidasi', [PerusahaanController::class, 'divalidasi'])->name('perusahaan-divalidasi');
+        Route::post('/perusahaan/{id}/terima', [PerusahaanController::class, 'terima'])->name('perusahaan-terima');
+        Route::post('/perusahaan/{id}/tolak', [PerusahaanController::class, 'tolak'])->name('perusahaan-tolak');
+    });
+
+
 
 
 Route::get('/tracer-study/export', [TracerStudyController::class, 'export'])->name('tracer.study.export');

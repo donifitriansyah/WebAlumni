@@ -75,13 +75,6 @@
             </div>
         </div>
     </div>
-    <li>
-        <a href="#" class="has-arrow">Perusahaan</a>
-        <ul>
-            <li><a href="{{ route('admin.perusahaan.diterima') }}">Perusahaan Diterima</a></li>
-            <li><a href="{{ route('admin.perusahaan.divalidasi') }}">Perusahaan Divalidasi</a></li>
-        </ul>
-    </li>
 
     @include('includes.backend.script')
 
