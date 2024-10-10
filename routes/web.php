@@ -58,6 +58,14 @@ Route::get('/dashboard/alumni', function () {
     return view('pages.alumni.dashboard_alumni'); // Alumni dashboard
 })->middleware(['auth', 'verified', CheckTracerStudy::class ])->name('dashboard.alumni');
 
+Route::middleware( CheckAdmin::class)->group(function () {
+    Route::get('/perusahaan-diterima', [PerusahaanController::class, 'index_diterima'])->name("perusahaan-diterima");
+    Route::get('/perusahaan-divalidasi', [PerusahaanController::class, 'index_divalidasi'])->name("perusahaan-divalidasi");
+    Route::post('/perusahaan-diterima/{id}', [PerusahaanController::class , 'terima_perusahaan'])->name('terima-perusahaan');
+    Route::post('/perusahaan-ditolak/{id}', [PerusahaanController::class , 'tolak_perusahaan'])->name('tolak-perusahaan');
+});
+
+// Route::get('/perusahaan-divalidasi', [PerusahaanController::class, 'tolak'])->middleware(['auth', CheckAdmin::class])->name("perusahaan-divalidasi");
 // Dashboard Route for Admin
 Route::get('/dashboard/admin', function () {
     return view('pages.admin.dashboard'); // Admin dashboard
@@ -67,6 +75,7 @@ Route::get('/dashboard/admin', function () {
 Route::get('/dashboard/perusahaan', function () {
     return view('pages.perusahaan.dashboard'); // Company dashboard
 })->middleware(['auth', CheckPerusahaan::class])->name('dashboard.perusahaan');
+
 
 // Profile Routes
 Route::middleware('auth')->group(function () {
@@ -84,7 +93,7 @@ Route::middleware(['auth', CheckAdmin::class])->group(function () {
     Route::put('/pertanyaan/{id}', [PertanyaanController::class, 'update'])->name('pertanyaan.update');
     Route::get('/alumni-pasif', [AlumniController::class, 'showPasifAlumni'])->name('alumni-pasif');
     Route::get('/alumni-aktif', [AlumniController::class, 'showAktifAlumni'])->name('alumni-aktif');
-    Route::get('/perusahaan-diterima', [PerusahaanController::class, 'terima'])->name('perusahaan-diterima');
+
 });
 
 //perusahaan routes
