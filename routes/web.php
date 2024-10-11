@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\AlumniController;
 use App\Http\Controllers\Admin\PertanyaanController;
@@ -86,7 +87,8 @@ Route::middleware(['auth', CheckAdmin::class])->group(function () {
     Route::get('/perusahaan/diterima', [PerusahaanController::class, 'showPerusahaanActive'])->name('perusahaan-diterima');
     Route::get('/perusahaan/divalidasi', [PerusahaanController::class, 'showPerusahaanNonactive'])->name('perusahaan-divalidasi');
     Route::get('/dashboard/admin', [AdminDashboardController::class, 'showDashboard'])->name('dashboard.admin');
-
+    Route::get('/admin/edit-profile/{id_admin}', [AdminController::class, 'create'])->name('admin.create');
+    Route::put('/admin/edit-profile/{id_admin}', [AdminController::class, 'update'])->name('admin.update');
 });
 
 

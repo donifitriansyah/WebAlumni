@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
+use App\Models\Admin;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -28,6 +29,17 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        $userId = Auth::id();
+
+        // Fetch admin data related to the authenticated user
+        $admin = Admin::where('id_user', $userId)->first();
+
+        // Store the admin data in the session
+        if ($admin) {
+            $request->session()->put('admin', $admin);
+        }
+
+        // Redirect to the intended route
         return redirect()->intended(route('dashboard', absolute: false));
     }
 

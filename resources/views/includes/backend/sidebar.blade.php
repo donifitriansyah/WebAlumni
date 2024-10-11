@@ -29,110 +29,112 @@
 
     <!-- Role-Based Navbar -->
     @if (Auth::check())
-        @switch(Auth::user()->role)
-            @case('admin')
-                <!-- Navbar for Admin -->
-                <li class="nav-item {{ Route::is('dashboard.admin') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ route('dashboard.admin') }}">
-                        <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Dashboard</span>
-                    </a>
-                </li>
+    @switch(Auth::user()->role)
+        @case('admin')
+            <!-- Navbar for Admin -->
+            <li class="nav-item {{ Route::is('dashboard.admin') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('dashboard.admin') }}">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
 
-                <li class="nav-item {{ Route::is('alumni-aktif', 'alumni-pasif') ? 'active' : '' }}">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAlumni"
-                        aria-expanded="true" aria-controls="collapseAlumni">
-                        <i class="fas fa-fw fa-user-graduate"></i>
-                        <span>Alumni</span>
-                    </a>
-                    <div id="collapseAlumni" class="collapse" aria-labelledby="headingUtilities"
-                        data-parent="#accordionSidebar">
-                        <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item {{ Route::is('alumni-aktif') ? 'active' : '' }}" href="{{ route('alumni-aktif') }}" >Alumni Aktif</a>
-                            <a class="collapse-item {{ Route::is('alumni-pasif') ? 'active' : '' }}" href="{{ route('alumni-pasif') }}">Alumni Pasif</a>
-                        </div>
+            <li class="nav-item {{ Route::is('alumni-aktif', 'alumni-pasif') ? 'active' : '' }}">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAlumni"
+                   aria-expanded="true" aria-controls="collapseAlumni">
+                    <i class="fas fa-fw fa-user-graduate"></i>
+                    <span>Alumni</span>
+                </a>
+                <div id="collapseAlumni" class="collapse" aria-labelledby="headingUtilities"
+                     data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item {{ Route::is('alumni-aktif') ? 'active' : '' }}" href="{{ route('alumni-aktif') }}">Alumni Aktif</a>
+                        <a class="collapse-item {{ Route::is('alumni-pasif') ? 'active' : '' }}" href="{{ route('alumni-pasif') }}">Alumni Pasif</a>
                     </div>
-                </li>
+                </div>
+            </li>
 
-                <li class="nav-item {{ Route::is('perusahaan-diterima', 'perusahaan-divalidasi') ? 'active' : '' }}">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePerusahaan"
-                        aria-expanded="true" aria-controls="collapsePerusahaan">
-                        <i class="fas fa-fw fa-building"></i>
-                        <span>Perusahaan</span>
-                    </a>
-                    <div id="collapsePerusahaan" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-                        <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item {{ Route::is('perusahaan-diterima') ? 'active' : '' }}" href="{{ route('perusahaan-diterima') }}">Perusahaan Diterima</a>
-                            <a class="collapse-item {{ Route::is('perusahaan-divalidasi') ? 'active' : '' }}" href="{{ route('perusahaan-divalidasi') }}">Perusahaan Divalidasi</a>
-                        </div>
+            <li class="nav-item {{ Route::is('perusahaan-diterima', 'perusahaan-divalidasi') ? 'active' : '' }}">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePerusahaan"
+                   aria-expanded="true" aria-controls="collapsePerusahaan">
+                    <i class="fas fa-fw fa-building"></i>
+                    <span>Perusahaan</span>
+                </a>
+                <div id="collapsePerusahaan" class="collapse" aria-labelledby="headingUtilities"
+                     data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item {{ Route::is('perusahaan-diterima') ? 'active' : '' }}" href="{{ route('perusahaan-diterima') }}">Perusahaan Diterima</a>
+                        <a class="collapse-item {{ Route::is('perusahaan-divalidasi') ? 'active' : '' }}" href="{{ route('perusahaan-divalidasi') }}">Perusahaan Divalidasi</a>
                     </div>
-                </li>
+                </div>
+            </li>
 
-
-                <li class="nav-item">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTracer"
-                        aria-expanded="true" aria-controls="collapseTracer">
-                        <i class="fa fa-graduation-cap"></i>
-                        <span>Tracer Study</span>
-                    </a>
-                    <div id="collapseTracer" class="collapse" aria-labelledby="headingUtilities"
-                        data-parent="#accordionSidebar">
-                        <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item" href="{{ route('pertanyaan.index') }}">Pertanyaan</a>
-                            <a class="collapse-item" href="utilities-border.html">Data Tracer Study</a>
-                        </div>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTracer"
+                   aria-expanded="true" aria-controls="collapseTracer">
+                    <i class="fa fa-graduation-cap"></i>
+                    <span>Tracer Study</span>
+                </a>
+                <div id="collapseTracer" class="collapse" aria-labelledby="headingUtilities"
+                     data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{{ route('pertanyaan.index') }}">Pertanyaan</a>
+                        <a class="collapse-item" href="utilities-border.html">Data Tracer Study</a>
                     </div>
-                </li>
+                </div>
+            </li>
 
-                <li class="nav-item">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUser"
-                        aria-expanded="true" aria-controls="collapseUser">
-                        <i class="fa fa-user"></i>
-                        <span>Admin</span>
-                    </a>
-                    <div id="collapseUser" class="collapse" aria-labelledby="headingUtilities"
-                        data-parent="#accordionSidebar">
-                        <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item" href="utilities-color.html">Admin</a>
-                            <a class="collapse-item" href="utilities-border.html">Edit Profile</a>
-                        </div>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUser"
+                   aria-expanded="true" aria-controls="collapseUser">
+                    <i class="fa fa-user"></i>
+                    <span>Admin</span>
+                </a>
+                <div id="collapseUser" class="collapse" aria-labelledby="headingUtilities"
+                     data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{{ route('admin.create', Auth::user()->admin->id_admin) }}">
+                            Edit Profile
+                        </a>
                     </div>
-                </li>
-            @break
+                </div>
+            </li>
 
-            @case('alumni')
-                <!-- Navbar for Alumni -->
-                <li class="nav-item active">
-                    <a class="nav-link" href="index.html">
-                        <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Dashboard</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="index.html">
-                        <i class="fas fa-fw fa-user-graduate"></i>
-                        <span>Alumni</span>
-                    </a>
-                </li>
-            @break
+        @break
 
-            @case('perusahaan')
-                <!-- Navbar for Perusahaan -->
-                <li class="nav-item active">
-                    <a class="nav-link" href="index.html">
-                        <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Dashboard</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="index.html">
-                        <i class="fas fa-fw fa-building"></i>
-                        <span>Perusahaan</span>
-                    </a>
-                </li>
-            @break
-        @endswitch
-    @endif
+        @case('alumni')
+            <!-- Navbar for Alumni -->
+            <li class="nav-item active">
+                <a class="nav-link" href="index.html">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="index.html">
+                    <i class="fas fa-fw fa-user-graduate"></i>
+                    <span>Alumni</span>
+                </a>
+            </li>
+        @break
+
+        @case('perusahaan')
+            <!-- Navbar for Perusahaan -->
+            <li class="nav-item active">
+                <a class="nav-link" href="index.html">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="index.html">
+                    <i class="fas fa-fw fa-building"></i>
+                    <span>Perusahaan</span>
+                </a>
+            </li>
+        @break
+    @endswitch
+@endif
 
     <hr class="sidebar-divider d-none d-md-block">
 
