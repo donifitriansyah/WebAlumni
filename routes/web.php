@@ -86,12 +86,12 @@ Route::middleware('auth')->group(function () {
 
 // Admin Routes
 Route::middleware(['auth', CheckAdmin::class])->group(function () {
-    Route::get('/perusahaan-diterima', [PerusahaanController::class, 'index_diterima'])->name("perusahaan-diterima");
-    Route::get('/perusahaan-divalidasi', [PerusahaanController::class, 'index_divalidasi'])->name("perusahaan-divalidasi");
+    Route::get('/perusahaan/diterima', [PerusahaanController::class, 'index_diterima'])->name("perusahaan-diterima");
+    Route::get('/perusahaan/divalidasi', [PerusahaanController::class, 'index_divalidasi'])->name("perusahaan-divalidasi");
     Route::post('/perusahaan-diterima/{id}', [PerusahaanController::class , 'terima_perusahaan'])->name('terima-perusahaan');
     Route::post('/perusahaan-ditolak/{id}', [PerusahaanController::class , 'tolak_perusahaan'])->name('tolak-perusahaan');
-    Route::get('/perusahaan/diterima', [PerusahaanController::class, 'showPerusahaanActive'])->name('perusahaan-diterima');
-    Route::get('/perusahaan/divalidasi', [PerusahaanController::class, 'showPerusahaanNonactive'])->name('perusahaan-divalidasi');
+    // Route::get('/perusahaan/diterima', [PerusahaanController::class, 'showPerusahaanActive'])->name('perusahaan-diterima');
+    // Route::get('/perusahaan/divalidasi', [PerusahaanController::class, 'showPerusahaanNonactive'])->name('perusahaan-divalidasi');
     Route::get('/dashboard/admin', [AdminDashboardController::class, 'showDashboard'])->name('dashboard.admin');
     Route::get('/pertanyaan', [PertanyaanController::class, 'index'])->name('pertanyaan.index');
     Route::post('/pertanyaan', [PertanyaanController::class, 'store'])->name('pertanyaan.store');

@@ -48,19 +48,19 @@ class PerusahaanController extends Controller
         return redirect()->route('perusahaan-divalidasi')->with('success', 'Perusahaan berhasil ditolak');
     }
 
-    public function showPerusahaanActive()
-    {
+    // public function showPerusahaanActive()
+    // {
 
-        $activePerusahaan = Perusahaan::where('status', 'active')->get();
+    //     $activePerusahaan = Perusahaan::where('status', 'active')->get();
 
 
-        return view('pages.admin.perusahaan-diterima', compact('activePerusahaan'));
-    }
+    //     return view('pages.admin.perusahaan-diterima', compact('activePerusahaan'));
+    // }
 
-    public function showPerusahaanNonActive()
-    {
-        $nonActivePerusahaan = Perusahaan::where('status', 'nonactive')->get();
+    // public function showPerusahaanNonActive()
+    // {
+    //     $nonActivePerusahaan = Perusahaan::where('status', 'nonactive')->get();
 
-        return view('pages.admin.perusahaan-divalidasi', compact('nonActivePerusahaan'));
-    }
+    //     return view('pages.admin.perusahaan-divalidasi', compact('nonActivePerusahaan'));
+    // }
 }
