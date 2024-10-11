@@ -10,12 +10,12 @@ class AlumniController extends Controller
 {
     public function showPasifAlumni()
     {
-        $alumniPasif = Alumni::where('status', 'pasif')->get();
+        $alumniPasif = Alumni::where('status', 'active')->get();
         return view('pages.admin.alumni-pasif', compact('alumniPasif'));
     }
     public function showAktifAlumni()
     {
-        $alumniAktif = Alumni::where('status', 'aktif')->get();
+        $alumniAktif = Alumni::where('status', 'inactive')->get();
         return view('pages.admin.alumni-aktif', compact('alumniAktif'));
     }
 }
