@@ -29,16 +29,6 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        $userId = Auth::id();
-
-        // Fetch admin data related to the authenticated user
-        $admin = Admin::where('id_user', $userId)->first();
-
-        // Store the admin data in the session
-        if ($admin) {
-            $request->session()->put('admin', $admin);
-        }
-
         // Redirect to the intended route
         return redirect()->intended(route('dashboard', absolute: false));
     }
