@@ -37,30 +37,30 @@ class PerusahaanController extends Controller
         return redirect()->route('perusahaan-diterima')->with('success', 'Perusahaan berhasil diterima');
     }
 
-    public function tolak_perusahaan($id)
-    {
-        // Temukan perusahaan dan hapus dari database
-        $perusahaan = Perusahaan::where('id_perusahaan',$id)->update([
-            'status' => 'ditolak'
-        ]);
+    // public function tolak_perusahaan($id)
+    // {
+    //     // Temukan perusahaan dan hapus dari database
+    //     $perusahaan = Perusahaan::where('id_perusahaan',$id)->update([
+    //         'status' => 'ditolak'
+    //     ]);
 
-        // Redirect ke halaman validasi perusahaan dengan pesan sukses
-        return redirect()->route('perusahaan-divalidasi')->with('success', 'Perusahaan berhasil ditolak');
+    //     // Redirect ke halaman validasi perusahaan dengan pesan sukses
+    //     return redirect()->route('perusahaan-divalidasi')->with('success', 'Perusahaan berhasil ditolak');
+    // }
+
+    public function showPerusahaanActive()
+    {
+        // Retrieve companies with 'active' status
+        $activePerusahaan = Perusahaan::where('status', 'active')->get();
+
+        // Return the view with the active companies
+        return view('pages.admin.perusahaan-diterima', compact('activePerusahaan'));
     }
 
-    // public function showPerusahaanActive()
-    // {
-    //     // Retrieve companies with 'active' status
-    //     $activePerusahaan = Perusahaan::where('status', 'active')->get();
+    public function showPerusahaanNonActive()
+    {
+        $nonActivePerusahaan = Perusahaan::where('status', 'nonactive')->get();
 
-    //     // Return the view with the active companies
-    //     return view('pages.admin.perusahaan-diterima', compact('activePerusahaan'));
-    // }
-
-    // public function showPerusahaanNonActive()
-    // {
-    //     $nonActivePerusahaan = Perusahaan::where('status', 'nonactive')->get();
-
-    //     return view('pages.admin.perusahaan-divalidasi', compact('nonActivePerusahaan'));
-    // }
+        return view('pages.admin.perusahaan-divalidasi', compact('nonActivePerusahaan'));
+    }
 }

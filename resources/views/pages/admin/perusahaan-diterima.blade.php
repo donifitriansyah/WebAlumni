@@ -32,7 +32,7 @@ Perusahaan
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse($perusahaanDiterima as $perusahaan)
+                            @forelse($activePerusahaan as $perusahaan)
                             <tr>
                                 <td>{{$perusahaan->id_perusahaan}}</td>
                                 <td>{{ $perusahaan->nama_perusahaan }}</td>

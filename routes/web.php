@@ -106,8 +106,8 @@ Route::middleware(['auth', CheckAdmin::class])->group(function () {
     Route::put('/pertanyaan/{id}', [PertanyaanController::class, 'update'])->name('pertanyaan.update');
     Route::get('/alumni-pasif', [AlumniController::class, 'showPasifAlumni'])->name('alumni-pasif');
     Route::get('/alumni-aktif', [AlumniController::class, 'showAktifAlumni'])->name('alumni-aktif');
-    Route::get('/perusahaan/diterima', [PerusahaanController::class, 'terima_perusahaan'])->name('perusahaan-diterima');
-    Route::get('/perusahaan/divalidasi', [PerusahaanController::class, 'tolak_perusahaan'])->name('perusahaan-divalidasi');
+    // Route::get('/perusahaan/diterima', [PerusahaanController::class, 'terima_perusahaan'])->name('perusahaan-diterima');
+    // Route::get('/perusahaan/divalidasi', [PerusahaanController::class, 'tolak_perusahaan'])->name('perusahaan-divalidasi');
     Route::get('/dashboard/admin', [AdminDashboardController::class, 'showDashboard'])->name('dashboard.admin');
 });
 

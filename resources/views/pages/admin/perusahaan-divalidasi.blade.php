@@ -30,7 +30,7 @@ Dashboard
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse($perusahaanDivalidasi as $perusahaan)
+                            @forelse($nonActivePerusahaan    as $perusahaan)
                             <tr>
                                 <td>{{$perusahaan->$id_perusahaan}}</td>
                                 <td>{{ $perusahaan->nama_perusahaan }}</td>
