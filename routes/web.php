@@ -86,6 +86,8 @@ Route::middleware(['auth', CheckAdmin::class])->group(function () {
     Route::get('/alumni-aktif', [AlumniController::class, 'showAktifAlumni'])->name('alumni-aktif');
     Route::get('/perusahaan/diterima', [PerusahaanController::class, 'showPerusahaanActive'])->name('perusahaan-diterima');
     Route::get('/perusahaan/divalidasi', [PerusahaanController::class, 'showPerusahaanNonactive'])->name('perusahaan-divalidasi');
+    Route::post('/perusahaan-diterima/{id}', [PerusahaanController::class , 'terima_perusahaan'])->name('terima-perusahaan');
+    Route::post('/perusahaan-ditolak/{id}', [PerusahaanController::class , 'tolak_perusahaan'])->name('tolak-perusahaan');
     Route::get('/dashboard/admin', [AdminDashboardController::class, 'showDashboard'])->name('dashboard.admin');
     Route::get('/admin/edit-profile/{id_admin}', [AdminController::class, 'create'])->name('admin.create');
     Route::put('/admin/edit-profile/{id_admin}', [AdminController::class, 'update'])->name('admin.update');
