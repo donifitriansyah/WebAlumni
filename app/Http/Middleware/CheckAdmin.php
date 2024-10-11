@@ -19,7 +19,7 @@ class CheckAdmin
         if (Auth::check() && Auth::user()->role === 'admin') {
             return $next($request);
         }
-
+        // jika bukan admin, redirect ke ...
         return redirect()->route('dashboard');
     }
 }

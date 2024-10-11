@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('perusahaan', function (Blueprint $table) {
             $table->id('id_perusahaan');
-            $table->foreignId('id_user')->constrained('users')->onDelete('cascade');
+            $table->foreignId('id_user');
             $table->string('nama_perusahaan', 255);
             $table->string('nib', 255)->unique();
             $table->string('alamat', 255);
@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('no_telp');
             $table->string('website_perusahaan', 255);
             $table->enum('status', ['menunggu', 'diterima', 'ditolak'])->default('menunggu');
+            $table->string('status', 255);
             $table->timestamps();
         });
     }

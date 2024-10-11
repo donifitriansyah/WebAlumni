@@ -32,6 +32,7 @@ Dashboard
                         <tbody>
                             @forelse($perusahaanDivalidasi as $perusahaan)
                             <tr>
+                                <td>{{$perusahaan->$id_perusahaan}}</td>
                                 <td>{{ $perusahaan->nama_perusahaan }}</td>
                                 <td>{{ $perusahaan->nib }}</td>
                                 <td>{{ $perusahaan->sektor_bisnis }}</td>

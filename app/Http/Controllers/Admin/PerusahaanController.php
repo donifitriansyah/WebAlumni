@@ -47,4 +47,20 @@ class PerusahaanController extends Controller
         // Redirect ke halaman validasi perusahaan dengan pesan sukses
         return redirect()->route('perusahaan-divalidasi')->with('success', 'Perusahaan berhasil ditolak');
     }
+
+    // public function showPerusahaanActive()
+    // {
+    //     // Retrieve companies with 'active' status
+    //     $activePerusahaan = Perusahaan::where('status', 'active')->get();
+
+    //     // Return the view with the active companies
+    //     return view('pages.admin.perusahaan-diterima', compact('activePerusahaan'));
+    // }
+
+    // public function showPerusahaanNonActive()
+    // {
+    //     $nonActivePerusahaan = Perusahaan::where('status', 'nonactive')->get();
+
+    //     return view('pages.admin.perusahaan-divalidasi', compact('nonActivePerusahaan'));
+    // }
 }
