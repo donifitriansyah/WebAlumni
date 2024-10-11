@@ -30,24 +30,24 @@ Dashboard
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse($nonActivePerusahaan    as $perusahaan)
+                            @forelse($perusahaanDivalidasi as $perusahaan)
                             <tr>
-                                <td>{{$perusahaan->$id_perusahaan}}</td>
+                                <td>{{$perusahaan->id_perusahaan}}</td>
                                 <td>{{ $perusahaan->nama_perusahaan }}</td>
                                 <td>{{ $perusahaan->nib }}</td>
                                 <td>{{ $perusahaan->sektor_bisnis }}</td>
                                 <td>{{ $perusahaan->jumlah_karyawan }}</td>
                                 <td><a href="{{ $perusahaan->website_perusahaan }}" target="_blank">{{ $perusahaan->website_perusahaan }}</a></td>
                                 <td class="d-flex justify-content-center" style="gap: 4px;">
-                                    <form action="{{route('terima-perusahaan' , $perusahaan->id_perusahaan)}}" method="post">
+                                    <form action="{{ route('terima-perusahaan', $perusahaan->id_perusahaan) }}" method="post">
                                         @csrf
-                                        <button type="submit" class= 'btn btn-success'>
+                                        <button type="submit" class="btn btn-success">
                                             <i class="fas fa-check"></i>
                                         </button>
                                     </form>
-                                    <form action="{{route('tolak-perusahaan' , $perusahaan->id_perusahaan)}}" method="post">
+                                    <form action="{{ route('tolak-perusahaan', $perusahaan->id_perusahaan) }}" method="post">
                                         @csrf
-                                        <button type="submit" class= 'btn btn-danger'>
+                                        <button type="submit" class="btn btn-danger">
                                             <i class="fas fa-times"></i>
                                         </button>
                                     </form>
@@ -55,7 +55,7 @@ Dashboard
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="5" class="text-center">Tidak ada data perusahaan</td>
+                                <td colspan="6" class="text-center">Tidak ada data perusahaan</td>
                             </tr>
                             @endforelse
                         </tbody>

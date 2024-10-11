@@ -32,14 +32,18 @@ Perusahaan
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse($activePerusahaan as $perusahaan)
+                            @foreach($perusahaanDiterima as $perusahaan)
                             <tr>
-                                <td>{{$perusahaan->id_perusahaan}}</td>
                                 <td>{{ $perusahaan->nama_perusahaan }}</td>
                                 <td>{{ $perusahaan->nib }}</td>
+                                <td>{{ $perusahaan->alamat }}</td>
+                                <td>{{ $perusahaan->email_perusahaan }}</td>
                                 <td>{{ $perusahaan->sektor_bisnis }}</td>
+                                <td>{{ $perusahaan->deskripsi_perusahaan }}</td>
                                 <td>{{ $perusahaan->jumlah_karyawan }}</td>
-                                <td><a href="{{ $perusahaan->website_perusahaan }}" target="_blank">{{ $perusahaan->website_perusahaan }}</a></td>
+                                <td>{{ $perusahaan->no_telp }}</td>
+                                <td>{{ $perusahaan->website_perusahaan }}</td>
+                                <td>{{ $perusahaan->status }}</td>
                             </tr>
                             @endforeach
                         </tbody>

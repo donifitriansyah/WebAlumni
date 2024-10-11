@@ -59,12 +59,6 @@ Route::get('/dashboard', function () {
     }
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware( CheckAdmin::class)->group(function () {
-    Route::get('/perusahaan-diterima', [PerusahaanController::class, 'index_diterima'])->name("perusahaan-diterima");
-    Route::get('/perusahaan-divalidasi', [PerusahaanController::class, 'index_divalidasi'])->name("perusahaan-divalidasi");
-    Route::post('/perusahaan-diterima/{id}', [PerusahaanController::class , 'terima_perusahaan'])->name('terima-perusahaan');
-    Route::post('/perusahaan-ditolak/{id}', [PerusahaanController::class , 'tolak_perusahaan'])->name('tolak-perusahaan');
-});
 
 // Route::get('/perusahaan-divalidasi', [PerusahaanController::class, 'tolak'])->middleware(['auth', CheckAdmin::class])->name("perusahaan-divalidasi");
 // Dashboard Route for Admin
