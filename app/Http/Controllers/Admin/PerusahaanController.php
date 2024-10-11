@@ -8,46 +8,28 @@ use Illuminate\Http\Request;
 
 class PerusahaanController extends Controller
 {
-    // public function index()
-    // {
-    //     // Fetch all companies with status 'diterima'
 
-    //     // Return view inside the 'admin' folder
-    //     return view('pages.admin.perusahaan-diterima', compact('perusahaanDiterima'));
-    // }
+    public function terima_perusahaan($id)
+    {
+        // Temukan perusahaan dan ubah statusnya menjadi 'diterima'
+        $perusahaan = Perusahaan::where('id_perusahaan', $id)->update([
+            'status' => 'diterima',
+        ]);
 
-    // public function divalidasi()
-    // {
-    //     // Fetch all companies with status 'divalidasi'
-    //     $perusahaanDivalidasi = Perusahaan::where('status', 'divalidasi')->get();
+        // Redirect ke halaman perusahaan diterima dengan pesan sukses
+        return redirect()->route('perusahaan-diterima')->with('success', 'Perusahaan berhasil diterima');
+    }
 
-    //     // Return view inside the 'admin' folder
-    //     return view('pages.admin.perusahaan-divalidasi', compact('perusahaanDivalidasi'));
-    // }
+    public function tolak_perusahaan($id)
+    {
+        // Temukan perusahaan dan hapus dari database
+        $perusahaan = Perusahaan::where('id_perusahaan', $id)->update([
+            'status' => 'ditolak'
+        ]);
 
-    // public function terima()
-    // {
-    //     // // Find the company and update its status to 'diterima'
-    //     // $perusahaan = Perusahaan::findOrFail($id);
-    //     // $perusahaan->status = '';
-    //     // $perusahaan->save();
-
-    //     // Redirect to the page with a success message
-    //     // return redirect()->route('pages.admin.perusahaan-diterima')->with('success', 'Perusahaan berhasil diterima');
-    //     // return view('pages.admin.perusahaan-divalidasi', compact('perusahaanDivalidasi'));
-
-    // }
-
-    // public function tolak($id)
-    // {
-    //     // Find the company and delete it
-    //     $perusahaan = Perusahaan::findOrFail($id);
-    //     $perusahaan->delete();
-
-    //     // Redirect to the page with a success message
-    //     return redirect()->route('admin.perusahaan.divalidasi')->with('success', 'Perusahaan berhasil ditolak');
-    // }
-
+        // Redirect ke halaman validasi perusahaan dengan pesan sukses
+        return redirect()->route('perusahaan-divalidasi')->with('success', 'Perusahaan berhasil ditolak');
+    }
 
     public function showPerusahaanActive()
     {
@@ -64,6 +46,4 @@ class PerusahaanController extends Controller
 
         return view('pages.admin.perusahaan-divalidasi', compact('nonActivePerusahaan'));
     }
-
-
 }

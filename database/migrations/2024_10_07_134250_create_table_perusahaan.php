@@ -41,7 +41,7 @@ return new class extends Migration
             $table->string('jumlah_karyawan');
             $table->string('no_telp');
             $table->string('website_perusahaan', 255);
-            $table->string('status', 255);
+            $table->enum('status', ['menunggu', 'diterima', 'ditolak'])->default('menunggu');
             $table->timestamps();
         });
     }
