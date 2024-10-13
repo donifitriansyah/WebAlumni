@@ -8,8 +8,15 @@ use Illuminate\Http\Request;
 
 class LowonganController extends Controller
 {
-    public function showLowongan() {
-        $lowonganValdiasi = Lowongan::where('status', 'active')->get(); //belum diape apekan
-        return view('pages.admin.alumni-pasif', compact('alumniPasif'));
+    public function lowonganDiterima()
+    {
+        $lowonganDiterima = Lowongan::where('status', 'accepted')->get();
+        return view('pages.admin.lowongan-diterima', compact('lowonganDiterima'));
+    }
+
+    public function lowonganDivalidasi()
+    {
+        $lowonganDivalidasi = Lowongan::where('status', 'validated')->get();
+        return view('pages.admin.lowongan-divalidasi', compact('lowonganDivalidasi'));
     }
 }

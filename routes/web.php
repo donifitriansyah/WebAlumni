@@ -91,6 +91,8 @@ Route::middleware(['auth', CheckAdmin::class])->group(function () {
     Route::get('/dashboard/admin', [AdminDashboardController::class, 'showDashboard'])->name('dashboard.admin');
     Route::get('/admin/edit-profile/{id_admin}', [AdminController::class, 'create'])->name('admin.create');
     Route::put('/admin/edit-profile/{id_admin}', [AdminController::class, 'update'])->name('admin.update');
+    Route::get('/lowongan-diterima', [LowonganController::class, 'lowonganDiterima'])->name('lowongan-diterima');
+    Route::get('/lowongan-divalidasi', [LowonganController::class, 'lowonganDivalidasi'])->name('lowongan-divalidasi');
 });
 
 
