@@ -65,6 +65,8 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item {{ Route::is('perusahaan-diterima') ? 'active' : '' }}" href="{{ route('perusahaan-diterima') }}">Perusahaan Diterima</a>
                         <a class="collapse-item {{ Route::is('perusahaan-divalidasi') ? 'active' : '' }}" href="{{ route('perusahaan-divalidasi') }}">Perusahaan Divalidasi</a>
+                        <a class="collapse-item {{ Route::is('') ? '' : '' }}" href="{{}}">Lowongan Diterima</a>
+                        <a class="collapse-item {{ Route::is('') ? '' : '' }}" href="{{}}">Lowongan Divalidasi</a>
                     </div>
                 </div>
             </li>
