@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\PerusahaanController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Middleware\CheckPerusahaan;
+use App\Http\Controllers\Admin\LowonganController;
 
 
 
@@ -91,8 +92,10 @@ Route::middleware(['auth', CheckAdmin::class])->group(function () {
     Route::get('/dashboard/admin', [AdminDashboardController::class, 'showDashboard'])->name('dashboard.admin');
     Route::get('/admin/edit-profile/{id_admin}', [AdminController::class, 'create'])->name('admin.create');
     Route::put('/admin/edit-profile/{id_admin}', [AdminController::class, 'update'])->name('admin.update');
-    Route::get('/lowongan-diterima', [LowonganController::class, 'lowonganDiterima'])->name('lowongan-diterima');
-    Route::get('/lowongan-divalidasi', [LowonganController::class, 'lowonganDivalidasi'])->name('lowongan-divalidasi');
+    Route::get('/lowongan-diterima', [LowonganController::class, 'showLowonganDiterima'])->name('lowongan-diterima');
+    Route::get('/lowongan-divalidasi', [LowonganController::class, 'showLowonganDivalidasi'])->name('lowongan-divalidasi');
+    Route::post('/lowongan-diterima/{id}', [LowonganController::class , 'terima_lowongan'])->name('terima-lowongan');
+    Route::post('/lowongan-ditolak/{id}', [LowonganController::class , 'tolak_lowongan'])->name('tolak-lowongan');
 });
 
 

@@ -13,18 +13,20 @@ return new class extends Migration
     {
         Schema::create('lowongan', function (Blueprint $table) {
             $table->id('id_lowongan');
-            $table->foreignId('id_perusahaan'); // Foreign key to 'perusahaan' table
+            $table->unsignedBigInteger('id_perusahaan') -> constrained('perusahaan')->onDelete('cascade');
             $table->string('judul_lowongan');
             $table->string('posisi_pekerjaan');
             $table->text('deskripsi_pekerjaan');
-            $table->enum('tipe_pekerjaan', ['full-time', 'part-time', 'freelance', 'contract']); // assuming some job types
+            $table->enum('tipe_pekerjaan', ['Full-time', 'Part-time', 'Contract']);
             $table->integer('jumlah_kandidat');
             $table->string('lokasi');
-            $table->date('tanggal_aktif');
             $table->string('rentang_gaji');
             $table->string('pengalaman_kerja');
             $table->string('kontak');
+            $table->enum('status', ['menunggu', 'diterima', 'ditolak'])->default('menunggu');
+            $table->timestamp('tanggal_aktif')->nullable();
             $table->timestamps();
+
         });
     }
 

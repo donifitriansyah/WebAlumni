@@ -8,15 +8,38 @@ use Illuminate\Http\Request;
 
 class LowonganController extends Controller
 {
-    public function lowonganDiterima()
+    public function showLowonganDiterima()
     {
-        $lowonganDiterima = Lowongan::where('status', 'accepted')->get();
-        return view('pages.admin.lowongan-diterima', compact('lowonganDiterima'));
+        $showLowonganDiterima = Lowongan::where('status', 'active')->get();
+        return view('pages.admin.lowongan-diterima', compact('showLowonganDiterima'));
     }
 
-    public function lowonganDivalidasi()
+    public function showLowonganDivalidasi()
     {
-        $lowonganDivalidasi = Lowongan::where('status', 'validated')->get();
-        return view('pages.admin.lowongan-divalidasi', compact('lowonganDivalidasi'));
+        $showLowonganDivalidasi= Lowongan::where('status', 'nonActive')->get();
+        return view('pages.admin.lowongan-divalidasi', compact('showLowonganDivalidasi'));
     }
+
+    public function terima_lowongan($id)
+    {
+        // Temukan perusahaan dan ubah statusnya menjadi 'diterima'
+        $Lowongan = Lowongan::where('id_lowongan', $id)->update([
+            'status' => 'diterima',
+        ]);
+
+        // Redirect ke halaman perusahaan diterima dengan pesan sukses
+        return redirect()->route('lowongan-diterima')->with('success', 'lowongan berhasil diterima');
+    }
+
+    public function tolak_lowongan($id)
+    {
+        // Temukan perusahaan dan ubah statusnya menjadi 'diterima'
+        $Lowongan = Lowongan::where('id_lowongan', $id)->update([
+            'status' => 'ditolak',
+        ]);
+
+        // Redirect ke halaman perusahaan diterima dengan pesan sukses
+        return redirect()->route('lowongan-ditolak')->with('success', 'lowongan berhasil ditolak');
+    }
+
 }

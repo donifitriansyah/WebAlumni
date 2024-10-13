@@ -65,8 +65,8 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item {{ Route::is('perusahaan-diterima') ? 'active' : '' }}" href="{{ route('perusahaan-diterima') }}">Perusahaan Diterima</a>
                         <a class="collapse-item {{ Route::is('perusahaan-divalidasi') ? 'active' : '' }}" href="{{ route('perusahaan-divalidasi') }}">Perusahaan Divalidasi</a>
-                        <a class="collapse-item {{ Route::is('') ? '' : '' }}" href="{{}}">Lowongan Diterima</a>
-                        <a class="collapse-item {{ Route::is('') ? '' : '' }}" href="{{}}">Lowongan Divalidasi</a>
+                        <a class="collapse-item {{ Route::is('lowongan-diterima') ? 'active' : '?' }}" href="{{route('lowongan-diterima')}}">Lowongan Diterima</a>
+                        <a class="collapse-item {{ Route::is('lowongan-divalidasi') ? 'active' : '?' }}" href="{{route ('lowongan-divalidasi')}}">Lowongan Divalidasi</a>
                     </div>
                 </div>
             </li>
