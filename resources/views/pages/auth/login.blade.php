@@ -59,7 +59,7 @@ Login
                                 <a class="small" href="{{ route('register-alumni') }}">Buat Akun Alumni!</a>
                             </div>
                             <div class="text-center">
-                                <a class="small" href="{{ route('register') }}">Buat akun Perusahaan!</a>
+                                <a class="small" href="{{ route('register-perusahaan') }}">Buat akun Perusahaan!</a>
                             </div>
                         </div>
                     </div>

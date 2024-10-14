@@ -33,6 +33,10 @@ class RegisteredUserController extends Controller
     {
         return view('pages.auth.register_alumni');
     }
+    public function FormRegisterPerusahaan(): View
+    {
+        return view('pages.auth.register_perusahaan');
+    }
 
     /**
      * Handle an incoming registration request.
