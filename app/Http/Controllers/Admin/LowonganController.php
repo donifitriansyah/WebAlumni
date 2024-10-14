@@ -16,7 +16,7 @@ class LowonganController extends Controller
 
     public function showLowonganDivalidasi()
     {
-        $showLowonganDivalidasi= Lowongan::where('status', 'nonActive')->get();
+        $showLowonganDivalidasi= Lowongan::where('status', 'menunggu')->get();
         return view('pages.admin.lowongan-divalidasi', compact('showLowonganDivalidasi'));
     }
 
