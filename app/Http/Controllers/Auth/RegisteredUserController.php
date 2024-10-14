@@ -155,44 +155,46 @@ class RegisteredUserController extends Controller
     // Validasi input
     $request->validate([
         'nama_perusahaan' => 'required|string|max:255',
-        'nib' => 'required|string|unique:perusahaan',
-        'email_perusahaan' => 'required|string|email|max:255|unique:perusahaan',
+        'nib' => 'required|string|unique:perusahaan,nib',
+        'email_perusahaan' => 'required|string|email|max:255|unique:perusahaan,email_perusahaan',
         'sektor_bisnis' => 'required|string|max:255',
         'deskripsi_perusahaan' => 'required|string',
         'jumlah_karyawan' => 'required|integer',
         'no_telp' => 'required|string|max:20',
+        'alamat' => 'required|string|max:255', // Menambahkan validasi untuk alamat
         'website_perusahaan' => 'nullable|url|max:255',
-        'password' => 'required|string|confirmed',
+        'password' => 'required|string|confirmed|min:8', // Menambahkan validasi panjang password
     ]);
 
-    // Buat user
-    $user = User::create([
-        'name' => $request->nama_perusahaan,
-        'email' => $request->email_perusahaan,
-        'password' => Hash::make($request->password),
-        'role' => 'perusahaan',
-    ]);
+        // Buat user
+        $user = User::create([
+            'username' => $request->username, // Tambahkan username jika ada
+            'email' => $request->email_perusahaan,
+            'password' => Hash::make($request->password),
+            'role' => 'perusahaan',
+        ]);
 
-    // Buat data perusahaan
-    Perusahaan::create([
-        'id_user' => $user->id,
-        'nama_perusahaan' => $request->nama_perusahaan,
-        'nib' => $request->nib,
-        'email_perusahaan' => $request->email_perusahaan,
-        'sektor_bisnis' => $request->sektor_bisnis,
-        'deskripsi_perusahaan' => $request->deskripsi_perusahaan,
-        'jumlah_karyawan' => $request->jumlah_karyawan,
-        'no_telp' => $request->no_telp,
-        'website_perusahaan' => $request->website_perusahaan,
-        'status' => 'divalidasi', // Status awal
-    ]);
+        // Buat data perusahaan
+        Perusahaan::create([
+            'id_user' => $user->id,
+            'nama_perusahaan' => $request->nama_perusahaan,
+            'nib' => $request->nib,
+            'email_perusahaan' => $request->email_perusahaan,
+            'sektor_bisnis' => $request->sektor_bisnis,
+            'deskripsi_perusahaan' => $request->deskripsi_perusahaan,
+            'jumlah_karyawan' => $request->jumlah_karyawan,
+            'no_telp' => $request->no_telp,
+            'alamat' => $request->alamat, // Menambahkan field alamat
+            'website_perusahaan' => $request->website_perusahaan,
+            'status' => 'menunggu', // Status awal
+        ]);
 
-    // // Redirect dengan pesan sukses
-    // return redirect()->route('login')
-    //                  ->with('success', 'Registrasi perusahaan berhasil. Silahkan menunggu validasi dari admin.');
-    // Login user
-    Auth::login($user);
+        // Login user
+        Auth::login($user);
 
-    return redirect(route('dashboard'));
+        // Redirect dengan pesan sukses
+        return redirect(route('dashboard'));
+
 }
+
 }

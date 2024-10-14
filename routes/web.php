@@ -74,7 +74,7 @@ Route::get('/dashboard/alumni', function () {
 // Dashboard Route for Perusahaan
 Route::get('/dashboard/perusahaan', function () {
     return view('pages.perusahaan.dashboard'); // Company dashboard
-})->middleware(['auth', CheckAlumni::class])->name('dashboard.perusahaan');
+})->middleware(['auth',])->name('dashboard.perusahaan');
 
 // Admin Routes
 Route::middleware(['auth', CheckAdmin::class])->group(function () {

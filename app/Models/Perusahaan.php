@@ -13,7 +13,18 @@ class Perusahaan extends Model
     protected $table = 'perusahaan';
 
     protected $fillable = [
-        'id_perusahaan', 'id_user','nib', 'nama_perusahaan', 'email_perusahaan', 'sektor_bisnis', 'deskripsi_perusahaan', 'jumlah_karyawan', 'no_telp', 'website_perusahaan', 'status'
+        'id_perusahaan',
+        'id_user',
+        'nama_perusahaan',
+        'nib',
+        'alamat',
+        'email_perusahaan',
+        'sektor_bisnis',
+        'deskripsi_perusahaan',
+        'jumlah_karyawan',
+        'no_telp',
+        'website_perusahaan',
+        'status'
     ];
 
 
