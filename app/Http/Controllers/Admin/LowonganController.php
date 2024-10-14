@@ -10,7 +10,7 @@ class LowonganController extends Controller
 {
     public function showLowonganDiterima()
     {
-        $showLowonganDiterima = Lowongan::where('status', 'active')->get();
+        $showLowonganDiterima = Lowongan::where('status', 'diterima')->get();
         return view('pages.admin.lowongan-diterima', compact('showLowonganDiterima'));
     }
 

@@ -31,7 +31,7 @@ Perusahaan
                         <tbody>
                             @foreach($showLowonganDivalidasi as $lowongan)
                             <tr>
-                                <td>{{ $lowongan->id }}</td>
+                                <td>{{ $lowongan->id_lowongan }}</td>
                                 <td>{{ $lowongan->judul_lowongan }}</td>
                                 <td>{{ $lowongan->posisi_pekerjaan }}</td>
                                 <td>{{ $lowongan->lokasi }}</td>
