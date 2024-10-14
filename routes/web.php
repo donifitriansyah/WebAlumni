@@ -90,8 +90,8 @@ Route::middleware(['auth', CheckAdmin::class])->group(function () {
     Route::post('/perusahaan-diterima/{id}', [PerusahaanController::class , 'terima_perusahaan'])->name('terima-perusahaan');
     Route::post('/perusahaan-ditolak/{id}', [PerusahaanController::class , 'tolak_perusahaan'])->name('tolak-perusahaan');
     Route::get('/dashboard/admin', [AdminDashboardController::class, 'showDashboard'])->name('dashboard.admin');
-    Route::get('/admin/edit-profile/{id_admin}', [AdminController::class, 'create'])->name('admin.create');
-    Route::put('/admin/edit-profile/{id_admin}', [AdminController::class, 'update'])->name('admin.update');
+    Route::get('/admin/edit/{id_admin}', [AdminController::class, 'create'])->name('admin.create');
+    Route::put('/admin/{id_admin}/edit', [AdminController::class, 'update'])->name('admin.update');
     Route::get('/lowongan-diterima', [LowonganController::class, 'showLowonganDiterima'])->name('lowongan-diterima');
     Route::get('/lowongan-divalidasi', [LowonganController::class, 'showLowonganDivalidasi'])->name('lowongan-divalidasi');
     Route::post('/lowongan-diterima/{id}', [LowonganController::class , 'terima_lowongan'])->name('terima-lowongan');

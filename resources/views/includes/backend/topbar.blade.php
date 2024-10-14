@@ -105,7 +105,7 @@
                 aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">
                     @if (Auth::user()->role === 'admin')
-                        {{ Auth::user()->admin->nama }}
+                        {{ Auth::user()->username }}
                     @elseif(Auth::user()->role === 'alumni')
                         {{ Auth::user()->alumni->nama_alumni }}
                     @elseif(Auth::user()->role === 'perusahaan')

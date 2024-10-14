@@ -15,6 +15,7 @@ class AdminDashboardController extends Controller
     {
         $admin = $request->session()->get('admin');
 
+
         $aktifAlumni = Alumni::where('status', 'active')->count();
         $pasifAlumni = Alumni::where('status', 'pasif')->count();
 
@@ -22,6 +23,6 @@ class AdminDashboardController extends Controller
         $nonActiveCompanies = Perusahaan::where('status', 'nonactive')->count();
 
 
-        return view('pages.admin.dashboard', compact('aktifAlumni', 'pasifAlumni', 'activeCompanies', 'nonActiveCompanies'));
+        return view('pages.admin.dashboard', compact('admin','aktifAlumni', 'pasifAlumni', 'activeCompanies', 'nonActiveCompanies'));
     }
 }
