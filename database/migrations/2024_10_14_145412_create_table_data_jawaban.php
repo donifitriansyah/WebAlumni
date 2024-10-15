@@ -22,7 +22,7 @@ return new class extends Migration
 
             // Foreign key constraints
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('id_kuisioner')->references('id_kuisioner')->on('kuisioner')->onDelete('cascade');
+            $table->foreign('id_kuisioner')->references('id')->on('kuisioner')->onDelete('cascade');
         });
     }
 
