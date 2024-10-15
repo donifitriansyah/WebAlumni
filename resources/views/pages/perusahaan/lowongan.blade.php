@@ -33,6 +33,7 @@ Dashboard
                                 <th>Pengalaman Kerja</th>
                                 <th>Kontak</th>
                                 <th>Status</th>
+                                <th>Gambar</th>
                                 <th>Aksi</th> <!-- Added Actions column -->
                             </tr>
                         </thead>
@@ -50,6 +51,9 @@ Dashboard
                                 <td>{{ $lowongan->pengalaman_kerja }}</td>
                                 <td>{{ $lowongan->kontak }}</td>
                                 <td>{{ $lowongan->status }}</td>
+                                <td>
+                                    <img src="{{ Storage::url($lowongan->gambar) }}" alt="Lowongan" style="width: 150px" class="img-thumbnail">
+                                </td>
                                 <td>
                                     {{-- <!-- View Details Icon -->
                                     <a href="{{ route('lowongan.show', $lowongan->id_lowongan) }}" class="text-primary" title="Lihat Detail">
