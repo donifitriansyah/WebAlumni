@@ -32,14 +32,6 @@ class AdminSeeder extends Seeder
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
-            [
-                'id_user' => 9,
-                'nama' => 'adminmikasa',
-                'nomor_induk' => '6696969',
-                'no_hp' => '08234567899',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-            ],
             // Add more admin records as needed
         ]);
     }

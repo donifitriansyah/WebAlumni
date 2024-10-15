@@ -77,7 +77,7 @@ class UserSeeder extends Seeder
                 'remember_token' => null,
                 'created_at' => Carbon::now(),
             ],
-
+            [
                 'username' => 'capekpak',
                 'email' => 'info@capek.com',
                 'email_verified_at' => Carbon::now(),
@@ -86,6 +86,7 @@ class UserSeeder extends Seeder
                 'role' => 'perusahaan',
                 'remember_token' => null,
                 'created_at' => Carbon::now(),
+        ]
         ]);
     }
 }
