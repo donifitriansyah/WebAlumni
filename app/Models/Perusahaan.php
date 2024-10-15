@@ -11,7 +11,7 @@ class Perusahaan extends Model
 {
     use HasFactory;
     protected $table = 'perusahaan';
-
+    protected $primaryKey = 'id_perusahaan';
     protected $fillable = [
         'id_perusahaan',
         'id_user',

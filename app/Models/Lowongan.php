@@ -16,13 +16,15 @@ class Lowongan extends Model
         'judul_lowongan',
         'posisi_pekerjaan',
         'deskripsi_pekerjaan',
+        'gambar',
         'tipe_pekerjaan',
         'jumlah_kandidat',
         'lokasi',
-        'tanggal_aktif',
         'rentang_gaji',
         'pengalaman_kerja',
         'kontak',
+        'status',
+        'tanggal_aktif',
     ];
 
     public function perusahaan()

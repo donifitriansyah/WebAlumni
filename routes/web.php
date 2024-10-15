@@ -17,14 +17,7 @@ use App\Http\Controllers\Admin\PerusahaanController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Middleware\CheckPerusahaan;
 use App\Http\Controllers\Admin\LowonganController;
-
-
-
-
-
-
-
-
+use App\Http\Controllers\Perusahaan\LowonganController as PerusahaanLowonganController;
 
 // Home Route
 Route::get('/', function () {
@@ -98,6 +91,11 @@ Route::middleware(['auth', CheckAdmin::class])->group(function () {
     Route::post('/lowongan-ditolak/{id}', [LowonganController::class , 'tolak_lowongan'])->name('tolak-lowongan');
 });
 
+Route::middleware(['auth', CheckPerusahaan::class])->group(function () {
+    Route::get('/lowongan', [PerusahaanLowonganController::class, 'index'])->name('lowongan.index');
+    Route::post('/lowongan/tambah-data', [PerusahaanLowonganController::class, 'store'])->name('lowongan.store');
+
+});
 
 // Include the authentication routes
 require __DIR__.'/auth.php';

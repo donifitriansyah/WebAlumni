@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('judul_lowongan');
             $table->string('posisi_pekerjaan');
             $table->text('deskripsi_pekerjaan');
+            $table->string('gambar');
             $table->enum('tipe_pekerjaan', ['Full-time', 'Part-time', 'Contract']);
             $table->integer('jumlah_kandidat');
             $table->string('lokasi');

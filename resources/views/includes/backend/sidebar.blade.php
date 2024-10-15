@@ -122,18 +122,19 @@
 
         @case('perusahaan')
             <!-- Navbar for Perusahaan -->
-            <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+            <li class="nav-item {{ Route::is('dashboard.perusahaan') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('dashboard.perusahaan') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="index.html">
-                    <i class="fas fa-fw fa-building"></i>
-                    <span>Perusahaan</span>
+            <li class="nav-item {{ Route::is('lowongan.index') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('lowongan.index') }}">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Lowongan</span>
                 </a>
             </li>
+
         @break
     @endswitch
 @endif

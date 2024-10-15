@@ -1,8 +1,8 @@
-@extends('layouts.admin')
+@extends('layouts.perusahaan')
 @section('title')
 Dashboard
 @endsection
-@section('content-admin')
+@section('content-perusahaan')
     <div class="container-fluid">
 
         <!-- Page Heading -->
@@ -14,14 +14,14 @@ Dashboard
         <div class="row">
 
             <!-- Earnings (Monthly) Card Example -->
-            {{-- <div class="col-xl-3 col-md-6 mb-4">
+            <div class="col-xl-3 col-md-6 mb-4">
                 <div class="card border-left-primary shadow h-100 py-2">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                    Jumlah Alumni Aktif</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $aktifAlumni }}</div>
+                                    Jumlah Lowongan</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-fw fa-user-graduate fa-2x text-gray-300"></i>
@@ -37,8 +37,8 @@ Dashboard
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
-                                    Jumlah Alumni Pasif</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $pasifAlumni }}</div>
+                                    Jumlah Pelamar</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-fw fa-user-graduate fa-2x text-gray-300"></i>
@@ -56,7 +56,7 @@ Dashboard
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Jumlah Perusahaan Aktif</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $activeCompanies }}</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-building fa-2x text-gray-300"></i>
@@ -72,7 +72,7 @@ Dashboard
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Jumlah Perusahaan Non-Aktif</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $nonActiveCompanies }}</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-building fa-2x text-gray-300"></i>
@@ -127,7 +127,7 @@ Dashboard
                         </div>
                     </div>
                 </div>
-            </div> --}}
+            </div>
         </div>
 
     </div>
