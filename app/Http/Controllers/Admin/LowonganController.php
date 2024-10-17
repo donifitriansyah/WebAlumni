@@ -42,4 +42,13 @@ class LowonganController extends Controller
         return redirect()->route('lowongan-ditolak')->with('success', 'lowongan berhasil ditolak');
     }
 
+    public function show($id)
+    {
+        // Retrieve the lowongan by ID
+        $lowongan = Lowongan::findOrFail($id);
+
+        // Return a view with the lowongan details
+        return view('lowongan.show', compact('lowongan'));
+    }
+
 }

@@ -52,7 +52,7 @@
                                             </button>
                                         </form>
                                         <button class="btn btn-info" data-toggle="modal"
-                                            data-target="#detailModal{{ $lowongan->id_lowongan }}">
+                                            data-target="#detailModal{{ $lowongan->id_lowongan }}" title="View Details">
                                             <i class="fas fa-eye"></i>
                                         </button>
                                     </td>
@@ -72,8 +72,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="detailModalLabel">Detail Lowongan</h5>
-                    <button type="button" class="close" data-dismiss="modal"
-                        aria-label="Close">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -101,8 +100,8 @@
                         </tr>
                         <tr>
                             <th>Gambar</th>
-                            <td><img src="{{ asset('storage/' . $lowongan->gambar) }}"
-                                    alt="Gambar Lowongan" width="200"></td>
+                            <td><img src="{{ asset('storage/' . $lowongan->gambar) }}" alt="Gambar Lowongan"
+                                    width="200"></td>
                         </tr>
                         <tr>
                             <th>Tipe Pekerjaan</th>
@@ -135,14 +134,13 @@
                     </table>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary"
-                        data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
     </div>
-    
 @endsection
+
 
 @section('scripts')
     <script>

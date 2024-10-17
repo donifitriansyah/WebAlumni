@@ -145,4 +145,13 @@ class LowonganController extends Controller
         // Redirect or respond as needed
         return redirect()->route('lowongan.index')->with('success', 'Lowongan deleted successfully.');
     }
+
+    public function show($id_lowongan)
+    {
+        // Retrieve the lowongan by ID
+        $lowongan = Lowongan::findOrFail($id_lowongan);
+
+        // Return a view with the lowongan details
+        return view('lowongan.show', compact('lowongan'));
+    }
 }

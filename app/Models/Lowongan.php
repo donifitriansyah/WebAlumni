@@ -11,6 +11,8 @@ class Lowongan extends Model
 
     protected $table = "lowongan";
 
+    protected $primaryKey = 'id_lowongan';
+
     protected $fillable = [
         'id_perusahaan',
         'judul_lowongan',
