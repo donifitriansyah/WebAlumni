@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title')
-Perusahaan
+    Perusahaan
 @endsection
 @section('content-admin')
     <div class="container-fluid">
@@ -29,30 +29,34 @@ Perusahaan
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($showLowonganDivalidasi as $lowongan)
-                            <tr>
-                                <td>{{ $lowongan->id_lowongan }}</td>
-                                <td>{{ $lowongan->judul_lowongan }}</td>
-                                <td>{{ $lowongan->posisi_pekerjaan }}</td>
-                                <td>{{ $lowongan->lokasi }}</td>
-                                <td>{{ $lowongan->kontak }}</td>
-                                <td>{{ $lowongan->status }}</td>
-                                <td class="d-flex justify-content-center" style="gap: 4px;">
-                                    <form action="{{ route('terima-lowongan', $lowongan->id_lowongan) }}" method="post">
-                                        @csrf
-                                        <button type="submit" class="btn btn-success">
-                                            <i class="fas fa-check"></i>
+                            @foreach ($showLowonganDivalidasi as $lowongan)
+                                <tr>
+                                    <td>{{ $lowongan->id_lowongan }}</td>
+                                    <td>{{ $lowongan->judul_lowongan }}</td>
+                                    <td>{{ $lowongan->posisi_pekerjaan }}</td>
+                                    <td>{{ $lowongan->lokasi }}</td>
+                                    <td>{{ $lowongan->kontak }}</td>
+                                    <td>{{ $lowongan->status }}</td>
+                                    <td class="d-flex justify-content-center" style="gap: 4px;">
+                                        <form action="{{ route('terima-lowongan', $lowongan->id_lowongan) }}"
+                                            method="post">
+                                            @csrf
+                                            <button type="submit" class="btn btn-success">
+                                                <i class="fas fa-check"></i>
+                                            </button>
+                                        </form>
+                                        <form action="{{ route('tolak-lowongan', $lowongan->id_lowongan) }}" method="post">
+                                            @csrf
+                                            <button type="submit" class="btn btn-danger">
+                                                <i class="fas fa-times"></i>
+                                            </button>
+                                        </form>
+                                        <button class="btn btn-info" data-toggle="modal"
+                                            data-target="#detailModal{{ $lowongan->id_lowongan }}">
+                                            <i class="fas fa-eye"></i>
                                         </button>
-                                    </form>
-                                    <form action="{{ route('tolak-lowongan', $lowongan->id_lowongan) }}" method="post">
-                                        @csrf
-                                        <button type="submit" class="btn btn-danger">
-                                            <i class="fas fa-times"></i>
-                                        </button>
-                                    </form>
-                                </td>
-                                <td>
-                            </tr>
+                                    </td>
+                                </tr>
                             @endforeach
                         </tbody>
                     </table>
@@ -61,12 +65,89 @@ Perusahaan
         </div>
     </div>
 
+    <!-- Modal Detail -->
+    <div class="modal fade" id="detailModal{{ $lowongan->id_lowongan }}" tabindex="-1"
+        aria-labelledby="detailModalLabel{{ $lowongan->id_lowongan }}" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="detailModalLabel">Detail Lowongan</h5>
+                    <button type="button" class="close" data-dismiss="modal"
+                        aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>ID Lowongan</th>
+                            <td>{{ $lowongan->id_lowongan }}</td>
+                        </tr>
+                        <tr>
+                            <th>Perusahaan</th>
+                            <td>{{ $lowongan->id_perusahaan }}</td>
+                        </tr>
+                        <tr>
+                            <th>Judul Lowongan</th>
+                            <td>{{ $lowongan->judul_lowongan }}</td>
+                        </tr>
+                        <tr>
+                            <th>Posisi Pekerjaan</th>
+                            <td>{{ $lowongan->posisi_pekerjaan }}</td>
+                        </tr>
+                        <tr>
+                            <th>Deskripsi Pekerjaan</th>
+                            <td>{{ $lowongan->deskripsi_pekerjaan }}</td>
+                        </tr>
+                        <tr>
+                            <th>Gambar</th>
+                            <td><img src="{{ asset('storage/' . $lowongan->gambar) }}"
+                                    alt="Gambar Lowongan" width="200"></td>
+                        </tr>
+                        <tr>
+                            <th>Tipe Pekerjaan</th>
+                            <td>{{ $lowongan->tipe_pekerjaan }}</td>
+                        </tr>
+                        <tr>
+                            <th>Jumlah Kandidat</th>
+                            <td>{{ $lowongan->jumlah_kandidat }}</td>
+                        </tr>
+                        <tr>
+                            <th>Lokasi</th>
+                            <td>{{ $lowongan->lokasi }}</td>
+                        </tr>
+                        <tr>
+                            <th>Rentang Gaji</th>
+                            <td>{{ $lowongan->rentang_gaji }}</td>
+                        </tr>
+                        <tr>
+                            <th>Pengalaman Kerja</th>
+                            <td>{{ $lowongan->pengalaman_kerja }}</td>
+                        </tr>
+                        <tr>
+                            <th>Kontak</th>
+                            <td>{{ $lowongan->kontak }}</td>
+                        </tr>
+                        <tr>
+                            <th>Status</th>
+                            <td>{{ $lowongan->status }}</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary"
+                        data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
 @endsection
 
 @section('scripts')
-<script>
-    $(document).ready(function() {
-        $('#dataTable').DataTable();
-    });
-</script>
+    <script>
+        $(document).ready(function() {
+            $('#dataTable').DataTable();
+        });
+    </script>
 @endsection
