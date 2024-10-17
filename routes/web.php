@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\AdminLowonganController;
 use App\Http\Controllers\Admin\AlumniController;
 use App\Http\Controllers\Admin\PertanyaanController;
 use App\Http\Controllers\Alumni\TracerController;
@@ -85,10 +86,10 @@ Route::middleware(['auth', CheckAdmin::class])->group(function () {
     Route::get('/dashboard/admin', [AdminDashboardController::class, 'showDashboard'])->name('dashboard.admin');
     Route::get('/admin/edit/{id_admin}', [AdminController::class, 'create'])->name('admin.create');
     Route::put('/admin/{id_admin}/edit', [AdminController::class, 'update'])->name('admin.update');
-    Route::get('/lowongan-diterima', [LowonganController::class, 'showLowonganDiterima'])->name('lowongan-diterima');
-    Route::get('/lowongan-divalidasi', [LowonganController::class, 'showLowonganDivalidasi'])->name('lowongan-divalidasi');
-    Route::post('/lowongan-diterima/{id}', [LowonganController::class, 'terima_lowongan'])->name('terima-lowongan');
-    Route::post('/lowongan-ditolak/{id}', [LowonganController::class, 'tolak_lowongan'])->name('tolak-lowongan');
+    Route::get('/lowongan-diterima', [AdminLowonganController::class, 'showLowonganDiterima'])->name('lowongan-diterima');
+    Route::get('/lowongan-divalidasi', [AdminLowonganController::class, 'showLowonganDivalidasi'])->name('lowongan-divalidasi');
+    Route::post('/lowongan-diterima/{id}', [AdminLowonganController::class, 'terima_lowongan'])->name('terima-lowongan');
+    Route::post('/lowongan-ditolak/{id}', [AdminLowonganController::class, 'tolak_lowongan'])->name('tolak-lowongan');
 });
 
 Route::middleware(['auth', CheckPerusahaan::class])->group(function () {

@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Lowongan;
 use Illuminate\Http\Request;
 
-class LowonganController extends Controller
+class AdminLowonganController extends Controller
 {
     public function showLowonganDiterima()
     {
@@ -40,15 +40,6 @@ class LowonganController extends Controller
 
         // Redirect ke halaman perusahaan diterima dengan pesan sukses
         return redirect()->route('lowongan-ditolak')->with('success', 'lowongan berhasil ditolak');
-    }
-
-    public function show($id)
-    {
-        // Retrieve the lowongan by ID
-        $lowongan = Lowongan::findOrFail($id);
-
-        // Return a view with the lowongan details
-        return view('lowongan.show', compact('lowongan'));
     }
 
 }
