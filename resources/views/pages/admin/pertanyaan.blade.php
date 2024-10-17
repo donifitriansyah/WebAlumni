@@ -11,23 +11,33 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
+                <a href="{{route('pertanyaan.create')}}" class="mb-4 btn btn-primary">Tambah Pertanyaan</a>
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th>No</th>
                             <th>Pertanyaan</th>
+                            <th>Jenis</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($pertanyaan as $item)
+                        @foreach ($data as $item)
                             <tr>
                                 <td>{{ $item->id_pertanyaan }}</td>
                                 <td>{{ $item->pertanyaan }}</td>
-                                <td>
+                                <td>{{ $item->jenis }}</td>
+                                <td class="d-flex" style="gap: 4px">
                                     <button class="btn btn-primary" data-toggle="modal" data-target="#editModal{{ $item->id_pertanyaan }}">
                                         Edit
                                     </button>
+                                    <form action="{{ route('pertanyaan.delete', $item->id_pertanyaan) }}" method="post">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="submit" class="btn btn-danger">
+                                            Delete
+                                        </button>
+                                    </form>
 
                                     <!-- Modal untuk mengedit pertanyaan -->
                                     <div class="modal fade" id="editModal{{ $item->id_pertanyaan }}" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
@@ -46,6 +56,11 @@
                                                         <div class="form-group">
                                                             <label for="pertanyaan">Pertanyaan</label>
                                                             <input type="text" class="form-control" name="pertanyaan" value="{{ $item->pertanyaan }}" required>
+                                                            <label for="jenis">Jenis</label>
+                                                            <select name="jenis" class="form-control">
+                                                                <option value="terbuka" {{ $item->jenis == 'terbuka' ? 'selected' : '' }} >Terbuka</option>
+                                                                <option value="skala" {{ $item->jenis == 'skala' ? 'selected' : '' }}>Skala</option>
+                                                            </select>
                                                         </div>
                                                     </div>
                                                     <div class="modal-footer">

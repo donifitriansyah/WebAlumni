@@ -79,5 +79,5 @@
     @include('includes.backend.script')
 
 </body>
-
+    @yield('scripts')
 </html>

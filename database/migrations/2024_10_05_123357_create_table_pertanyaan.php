@@ -11,6 +11,7 @@ return new class extends Migration
         Schema::create('pertanyaan', function (Blueprint $table) {
             $table->id('id_pertanyaan'); // Primary key
             $table->text('pertanyaan'); // Teks pertanyaan
+            $table->enum('jenis', ['terbuka','skala'])->default('terbuka');
             $table->timestamps(); // Menyimpan timestamp created_at dan updated_at
         });
     }

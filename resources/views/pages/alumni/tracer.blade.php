@@ -20,14 +20,22 @@
         </div>
     @endif
 
-    <h1>Tracer Study untuk {{ $alumni->nama_alumni }}</h1>
-    <form action="{{ route('tracerstudy.store') }}" method="POST">
+    <form action="{{ route('tracer.store') }}" method="POST">
         @csrf
 
         @foreach($pertanyaan as $item)
             <div class="form-group">
-                <label for="jawaban[{{ $item->id_pertanyaan }}]">{{ $item->pertanyaan }}</label>
-                <textarea name="jawaban[{{ $item->id_pertanyaan }}]" class="form-control" rows="3" required></textarea>
+                <label for="jawaban_terbuka[{{ $item->id_pertanyaan }}]">{{ $item->pertanyaan }}</label>
+
+                @if ($item->jenis == 'terbuka')
+                    <textarea name="jawaban_terbuka[{{ $item->id_pertanyaan }}]" class="form-control" rows="3" required></textarea>
+                    @elseif ($item->jenis == 'skala')
+                    @for ($i = 1; $i <= 5; $i++)
+                        <br>
+                        <input type="radio" name="jawaban_skala[{{ $item->id_pertanyaan }}]" value="{{ $i }}">
+                        <label for="skala{{ $i }}">{{ $i }}</label><br>
+                    @endfor
+                @endif
             </div>
         @endforeach
 
