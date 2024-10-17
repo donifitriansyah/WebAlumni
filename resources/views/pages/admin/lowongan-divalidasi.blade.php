@@ -64,7 +64,7 @@
             </div>
         </div>
     </div>
-
+    @include('includes.backend.modal.admin.modal_lowongan_admin')
 @endsection
 
 
