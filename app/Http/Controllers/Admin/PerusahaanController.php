@@ -34,7 +34,7 @@ class PerusahaanController extends Controller
     public function showPerusahaanActive()
     {
         // Retrieve companies with 'active' status
-        $activePerusahaan = Perusahaan::where('status', 'active')->get();
+        $activePerusahaan = Perusahaan::where('status', 'diterima')->get();
 
         // Return the view with the active companies
         return view('pages.admin.perusahaan-diterima', compact('activePerusahaan'));
@@ -42,7 +42,7 @@ class PerusahaanController extends Controller
 
     public function showPerusahaanNonActive()
     {
-        $nonActivePerusahaan = Perusahaan::where('status', 'nonactive')->get();
+        $nonActivePerusahaan = Perusahaan::where('status', 'menunggu')->get();
 
         return view('pages.admin.perusahaan-divalidasi', compact('nonActivePerusahaan'));
     }

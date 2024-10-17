@@ -54,7 +54,7 @@
                 </div>
             </li>
 
-            <li class="nav-item {{ Route::is('perusahaan-diterima', 'perusahaan-divalidasi') ? 'active' : '' }}">
+            <li class="nav-item {{ Route::is('perusahaan-diterima', 'perusahaan-divalidasi', 'lowongan-diterima', 'lowongan-divalidasi') ? 'active' : '' }}">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePerusahaan"
                    aria-expanded="true" aria-controls="collapsePerusahaan">
                     <i class="fas fa-fw fa-building"></i>
