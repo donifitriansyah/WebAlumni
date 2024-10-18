@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\AdminLowonganController;
 use App\Http\Controllers\Admin\AlumniController;
+use App\Http\Controllers\Admin\BeritaController;
 use App\Http\Controllers\Admin\PertanyaanController;
 use App\Http\Controllers\Alumni\TracerController;
 use App\Http\Controllers\ProfileController;
@@ -95,6 +96,10 @@ Route::middleware(['auth', CheckAdmin::class])->group(function () {
     Route::post('/lowongan-diterima/{id}', [AdminLowonganController::class, 'terima_lowongan'])->name('terima-lowongan');
     Route::post('/lowongan-ditolak/{id}', [AdminLowonganController::class, 'tolak_lowongan'])->name('tolak-lowongan');
     Route::get('/list-pertanyaan', [TracerController::class, 'index'])->name('data_pertanyaan');
+    Route::get('/berita', [BeritaController::class, 'index'])->name('berita.index');
+    Route::post('/berita/tambah-data', [BeritaController::class, 'store'])->name('berita.store');
+    Route::put('/berita/update-data/{id}', [BeritaController::class, 'update'])->name('berita.update');
+    Route::post('/berita/{id}', [BeritaController::class, 'destroy'])->name('berita.destroy');
 });
 
 Route::middleware(['auth', CheckPerusahaan::class])->group(function () {
