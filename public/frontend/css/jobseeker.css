@@ -1,0 +1,476 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+.form-edit {
+  display: flex; 
+  flex-direction: column;
+  justify-content: left;
+  justify-items: left;
+  width: 1100px;
+  /* align-items: center; */
+  background-color: #e3f2fd; /*Warna latar belakang biru muda*/
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+  text-align: left;
+
+}
+
+.form-edit h1{
+  text-align: left;
+}
+
+.form-edit label {
+  text-align: left;
+  /* margin-left: -880px; */
+  display: block;
+
+}
+
+.form-edit input,
+.form-edit select {
+  padding: 5.5px;
+  margin: 10px 0;
+  /* margin-left: -550px; */
+  width: 100%;
+  max-width: 500px;
+  color: #333; /* Warna teks */
+  font-weight: 500;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  transition: all 0.3s ease;
+  text-align: left;
+  display: block;
+  
+}
+
+/* .form-edit input:focus,
+.form-edit select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.25);
+} */
+
+.form-edit input:hover,
+.form-edit select:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.form-edit button {
+  padding: 10px 20px;
+  background-color: #1976d2; /* Warna oranye untuk tombol */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 5px;
+  transition: background-color 0.3s, transform 0.2s;
+  /* text-align: left; */
+  /* justify-content: left; */
+  /* width: 10%; */
+}
+
+.form-edit button:hover {
+  background-color: #10477e; /* Warna lebih gelap saat hover */
+  transform: translateY(-2px);
+  /* text-align: left; */
+  /* justify-content: left; */
+}
+
+/* General styles for the navbar */
+.navbar {
+  background-color: #000;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  width: 100%;
+  height: 70px;
+}
+
+.navbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.navbar li {
+  position: relative;
+}
+
+.navbar li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 20px;
+  text-decoration: none;
+}
+
+.navbar li a:hover {
+  background-color: #575757;
+}
+
+/* Submenu styles */
+.submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #333;
+  min-width: 160px;
+  z-index: 1;
+}
+
+.submenu li {
+  float: none;
+}
+
+.submenu li a {
+  padding: 12px 16px;
+}
+
+.submenu li a:hover {
+  background-color: #575757;
+}
+
+/* Show submenu on hover */
+.menu-item:hover .submenu {
+  display: block;
+}
+
+/* Logo styles */
+.logo img {
+  height: 40px;
+  margin-top: 5px;
+}
+
+.delete-icon {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  margin-left: 10px;
+  vertical-align: middle;
+}
+
+/* Notification icon styles */
+.notification-icon {
+  position: absolute;
+  top: 10px;
+  left: 1200px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.notification-icon img {
+  width: 100%;
+  height: 100%;
+}
+
+.notification-count {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+
+.notification-dropdown {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background-color: #fff;
+  border: 3px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 250px;
+  max-height: 400px;
+  overflow-y: auto;
+  z-index: 100;
+  display: none;
+  border-radius: 10px;
+}
+
+.notification-dropdown.show {
+  display: block;
+}
+
+.notification-dropdown ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.notification-dropdown li {
+  border-bottom: 1px solid #ddd;
+  padding: 10px;
+}
+
+.notification-dropdown li a {
+  text-decoration: none;
+  color: #333;
+  display: block;
+}
+
+.notification-dropdown li a:hover {
+  background-color: #f5f5f5;
+}
+
+.right-menu {
+  display: flex;
+  align-items: center;
+}
+
+/* Sidebar styles */
+.sidebar {
+  background-color: #f4f4f4;
+  padding: 20px;
+  width: 200px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  margin-top: 15px;
+  height: calc(100% - 50px);
+  position: fixed;
+  top: 50px;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.sidebar-menu {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar-menu li {
+  margin-bottom: 10px;
+}
+
+.sidebar-menu li a {
+  text-decoration: none;
+  color: #333;
+  padding: 10px 20px;
+  display: block;
+  border-radius: 4px;
+}
+
+.sidebar-menu li a:hover,
+.sidebar-menu li a.active {
+  background-color: dodgerblue;
+  color: white;
+}
+
+/* Container styles */
+.container {
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  margin-left: 240px;
+  padding: 30px;
+  width: calc(100% - 50px);
+  overflow-y: auto;
+  height: calc(100% - 50px);
+  /* margin-top: 10px; */
+  background-color: #fff;
+  /* border: 5px solid #ddd; */
+  /* border-radius: 10px; */
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+}
+
+
+/* Profil Jobseeker Styles */
+#profileInfo {
+  display: flex;
+  flex-direction: column;
+  width: 1100px;
+  /* align-items: center; */
+  background-color: #e3f2fd; /* Warna latar belakang biru muda */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+#profileInfo p {
+  /* background-color: #ffffff; */
+  /* border-radius: 8px; */
+  padding: 5.5px;
+  margin: 10px 0;
+  margin-left: 10px;
+  width: 100%;
+  max-width: 500px; /* Batas lebar untuk tampilan lebih baik */
+  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+  /* transition: transform 0.2s, box-shadow 0.2s; */
+  color: #333; /* Warna teks */
+  font-weight: 500;
+}
+
+/* #profileInfo p:hover { */
+  /* transform: translateY(-2px); */
+  /* box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); */
+  /* background-color: #f0f4ff; Warna latar belakang saat hover */
+/* } */
+
+#profilePhoto {
+  display: flex;
+  /* justify-content: center; */
+  margin-bottom: 20px;
+}
+
+#profilePhoto img {
+  /* max-width: 120px; */
+  height: auto;
+  width: 170px;
+  /* border-radius: 50%; */
+  /* border: 4px solid #42a5f5; Warna biru untuk border */
+  /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); */
+}
+
+/* Edit Profil Jobseeker Styles */
+/* .form-edit {
+  display: flex;
+  flex-direction: column;
+  width: 1100px;
+  align-items: center;
+  background-color: #e3f2fd; Warna latar belakang biru muda
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+} */
+
+h1 {
+  /* text-align: center; */
+  color: #1976d2; /* Warna biru untuk judul */
+  margin-bottom: 20px;
+  margin-top: -10px;
+  /* margin-left: 20px; */
+  font-size: 26px;
+  font-weight: bold;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #1976d2; /* Warna oranye untuk tombol */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 5px;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+  background-color: #10477e; /* Warna lebih gelap saat hover */
+  transform: translateY(-2px);
+}
+
+.form-edit {
+  display: flex; 
+  flex-direction: column;
+  justify-content: left;
+  justify-items: left;
+  width: 1100px;
+  /* align-items: center; */
+  background-color: #e3f2fd; /*Warna latar belakang biru muda*/
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+  text-align: left;
+
+}
+
+.form-edit h1{
+  text-align: left;
+}
+
+.form-edit label {
+  text-align: left;
+  /* margin-left: -880px; */
+  display: block;
+
+}
+
+.form-edit input,
+.form-edit select {
+  padding: 5.5px;
+  margin: 10px 0;
+  /* margin-left: -550px; */
+  width: 100%;
+  max-width: 500px;
+  color: #333; /* Warna teks */
+  font-weight: 500;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  transition: all 0.3s ease;
+  text-align: left;
+  display: block;
+  
+}
+
+/* .form-edit input:focus,
+.form-edit select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.25);
+} */
+
+.form-edit input:hover,
+.form-edit select:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.form-edit button {
+  padding: 10px 20px;
+  background-color: #1976d2; /* Warna oranye untuk tombol */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 5px;
+  transition: background-color 0.3s, transform 0.2s;
+  text-align: left;
+  justify-content: left;
+  width: 10%;
+}
+
+.form-edit button:hover {
+  background-color: #10477e; /* Warna lebih gelap saat hover */
+  transform: translateY(-2px);
+  text-align: left;
+  justify-content: left;
+}
+
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  #profileInfo {
+      padding: 15px;
+  }
+
+  #profileInfo p {
+      width: 90%; /* Lebar penuh di perangkat kecil */
+  }
+}

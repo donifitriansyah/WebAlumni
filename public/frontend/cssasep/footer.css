@@ -1,0 +1,126 @@
+/* Footer Styles */
+footer {
+    background-color: var(--accent-color);
+    color: var(--white);
+    padding: 60px 0;
+    margin-top: 60px;
+  }
+  
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  
+  .social-media a {
+    color: var(--white);
+    font-size: 1.5rem;
+    margin-right: 20px;
+    transition: var(--transition);
+  }
+  
+  .social-media a:hover {
+    color: var(--primary-color);
+    transform: translateY(-3px);
+  }
+  
+  .contact h3 {
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+  
+  .contact p {
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+  }
+  
+  .footer-logo img {
+    max-width: 120px;
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .footer {
+    background-color: #0d1b2a; /* Warna latar belakang yang gelap dan elegan */
+    color: #f0f0f0; /* Warna teks yang cerah untuk kontras */
+    padding: 40px 20px; /* Memberikan ruang di sekeliling footer */
+    text-align: left;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.1); /* Memberikan bayangan halus */
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Layout responsif dengan grid */
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto; /* Membuat konten terpusat */
+}
+
+.footer h4 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #f9a826; /* Warna aksen emas atau oranye */
+}
+
+.footer p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #d1d1d1;
+}
+
+.footer-contact {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-contact li {
+    margin-bottom: 10px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+}
+
+.footer-contact li i {
+    margin-right: 10px;
+    color: #f9a826; /* Warna ikon yang sama dengan heading */
+}
+
+.footer-contact a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-contact a:hover {
+    color: #f9a826; /* Warna saat dihover */
+}
+
+.footer-contact li i.fab {
+    font-size: 20px; /* Membuat ikon sosial media sedikit lebih besar */
+}
+
+.footer-contact li i.fa-phone, .footer-contact li i.fa-envelope {
+    font-size: 18px;
+}
+
+@media (max-width: 768px) {
+    .footer {
+        text-align: center; /* Mengatur teks menjadi di tengah di layar kecil */
+    }
+
+    .footer-contact li {
+        justify-content: center; /* Ikon dan teks di tengah di layar kecil */
+    }
+}

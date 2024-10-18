@@ -19,12 +19,16 @@ use App\Http\Controllers\Admin\PerusahaanController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Middleware\CheckPerusahaan;
 use App\Http\Controllers\Admin\LowonganController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Perusahaan\LowonganController as PerusahaanLowonganController;
 
 // Home Route
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+// Home Route
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
 
 // Tracer Study Routes
 Route::middleware(['auth'])->group(function () {

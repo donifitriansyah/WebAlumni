@@ -1,0 +1,103 @@
+/* Container banner */
+.berita {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  background-color: #f3f3f3;
+  padding: 20px 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.news-slider {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.news-slider h1 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+}
+
+.news-slides {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 100%; /* Lebar dinamis: dikalikan dengan jumlah slide */
+}
+
+    .news-slide {
+  width: 100%; /* Pastikan setiap slide memiliki lebar 100% dari kontainer */
+  flex-shrink: 0; /* Mencegah slide mengecil */
+  position: relative; /* Untuk menempatkan konten secara absolut */
+}
+
+.news-slide img {
+  width: 100%;
+  height: 70vh; /* Mengisi tinggi layar */
+  object-fit: cover; /* Memastikan gambar mengisi area tanpa merusak proporsi */
+  border-radius: 0px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Konten teks dan link di atas banner ke-3 */
+.banner-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  /* background: rgba(0, 0, 0, 0.5); Background semi-transparan */
+  padding: 20px;
+  border-radius: 10px;
+  z-index: 10; /* Agar berada di depan gambar */
+}
+
+.banner-content h2 {
+  font-size: 32px;
+  margin-bottom: 15px;
+  color: white;
+}
+
+.banner-content .btn {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.banner-content .btn:hover {
+  background-color: #0056b3;
+  cursor: pointer;
+}
+
+/* Navigasi slide (tombol bulat) */
+.slider-nav {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.slider-nav button {
+  border: none;
+  background-color: #ccc;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.slider-nav button.active {
+  background-color: #007bff;
+}
+
+/* Nonaktifkan animasi otomatis */
+.news-slides {
+  transition: transform 0.5s ease-in-out;
+}

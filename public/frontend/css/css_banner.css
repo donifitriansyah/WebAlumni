@@ -1,0 +1,77 @@
+.banner {
+  position: relative;
+  background-image: url("../images/banner.jpg");
+  /* Path to the banner image */
+  background-size: cover;
+  background-position: center;
+  height: 300px;
+  color: white;
+  text-align: center;
+  margin-top: 60px;
+}
+
+.banner-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* background-color: rgba(0, 0, 0, 0.5); Semi-transparent background */
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.banner-content h1 {
+  font-size: 2.5em;
+  margin: 0;
+  animation: fadeInLeft 1s;
+  /* Add animation */
+}
+
+.banner-content p {
+  font-size: 1.2em;
+  margin: 10px 0 20px;
+  animation: fadeInRight 1s;
+  /* Add animation */
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 1em;
+  color: white;
+  background-color: #007bff;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 40px;
+  animation: fadeInLeft 1s;
+  /* Add animation */
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+/* Add animation keyframes */
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

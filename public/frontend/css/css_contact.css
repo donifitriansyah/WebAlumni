@@ -1,0 +1,125 @@
+/* body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+} */
+.main-container {
+
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  /* Atur jarak antara .contact-info dan .form-container */
+  align-items: flex-start;
+  /* Atur posisi vertikal elemen */
+}
+
+.form-container {
+  display: flex;
+  margin-left: 85px;
+  margin-bottom: -33px;
+}
+
+.form-container .left {
+  flex: 3px;
+  padding: 20px;
+}
+
+.form-container .right {
+  flex: 3px;
+  padding: 20px;
+}
+
+.form-container iframe {
+  width: 500px;
+  height: 390px;
+}
+
+.contact-info {
+  display: flex;
+  justify-content: space-around;
+  width: 20px;
+}
+
+.contact-info div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  /* Menambahkan margin antara elemen */
+}
+
+.contact-info img {
+  width: 50px;
+  height: 50px;
+  margin-left: 90px;
+  margin-right: 10px;
+
+}
+
+.contact-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  margin-top: 20px;
+}
+
+.form-container .left,
+.form-container .right {
+  flex: 1;
+  padding: 10px;
+}
+
+.form-container input,
+.form-container textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.form-container textarea {
+  height: 150px;
+}
+
+.form-container .right {
+  padding-left: 20px;
+}
+
+.submit-btn {
+  width: 100%;
+  text-align: center;
+  margin-top: 10px;
+
+}
+
+.submit-btn button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.submit-btn button:hover {
+  background-color: #0056b3;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.web-career {
+  margin-left: -50px;
+  /* Adjust this value to move further to the left */
+}
+
+.contact-info {
+  margin-right: -50px;
+  /* Adjust this value to move further to the right */
+}
