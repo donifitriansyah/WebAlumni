@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\AdminLowonganController;
 use App\Http\Controllers\Admin\AlumniController;
 use App\Http\Controllers\Admin\PertanyaanController;
 use App\Http\Controllers\Alumni\TracerController;
@@ -34,7 +35,7 @@ Route::middleware(['auth'])->group(function () {
 Route::get('/dashboard/alumni', function () {
     $user = Auth::user();
     return view('pages.alumni.dashboard_alumni'); // Alumni dashboard
-})->middleware(['auth', 'verified', CheckTracerStudy::class ])->name('dashboard.alumni');
+})->middleware(['auth', 'verified', CheckTracerStudy::class])->name('dashboard.alumni');
 
 
 // Main Dashboard Route
@@ -80,25 +81,26 @@ Route::middleware(['auth', CheckAdmin::class])->group(function () {
     Route::get('/alumni-aktif', [AlumniController::class, 'showAktifAlumni'])->name('alumni-aktif');
     Route::get('/perusahaan/diterima', [PerusahaanController::class, 'showPerusahaanActive'])->name('perusahaan-diterima');
     Route::get('/perusahaan/divalidasi', [PerusahaanController::class, 'showPerusahaanNonactive'])->name('perusahaan-divalidasi');
-    Route::post('/perusahaan-diterima/{id}', [PerusahaanController::class , 'terima_perusahaan'])->name('terima-perusahaan');
-    Route::post('/perusahaan-ditolak/{id}', [PerusahaanController::class , 'tolak_perusahaan'])->name('tolak-perusahaan');
+    Route::post('/perusahaan-diterima/{id}', [PerusahaanController::class, 'terima_perusahaan'])->name('terima-perusahaan');
+    Route::post('/perusahaan-ditolak/{id}', [PerusahaanController::class, 'tolak_perusahaan'])->name('tolak-perusahaan');
     Route::get('/dashboard/admin', [AdminDashboardController::class, 'showDashboard'])->name('dashboard.admin');
     Route::get('/admin/edit/{id_admin}', [AdminController::class, 'create'])->name('admin.create');
     Route::put('/admin/{id_admin}/edit', [AdminController::class, 'update'])->name('admin.update');
-    Route::get('/lowongan-diterima', [LowonganController::class, 'showLowonganDiterima'])->name('lowongan-diterima');
-    Route::get('/lowongan-divalidasi', [LowonganController::class, 'showLowonganDivalidasi'])->name('lowongan-divalidasi');
-    Route::post('/lowongan-diterima/{id}', [LowonganController::class , 'terima_lowongan'])->name('terima-lowongan');
-    Route::post('/lowongan-ditolak/{id}', [LowonganController::class , 'tolak_lowongan'])->name('tolak-lowongan');
+    Route::get('/lowongan-diterima', [AdminLowonganController::class, 'showLowonganDiterima'])->name('lowongan-diterima');
+    Route::get('/lowongan-divalidasi', [AdminLowonganController::class, 'showLowonganDivalidasi'])->name('lowongan-divalidasi');
+    Route::post('/lowongan-diterima/{id}', [AdminLowonganController::class, 'terima_lowongan'])->name('terima-lowongan');
+    Route::post('/lowongan-ditolak/{id}', [AdminLowonganController::class, 'tolak_lowongan'])->name('tolak-lowongan');
 });
 
 Route::middleware(['auth', CheckPerusahaan::class])->group(function () {
     Route::get('/lowongan', [PerusahaanLowonganController::class, 'index'])->name('lowongan.index');
     Route::post('/lowongan/tambah-data', [PerusahaanLowonganController::class, 'store'])->name('lowongan.store');
-
+    Route::post('/lowongan/update-data/{id}', [PerusahaanLowonganController::class, 'update'])->name('lowongan.update');
+    Route::delete('/lowongan/{id}', [PerusahaanLowonganController::class, 'destroy'])->name('lowongan.destroy');
 });
 
 // Include the authentication routes
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 
 

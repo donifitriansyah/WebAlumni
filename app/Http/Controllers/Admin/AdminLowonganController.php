@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Lowongan;
 use Illuminate\Http\Request;
 
-class LowonganController extends Controller
+class AdminLowonganController extends Controller
 {
     public function showLowonganDiterima()
     {
