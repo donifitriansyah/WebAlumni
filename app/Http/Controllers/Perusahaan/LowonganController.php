@@ -19,6 +19,7 @@ class LowonganController extends Controller
     public function store(Request $request)
     {
         // Validate the incoming request data
+        // Validate the incoming request data
         $request->validate([
             'judul_lowongan' => 'required|string|max:255',
             'posisi_pekerjaan' => 'required|string|max:255',
@@ -29,8 +30,12 @@ class LowonganController extends Controller
             'lokasi' => 'required|string|max:255',
             'rentang_gaji' => 'required|string|max:255',
             'pengalaman_kerja' => 'required|string|max:255',
-            'kontak' => 'required|string|max:255',
+            'kontak' => 'required|numeric|digits_between:10,15',
+        ], [
+            'kontak.numeric' => "Nomor kontak hanya boleh berisi angka.",
+            'kontak.digits_between' => "Nomor kontak harus memiliki panjang antara 10 sampai 15 digit.",
         ]);
+
 
         // Create a new Lowongan instance
         $lowongan = new Lowongan();
@@ -84,7 +89,10 @@ class LowonganController extends Controller
             'lokasi' => 'required|string|max:255',
             'rentang_gaji' => 'required|string|max:255',
             'pengalaman_kerja' => 'required|string|max:255',
-            'kontak' => 'required|string|max:255',
+            'kontak' => 'required|numeric|digits_between:10,15',
+        ], [
+            'kontak.numeric' => "Nomor kontak hanya boleh berisi angka.",
+            'kontak.digits_between' => "Nomor kontak harus memiliki panjang antara 10 sampai 15 digit.",
         ]);
 
         // Find the existing Lowongan instance by ID

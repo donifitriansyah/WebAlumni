@@ -95,7 +95,7 @@ Route::middleware(['auth', CheckAdmin::class])->group(function () {
 Route::middleware(['auth', CheckPerusahaan::class])->group(function () {
     Route::get('/lowongan', [PerusahaanLowonganController::class, 'index'])->name('lowongan.index');
     Route::post('/lowongan/tambah-data', [PerusahaanLowonganController::class, 'store'])->name('lowongan.store');
-    Route::post('/lowongan/update-data/{id}', [PerusahaanLowonganController::class, 'update'])->name('lowongan.update');
+    Route::put('/lowongan/update-data/{id}', [PerusahaanLowonganController::class, 'update'])->name('lowongan.update');
     Route::delete('/lowongan/{id}', [PerusahaanLowonganController::class, 'destroy'])->name('lowongan.destroy');
 });
 

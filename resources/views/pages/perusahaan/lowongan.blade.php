@@ -110,52 +110,95 @@
                         @csrf
                         <div class="mb-3">
                             <label for="judul_lowongan" class="form-label">Judul Lowongan</label>
-                            <input type="text" class="form-control" id="judul_lowongan" name="judul_lowongan"
-                                required>
+                            <input type="text" class="form-control @error('judul_lowongan') is-invalid @enderror" id="judul_lowongan" name="judul_lowongan"
+                                value="{{ old('judul_lowongan') }}" required>
+                            @error('judul_lowongan')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
+
                         <div class="mb-3">
                             <label for="posisi_pekerjaan" class="form-label">Posisi Pekerjaan</label>
-                            <input type="text" class="form-control" id="posisi_pekerjaan" name="posisi_pekerjaan"
-                                required>
+                            <input type="text" class="form-control @error('posisi_pekerjaan') is-invalid @enderror" id="posisi_pekerjaan" name="posisi_pekerjaan"
+                                value="{{ old('posisi_pekerjaan') }}" required>
+                            @error('posisi_pekerjaan')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
+
                         <div class="form-group">
                             <label for="gambar">Gambar</label>
-                            <input type="file" class="form-control" id="gambar" name="gambar" required>
+                            <input type="file" class="form-control @error('gambar') is-invalid @enderror" id="gambar" name="gambar">
+                            @error('gambar')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
+
                         <div class="mb-3">
                             <label for="deskripsi_pekerjaan" class="form-label">Deskripsi Pekerjaan</label>
-                            <textarea class="form-control" id="deskripsi_pekerjaan" name="deskripsi_pekerjaan" rows="3" required></textarea>
+                            <textarea class="form-control @error('deskripsi_pekerjaan') is-invalid @enderror" id="deskripsi_pekerjaan" name="deskripsi_pekerjaan" rows="3" required>{{ old('deskripsi_pekerjaan') }}</textarea>
+                            @error('deskripsi_pekerjaan')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
+
                         <div class="mb-3">
                             <label for="tipe_pekerjaan" class="form-label">Tipe Pekerjaan</label>
-                            <select class="form-select" id="tipe_pekerjaan" name="tipe_pekerjaan" required>
-                                <option value="Full-time">Penuh Waktu</option>
-                                <option value="Part-time">Paruh Waktu</option>
-                                <option value="Contract">Kontrak</option>
+                            <select class="form-select @error('tipe_pekerjaan') is-invalid @enderror" id="tipe_pekerjaan" name="tipe_pekerjaan" required>
+                                <option value="Full-time" {{ old('tipe_pekerjaan') == 'Full-time' ? 'selected' : '' }}>Penuh Waktu</option>
+                                <option value="Part-time" {{ old('tipe_pekerjaan') == 'Part-time' ? 'selected' : '' }}>Paruh Waktu</option>
+                                <option value="Contract" {{ old('tipe_pekerjaan') == 'Contract' ? 'selected' : '' }}>Kontrak</option>
                             </select>
+                            @error('tipe_pekerjaan')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
+
                         <div class="mb-3">
                             <label for="jumlah_kandidat" class="form-label">Jumlah Kandidat</label>
-                            <input type="number" class="form-control" id="jumlah_kandidat" name="jumlah_kandidat"
-                                required>
+                            <input type="number" class="form-control @error('jumlah_kandidat') is-invalid @enderror" id="jumlah_kandidat" name="jumlah_kandidat"
+                                value="{{ old('jumlah_kandidat') }}" required>
+                            @error('jumlah_kandidat')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
+
                         <div class="mb-3">
                             <label for="lokasi" class="form-label">Lokasi</label>
-                            <input type="text" class="form-control" id="lokasi" name="lokasi" required>
+                            <input type="text" class="form-control @error('lokasi') is-invalid @enderror" id="lokasi" name="lokasi"
+                                value="{{ old('lokasi') }}" required>
+                            @error('lokasi')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
+
                         <div class="mb-3">
                             <label for="rentang_gaji" class="form-label">Rentang Gaji</label>
-                            <input type="text" class="form-control" id="rentang_gaji" name="rentang_gaji" required>
+                            <input type="text" class="form-control @error('rentang_gaji') is-invalid @enderror" id="rentang_gaji" name="rentang_gaji"
+                                value="{{ old('rentang_gaji') }}" required>
+                            @error('rentang_gaji')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
+
                         <div class="mb-3">
                             <label for="pengalaman_kerja" class="form-label">Pengalaman Kerja</label>
-                            <input type="text" class="form-control" id="pengalaman_kerja" name="pengalaman_kerja"
-                                required>
+                            <input type="text" class="form-control @error('pengalaman_kerja') is-invalid @enderror" id="pengalaman_kerja" name="pengalaman_kerja"
+                                value="{{ old('pengalaman_kerja') }}" required>
+                            @error('pengalaman_kerja')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
+
                         <div class="mb-3">
                             <label for="kontak" class="form-label">Kontak</label>
-                            <input type="text" class="form-control" id="kontak" name="kontak" required>
+                            <input type="text" class="form-control @error('kontak') is-invalid @enderror" id="kontak" name="kontak"
+                                value="{{ old('kontak') }}" required>
+                            @error('kontak')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
+
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
                             <button type="submit" class="btn btn-primary">Tambah Lowongan</button>
