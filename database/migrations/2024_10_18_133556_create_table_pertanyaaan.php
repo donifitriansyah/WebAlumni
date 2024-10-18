@@ -6,17 +6,24 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    public function up()
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
     {
         Schema::create('pertanyaan', function (Blueprint $table) {
             $table->id('id_pertanyaan'); // Primary key
             $table->text('pertanyaan'); // Teks pertanyaan
+            $table->enum('jenis', ['terbuka','skala'])->default('terbuka');
             $table->timestamps(); // Menyimpan timestamp created_at dan updated_at
         });
     }
 
-    public function down()
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
     {
-        Schema::dropIfExists('pertanyaan');
+        Schema::dropIfExists('table_pertanyaaan');
     }
 };

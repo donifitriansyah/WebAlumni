@@ -73,10 +73,14 @@ Route::get('/dashboard/perusahaan', function () {
 // Admin Routes
 Route::middleware(['auth', CheckAdmin::class])->group(function () {
     Route::get('/pertanyaan', [PertanyaanController::class, 'index'])->name('pertanyaan.index');
-    Route::post('/pertanyaan', [PertanyaanController::class, 'store'])->name('pertanyaan.store');
+    Route::put('/pertanyaan', [PertanyaanController::class, 'store'])->name('pertanyaan.store');
     Route::get('/pertanyaan/create', [PertanyaanController::class, 'create'])->name('pertanyaan.create');
     Route::get('/pertanyaan/{id}/edit', [PertanyaanController::class, 'edit'])->name('pertanyaan.edit');
     Route::put('/pertanyaan/{id}', [PertanyaanController::class, 'update'])->name('pertanyaan.update');
+    Route::delete('/pertanyaan/{id}', [PertanyaanController::class, 'delete'])->name('pertanyaan.delete');
+    Route::get('/tracer', [TracerController::class, 'index'])->name('tracer.index');
+    Route::post('/tracer', [TracerController::class, 'store'])->name('tracer.store');
+    Route::get('/kuisioner', [TracerController::class, 'kuisioner'])->name('kuisioner.alumni');
     Route::get('/alumni-pasif', [AlumniController::class, 'showPasifAlumni'])->name('alumni-pasif');
     Route::get('/alumni-aktif', [AlumniController::class, 'showAktifAlumni'])->name('alumni-aktif');
     Route::get('/perusahaan/diterima', [PerusahaanController::class, 'showPerusahaanActive'])->name('perusahaan-diterima');
@@ -90,6 +94,7 @@ Route::middleware(['auth', CheckAdmin::class])->group(function () {
     Route::get('/lowongan-divalidasi', [AdminLowonganController::class, 'showLowonganDivalidasi'])->name('lowongan-divalidasi');
     Route::post('/lowongan-diterima/{id}', [AdminLowonganController::class, 'terima_lowongan'])->name('terima-lowongan');
     Route::post('/lowongan-ditolak/{id}', [AdminLowonganController::class, 'tolak_lowongan'])->name('tolak-lowongan');
+    Route::get('/list-pertanyaan', [TracerController::class, 'index'])->name('data_pertanyaan');
 });
 
 Route::middleware(['auth', CheckPerusahaan::class])->group(function () {
