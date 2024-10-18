@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('alamat', 255);
             $table->string('no_tlp', 15);
             $table->string('email', 255)->unique();
-            $table->string('status');
+            $table->enum('status', ['pasif' , 'aktif'])->default('pasif');
             $table->timestamps();
         });
     }
