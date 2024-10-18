@@ -22,7 +22,7 @@
                         </tr>
                         <tr>
                             <th>Nama Perusahaan</th>
-                            <td>{{ $lowongan->perusahaan->nama_perusahaan ?? 'Tidak ada data' }}</td>
+                            <td>{{ $lowongan->nama_perusahaan}}</td>
                         </tr>
                         <tr>
                             <th>Judul Lowongan</th>
