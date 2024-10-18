@@ -20,6 +20,7 @@
                         <thead>
                             <tr>
                                 <th>id_lowongan</th>
+                                <th>Nama Perusahaan</th>
                                 <th>Judul Lowongan</th>
                                 <th>Posisi Pekerjaan</th>
                                 <th>Lokasi Penempatan</th>
@@ -32,6 +33,7 @@
                             @foreach ($showLowonganDivalidasi as $lowongan)
                                 <tr>
                                     <td>{{ $lowongan->id_lowongan }}</td>
+                                    <td>{{ $lowongan->perusahaan->nama_perusahaan ?? 'Tidak ada data' }}</td>
                                     <td>{{ $lowongan->judul_lowongan }}</td>
                                     <td>{{ $lowongan->posisi_pekerjaan }}</td>
                                     <td>{{ $lowongan->lokasi }}</td>
