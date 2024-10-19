@@ -17,6 +17,9 @@ class DataJawaban extends Model
     ];
 
     public function alumni() {
-        return $this->belongsTo(User::class, 'id_user', 'id');
+        return $this->belongsTo(Alumni::class, 'id_user', 'id_user');
+    }
+    public function pertanyaan() {
+        return $this->belongsTo(Pertanyaan::class, 'id_kuisioner', 'id_pertanyaan');
     }
 }

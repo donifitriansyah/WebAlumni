@@ -33,6 +33,7 @@ class PertanyaanController extends Controller
         // Validasi input
         $request->validate([
             'pertanyaan' => 'required|string|max:255',
+            'jenis' => 'required'
         ]);
 
         // Membuat pertanyaan baru

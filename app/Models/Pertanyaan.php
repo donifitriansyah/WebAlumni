@@ -14,11 +14,12 @@ class Pertanyaan extends Model
 
     protected $fillable = [
         'pertanyaan', // Kolom yang bisa diisi
+        'jenis'
     ];
 
     public $timestamps = true; // Mengaktifkan timestamps (created_at, updated_at)
-    public function tracerStudies()
-    {
-        return $this->hasMany(TracerStudy::class, 'id_pertanyaan');
-    }
+    // public function tracerStudies()
+    // {
+    //     return $this->hasMany(TracerStudy::class, 'id_pertanyaan');
+    // }
 }

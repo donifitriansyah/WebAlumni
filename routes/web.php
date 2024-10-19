@@ -26,10 +26,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Tracer Study Routes
+// Tracer Study Routes Alumni
 Route::middleware(['auth'])->group(function () {
-    Route::get('/tracer-study/form', [TracerController::class, 'create'])->name('tracerstudy.form');
-    Route::post('/tracer-study/store', [TracerController::class, 'store'])->name('tracerstudy.store');
+    Route::get('/tracer-study/form', [ATC::class, 'kuisioner'])->name('tracerstudy.form');
+    Route::post('/tracer-study/store', [ATC::class, 'store'])->name('tracerstudy.store');
 });
 
 // Dashboard Route for Alumni
@@ -62,9 +62,7 @@ Route::get('/dashboard/admin', function () {
 })->middleware(['auth', CheckAdmin::class])->name('dashboard.admin');
 
 // Dashboard Route for Alumni
-Route::get('/dashboard/alumni', function () {
-    return view('pages.alumni.dashboard_alumni'); // Alumni dashboard
-})->middleware(['auth', 'verified', CheckTracerStudy::class])->name('dashboard.alumni');
+Route::get('/dashboard/alumni', [ATC::class, 'check_data_alumni'])->name('dashboard.alumni');
 
 // Dashboard Route for Perusahaan
 Route::get('/dashboard/perusahaan', function () {
@@ -80,10 +78,10 @@ Route::middleware(['auth', CheckAdmin::class])->group(function () {
     Route::put('/pertanyaan/{id}', [PertanyaanController::class, 'update'])->name('pertanyaan.update');
     Route::delete('/pertanyaan/{id}', [PertanyaanController::class, 'delete'])->name('pertanyaan.delete');
 
+    // Track data admin
     Route::get('/tracer', [ATC::class, 'index'])->name('tracer.index');
-    Route::post('/tracer', [ATC::class, 'store'])->name('tracer.store');
-
-    Route::get('/kuisioner', [ATC::class, 'kuisioner'])->name('kuisioner.alumni');
+    Route::get('/tracer/{id}', [ATC::class, 'data_by_user'])->name('tracer.data');
+    Route::get('/tracer-by-status/{status}', [ATC::class, 'data_by_status'])->name('tracer.data-by-status');
 
     Route::get('/alumni-pasif', [AlumniController::class, 'showPasifAlumni'])->name('alumni-pasif');
     Route::get('/alumni-aktif', [AlumniController::class, 'showAktifAlumni'])->name('alumni-aktif');

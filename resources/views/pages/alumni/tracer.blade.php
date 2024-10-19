@@ -20,7 +20,7 @@
         </div>
     @endif
 
-    <form action="{{ route('tracer.store') }}" method="POST">
+    <form action="{{ route('tracerstudy.store') }}" method="POST">
         @csrf
 
         @foreach($pertanyaan as $item)
