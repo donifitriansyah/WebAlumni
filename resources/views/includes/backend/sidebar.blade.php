@@ -112,19 +112,41 @@
         @break
 
         @case('alumni')
-            <!-- Navbar for Alumni -->
-            <li class="nav-item active">
-                <a class="nav-link" href="index.html">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="index.html">
-                    <i class="fas fa-fw fa-user-graduate"></i>
-                    <span>Alumni</span>
-                </a>
-            </li>
+        <li class="nav-item {{ Route::is('dashboard.alumni') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('dashboard.alumni') }}">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Dashboard</span>
+            </a>
+        </li>
+
+        <li class="nav-item {{ Route::is('profile.index', Auth::user()->alumni->id_alumni) ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('profile.index', Auth::user()->alumni->id_alumni) }}">
+                <i class="fas fa-fw fa-user"></i>
+                <span>Profile Alumni</span>
+            </a>
+        </li>
+
+        <li class="nav-item {{ Route::is('lamaran.alumni') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('lamaran.alumni') }}">
+                <i class="fas fa-fw fa-file-alt"></i>
+                <span>Lamaran Alumni</span>
+            </a>
+        </li>
+
+        <li class="nav-item {{ Route::is('history.lamaran') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('history.lamaran') }}">
+                <i class="fas fa-fw fa-history"></i>
+                <span>History Lamaran</span>
+            </a>
+        </li>
+
+        <li class="nav-item {{ Route::is('job') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('job') }}">
+                <i class="fas fa-fw fa-bookmark"></i>
+                <span>Job Save</span>
+            </a>
+        </li>
+
         @break
 
         @case('perusahaan')

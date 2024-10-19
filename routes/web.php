@@ -7,6 +7,10 @@ use App\Http\Controllers\Admin\AlumniController;
 use App\Http\Controllers\Admin\BeritaController;
 use App\Http\Controllers\Admin\PertanyaanController;
 use App\Http\Controllers\Alumni\TracerController;
+use App\Http\Controllers\Alumni\ProfileAlumniController;
+use App\Http\Controllers\Alumni\LamaranAlumniController;
+use App\Http\Controllers\Alumni\HistoryAlumniController;
+use App\Http\Controllers\Alumni\JobAlumniController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TracerStudyController;
 use App\Http\Middleware\CheckAdmin;
@@ -40,7 +44,7 @@ Route::middleware(['auth'])->group(function () {
 Route::get('/dashboard/alumni', function () {
     $user = Auth::user();
     return view('pages.alumni.dashboard_alumni'); // Alumni dashboard
-})->middleware(['auth', 'verified', CheckTracerStudy::class])->name('dashboard.alumni');
+})->middleware(['auth', 'verified', ])->name('dashboard.alumni');
 
 
 // Main Dashboard Route
@@ -68,7 +72,7 @@ Route::get('/dashboard/admin', function () {
 // Dashboard Route for Alumni
 Route::get('/dashboard/alumni', function () {
     return view('pages.alumni.dashboard_alumni'); // Alumni dashboard
-})->middleware(['auth', 'verified', CheckTracerStudy::class])->name('dashboard.alumni');
+})->middleware(['auth', 'verified', ])->name('dashboard.alumni');
 
 // Dashboard Route for Perusahaan
 Route::get('/dashboard/perusahaan', function () {
@@ -113,6 +117,28 @@ Route::middleware(['auth', CheckPerusahaan::class])->group(function () {
     Route::delete('/lowongan/{id}', [PerusahaanLowonganController::class, 'destroy'])->name('lowongan.destroy');
 });
 
+
+
+Route::middleware(['auth',])->group(function () {
+    Route::get('/profile/alumni/{id_alumni}', [ProfileAlumniController::class, 'index'])->name('profile.index');
+    Route::put('/profile/alumni-update/{id_alumni}', [ProfileAlumniController::class, 'update'])->name('profile.update');
+
+    Route::get('/lowongan', [PerusahaanLowonganController::class, 'index'])->name('lowongan.index');
+
+// // Profile Route for Alumni
+
+
+
+// Lamaran Route for Alumni
+Route::get('/lamaran/alumni', [LamaranAlumniController::class, 'index'])->middleware(['auth', 'verified'])->name('lamaran.alumni');
+
+// History Lamaran Route for Alumni
+Route::get('/history/lamaran', [HistoryAlumniController::class, 'index'])->name('history.lamaran');
+
+// Job Save Route for Alumni
+Route::get('/job/save', [JobAlumniController::class, 'index'])->name('job');
+
+});
 // Include the authentication routes
 require __DIR__ . '/auth.php';
 
