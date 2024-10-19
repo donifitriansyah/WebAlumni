@@ -1,7 +1,7 @@
 <div class="navbar">
     <div class="left-nav">
         <div class="logo">
-            <img src="img/logo.png" alt="Logo Website" />
+            <img src="{{ asset('frontend/img/logo.png') }}" alt="Logo Website" />
         </div>
         <div class="nav-links-left">
             <a href="index.html"> <i class="fas fa-home"> Home</i></a>

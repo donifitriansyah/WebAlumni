@@ -3,13 +3,13 @@
         <h1>Rilis Berita</h1>
         <div class="news-slides">
             <div class="news-slide">
-                <img src="images/banner-berita-2.png" alt="berita-acara-1">
+                <img src="{{ asset('frontend/images/banner-berita-2.png') }}" alt="berita-acara-1">
             </div>
             <div class="news-slide">
-                <img src="images/bannerBerita.png" alt="berita-acara-2">
+                <img src="{{ asset('frontend/images/bannerBerita.png') }}" alt="berita-acara-2">
             </div>
             <div class="news-slide">
-                <img src="images/banner3.jpg" alt="berita-acara-3">
+                <img src="{{ asset('frontend/images/banner3.jpg') }}" alt="berita-acara-3">
                 <!-- Teks dan link untuk banner ketiga -->
                 <div class="banner-content">
                     <h2>D'Career Website</h2>
