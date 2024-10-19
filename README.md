@@ -1,6 +1,7 @@
 composer update --ignore-platform-reqs 
 
 abis itu key generate
+php artisan key:generate
 
 uncomment extension=intl
 

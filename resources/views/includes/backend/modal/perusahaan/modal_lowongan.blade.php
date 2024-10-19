@@ -21,6 +21,10 @@
                             <td>{{ $lowongan->id_perusahaan }}</td>
                         </tr>
                         <tr>
+                            <th>Nama Perusahaan</th>
+                            <td>{{ $lowongan->nama_perusahaan}}</td>
+                        </tr>
+                        <tr>
                             <th>Judul Lowongan</th>
                             <td>{{ $lowongan->judul_lowongan }}</td>
                         </tr>
