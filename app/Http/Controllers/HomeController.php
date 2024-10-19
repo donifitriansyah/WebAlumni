@@ -12,9 +12,11 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         $loker = Lowongan::all();
+        $berita = Berita::all();
 
         return view('pages.home', [
             'loker' => $loker,
+            'berita' => $berita,
         ]);
     }
 }
