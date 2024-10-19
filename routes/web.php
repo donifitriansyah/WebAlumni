@@ -103,7 +103,8 @@ Route::middleware(['auth', CheckAdmin::class])->group(function () {
     Route::get('/berita', [BeritaController::class, 'index'])->name('berita.index');
     Route::post('/berita/tambah-data', [BeritaController::class, 'store'])->name('berita.store');
     Route::put('/berita/update-data/{id}', [BeritaController::class, 'update'])->name('berita.update');
-    Route::post('/berita/{id}', [BeritaController::class, 'destroy'])->name('berita.destroy');
+    // Route::post('/berita/{id}', [BeritaController::class, 'destroy'])->name('berita.destroy');
+    Route::delete('/berita/{id}', [BeritaController::class, 'destroy'])->name('berita.destroy');
 });
 
 Route::middleware(['auth', CheckPerusahaan::class])->group(function () {
