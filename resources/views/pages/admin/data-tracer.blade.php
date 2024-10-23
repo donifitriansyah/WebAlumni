@@ -33,9 +33,6 @@
                     </div>
                 @endif
             </div>
-            <div class="">
-                <input type="text" id="search-input" class="form-control" placeholder="Cari berdasarkan nama">
-            </div>
         </div>
         <div class="card-body">
             {{-- <canvas id="myChart"></canvas> --}}
