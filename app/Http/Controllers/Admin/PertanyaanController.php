@@ -67,14 +67,14 @@ class PertanyaanController extends Controller
     }
 
     public function edit($id)
-{
-    $pertanyaan = Pertanyaan::findOrFail($id);
-    return view('pertanyaan.edit', compact('pertanyaan')); // Ganti dengan view yang sesuai
-}
+    {
+        $pertanyaan = Pertanyaan::findOrFail($id);
+        return view('pertanyaan.edit', compact('pertanyaan')); // Ganti dengan view yang sesuai
+    }
 
-    public function delete($id) {
+    public function delete($id)
+    {
         Pertanyaan::findOrFail($id)->delete();
         return redirect()->back()->with('success', 'Data Berhasil di hapus');
     }
-
 }

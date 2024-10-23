@@ -12,13 +12,33 @@
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Data Kuisioner Alumni</h6>
         </div>
+        <div class="card-body d-flex justify-content-between">
+            <div class="d-flex" style="gap: 10px">
+                @if ($count_sudah_isi != 0)
+                <div class="bg-primary rounded p-2 rounded-4">
+                    <div class="text-white text-center" style="font-size: 30px">{{$count_sudah_isi}}</div>
+                    <div class="text-white">Sudah Mengisi</div>
+                    <div class="text-center">
+                        <a href="{{ route('tracer.data-by-status' , 'sudah') }}" class="text-decoration-none text-white">Lihat</a>
+                    </div>
+                </div>
+                @endif
+                @if ($count_belum_isi != 0)
+                    <div class="bg-danger rounded p-2 rounded-4">
+                        <div class="text-white text-center" style="font-size: 30px">{{$count_belum_isi}}</div>
+                        <div class="text-white">Belum Mengisi</div>
+                        <div class="text-center">
+                            <a href="{{ route('tracer.data-by-status' , 'belum') }}" class="text-decoration-none text-white">Lihat</a>
+                        </div>
+                    </div>
+                @endif
+            </div>
+            <div class="">
+                <input type="text" id="search-input" class="form-control" placeholder="Cari berdasarkan nama">
+            </div>
+        </div>
         <div class="card-body">
             {{-- <canvas id="myChart"></canvas> --}}
-            <div>
-                @for ($i = 1; $i <= count($datas); $i ++)
-                    Yang sudah mengisi Pertanyaan {{$i}} : {{$datas[$i]}} <br>
-                @endfor
-            </div>
             <div class="table-responsive">
                 {{-- <a href="{{route('pertanyaan.create')}}" class="mb-4 btn btn-primary">Data Kuisioner Alumni</a> --}}
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -26,31 +46,23 @@
                         <tr>
                             <th>No</th>
                             <th>Nama Alumni</th>
-                            <th>Jawaban Terbuka</th>
-                            <th>Jawaban Skala</th>
+                            <th>Status</th>
                             <th>Aksi</th>
-                            {{-- <th>Pertanyaan</th>
-                            <th>Jenis</th>
-                            <th>Jawaban Terbuka</th>
-                            <th>Jawaban Skala</th> --}}
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($data as $item)
                             <tr>
-                                <td>{{ $item->id }}</td>
-                                <td>{{ $item->alumni->username }}</td>
-                                <td>{{ $item->jawaban_terbuka }}</td>
-                                <td>{{ $item->jawaban_skala }}</td>
-                                {{-- <td class="d-flex" style="gap: 4px">
-                                    <form action="{{ route('pertanyaan.delete', $item->id_pertanyaan) }}" method="post">
-                                        @csrf
-                                        @method('delete')
-                                        <button type="submit" class="btn btn-danger">
-                                            Delete
-                                        </button>
-                                    </form>
-                                </td> --}}
+                                <td>{{ $item->id_alumni }}</td>
+                                <td>{{ $item->nama_alumni }}</td>
+                                <td class="<?= $item->status == 'Sudah Mengisi' ? 'text-success' : 'text-danger' ?>">{{ $item->status }}</td>
+                                <td>
+                                    @if ($item->status == 'Sudah Mengisi')
+                                        <a href="{{ route('tracer.data' , $item->id_user )}}" class="btn btn-primary">Lihat</a>
+                                    @else
+                                        <button href="#" class="btn btn-primary" disabled>Lihat</button>
+                                    @endif
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -63,26 +75,19 @@
 @endsection
 
 @section('scripts')
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
 <script>
-    const ctx = document.getElementById('myChart');
-    const data = {
-    labels: [
-        'Red',
-        'Blue',
-        'Yellow'
-    ],
-    datasets: [{
-        label: 'My First Dataset',
-        data: [300, 50, 100],
-        backgroundColor: [
-        'rgb(255, 99, 132)',
-        'rgb(54, 162, 235)',
-        'rgb(255, 205, 86)'
-        ],
-        hoverOffset: 4
-    }]
-    };
+    const searchInput = document.getElementById('search-input');
+    const tableRows = document.querySelectorAll('#dataTable tbody tr');
+    searchInput.addEventListener('input', () => {
+        const searchValue = searchInput.value.toLowerCase();
+        tableRows.forEach((row) => {
+            const nameCell = row.cells[1].textContent.toLowerCase();
+            if (nameCell.includes(searchValue)) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    });
 </script>
 @endsection
