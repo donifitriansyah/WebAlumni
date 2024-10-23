@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Alumni extends Model
 {
     protected $table = 'alumni';
+    protected $primaryKey = 'id_alumni';
+
 
     protected $fillable = [
         'id_user', 'nim', 'nama_alumni', 'tanggal_lahir', 'alamat', 'no_tlp', 'email', 'status',
