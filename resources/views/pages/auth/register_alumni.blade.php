@@ -3,7 +3,6 @@
 @section('title')
     Register Alumni
 @endsection
-
 @section('content')
     <div class="row justify-content-center">
         <div class="col-xl-10 col-lg-12 col-md-9">
@@ -16,6 +15,7 @@
                                 <div class="text-center">
                                     <h1 class="h4 text-gray-900 mb-4">Mendaftar Sebagai Alumni</h1>
                                 </div>
+
                                 @if ($errors->any())
                                     <div class="alert alert-danger">
                                         <ul>
@@ -25,10 +25,15 @@
                                         </ul>
                                     </div>
                                 @endif
-                                <form class="user" method="POST" action="{{ route('register-alumni') }}">
+
+
+                                <form class="user" method="POST" action="{{ route('register-alumni') }}"
+                                    enctype="multipart/form-data">
                                     @csrf
+
                                     <div class="form-group">
-                                        <input type="text" class="form-control form-control-user @error('username') is-invalid @enderror"
+                                        <input type="text"
+                                            class="form-control form-control-user @error('username') is-invalid @enderror"
                                             name="username" value="{{ old('username') }}" placeholder="Username" required>
                                         @error('username')
                                             <span class="invalid-feedback" role="alert">
@@ -36,8 +41,10 @@
                                             </span>
                                         @enderror
                                     </div>
+
                                     <div class="form-group">
-                                        <input type="text" class="form-control form-control-user @error('nim') is-invalid @enderror"
+                                        <input type="text"
+                                            class="form-control form-control-user @error('nim') is-invalid @enderror"
                                             name="nim" value="{{ old('nim') }}" placeholder="NIM" required>
                                         @error('nim')
                                             <span class="invalid-feedback" role="alert">
@@ -45,7 +52,7 @@
                                             </span>
                                         @enderror
                                     </div>
-                                    <!-- Nama Alumni Field -->
+
                                     <div class="form-group">
                                         <input type="text"
                                             class="form-control form-control-user @error('nama_alumni') is-invalid @enderror"
@@ -58,7 +65,6 @@
                                         @enderror
                                     </div>
 
-                                    <!-- Tanggal Lahir Field -->
                                     <div class="form-group">
                                         <input type="date"
                                             class="form-control form-control-user @error('tanggal_lahir') is-invalid @enderror"
@@ -71,7 +77,6 @@
                                         @enderror
                                     </div>
 
-                                    <!-- Alamat Field -->
                                     <div class="form-group">
                                         <input type="text"
                                             class="form-control form-control-user @error('alamat') is-invalid @enderror"
@@ -83,11 +88,11 @@
                                         @enderror
                                     </div>
 
-                                    <!-- Phone Number Field -->
                                     <div class="form-group">
                                         <input type="text"
                                             class="form-control form-control-user @error('no_tlp') is-invalid @enderror"
-                                            name="no_tlp" value="{{ old('no_tlp') }}" placeholder="Nomor Telepon" required>
+                                            name="no_tlp" value="{{ old('no_tlp') }}" placeholder="Nomor Telepon"
+                                            required>
                                         @error('no_tlp')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -95,7 +100,6 @@
                                         @enderror
                                     </div>
 
-                                    <!-- Email Field -->
                                     <div class="form-group">
                                         <input type="email"
                                             class="form-control form-control-user @error('email') is-invalid @enderror"
@@ -107,24 +111,17 @@
                                         @enderror
                                     </div>
 
-                                    <!-- Status Field -->
-                                    <!-- <div class="form-group">
-                                        <select class="form-control-user @error('status') is-invalid @enderror"
-                                            name="status" required>
-                                            <option value="">Pilih Status</option>
-                                            <option value="aktif" {{ old('status') == 'aktif' ? 'selected' : '' }}>Aktif
-                                            </option>
-                                            <option value="non-aktif" {{ old('status') == 'non-aktif' ? 'selected' : '' }}>
-                                                Non-Aktif</option>
-                                        </select>
-                                        @error('status')
+                                    <div class="form-group">
+                                        <input type="file"
+                                            class="form-control form-control @error('gambar') is-invalid @enderror"
+                                            name="gambar">
+                                        @error('gambar')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
-                                    </div> -->
+                                    </div>
 
-                                    <!-- Password Field -->
                                     <div class="form-group">
                                         <input type="password"
                                             class="form-control form-control-user @error('password') is-invalid @enderror"
@@ -136,13 +133,11 @@
                                         @enderror
                                     </div>
 
-                                    <!-- Confirm Password Field -->
                                     <div class="form-group">
                                         <input type="password" class="form-control form-control-user"
                                             name="password_confirmation" placeholder="Confirm Password" required>
                                     </div>
 
-                                    <!-- Submit Button -->
                                     <button type="submit" class="btn btn-primary btn-user btn-block">
                                         Register Alumni
                                     </button>
@@ -162,4 +157,32 @@
             </div>
         </div>
     </div>
+
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Success!',
+                text: "{{ session('success') }}",
+                showConfirmButton: true,
+                timer: 3000
+            });
+        </script>
+    @endif
+
+    @if ($errors->any())
+        <script>
+            let errorMessages =
+                `@foreach ($errors->all() as $error) <li>{{ $error }}</li> @endforeach`;
+            Swal.fire({
+                icon: 'error',
+                title: 'Terjadi Kesalahan!',
+                html: errorMessages,
+                showConfirmButton: true,
+                timer: 5000
+            });
+        </script>
+    @endif
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 @endsection

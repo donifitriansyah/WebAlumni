@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('no_tlp', 15);
             $table->string('email', 255)->unique();
             $table->enum('status', ['pasif' , 'aktif'])->default('pasif');
+            $table->string('gambar', 255);
             $table->timestamps();
         });
     }

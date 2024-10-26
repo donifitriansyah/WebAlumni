@@ -26,15 +26,9 @@
                                 <th>ID Lowongan</th>
                                 <th>Judul Lowongan</th>
                                 <th>Posisi Pekerjaan</th>
-                                <th>Deskripsi Pekerjaan</th>
                                 <th>Tipe Pekerjaan</th>
                                 <th>Jumlah Kandidat</th>
                                 <th>Lokasi</th>
-                                <th>Rentang Gaji</th>
-                                <th>Pengalaman Kerja</th>
-                                <th>Kontak</th>
-                                <th>Status</th>
-                                <th>Gambar</th>
                                 <th>Aksi</th> <!-- Added Actions column -->
                             </tr>
                         </thead>
@@ -44,18 +38,9 @@
                                     <td>{{ $lowongan->id_lowongan }}</td>
                                     <td>{{ $lowongan->judul_lowongan }}</td>
                                     <td>{{ $lowongan->posisi_pekerjaan }}</td>
-                                    <td>{{ $lowongan->deskripsi_pekerjaan }}</td>
                                     <td>{{ $lowongan->tipe_pekerjaan }}</td>
                                     <td>{{ $lowongan->jumlah_kandidat }}</td>
                                     <td>{{ $lowongan->lokasi }}</td>
-                                    <td>{{ $lowongan->rentang_gaji }}</td>
-                                    <td>{{ $lowongan->pengalaman_kerja }}</td>
-                                    <td>{{ $lowongan->kontak }}</td>
-                                    <td>{{ $lowongan->status }}</td>
-                                    <td>
-                                        <img src="{{ Storage::url($lowongan->gambar) }}" alt="Lowongan"
-                                            style="width: 150px" class="img-thumbnail">
-                                    </td>
                                     <td>
                                         <!-- View Details Icon -->
                                         <button class="btn btn-info" data-bs-toggle="modal"

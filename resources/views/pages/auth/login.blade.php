@@ -70,4 +70,35 @@ Login
     </div>
 
 </div>
+@if (session('success'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Success!',
+                text: "{{ session('success') }}",
+                showConfirmButton: true,
+                timer: 3000
+            });
+        </script>
+    @endif
+
+    @if ($errors->any())
+        <script>
+            let errorMessages = `
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            `;
+
+            Swal.fire({
+                icon: 'error',
+                title: 'Terjadi Kesalahan!',
+                html: errorMessages,
+                showConfirmButton: true,
+                timer: 5000
+            });
+        </script>
+    @endif
 @endsection

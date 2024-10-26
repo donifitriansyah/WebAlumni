@@ -30,7 +30,6 @@
                 @endif
                 <form action="{{route('pertanyaan.store')}}" method="POST">
                     @csrf
-                    @method('PUT')
 
                     <div class="form-group">
                         <label for="nama">Isi Pertanyaan</label>

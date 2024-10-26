@@ -25,14 +25,14 @@
 
         @foreach($pertanyaan as $item)
             <div class="form-group">
-                <label for="jawaban_terbuka[{{ $item->id_pertanyaan }}]">{{ $item->pertanyaan }}</label>
+                <label for="jawaban_{{ $item->id_pertanyaan }}">{{ $item->pertanyaan }}</label>
 
                 @if ($item->jenis == 'terbuka')
-                    <textarea name="jawaban_terbuka[{{ $item->id_pertanyaan }}]" class="form-control" rows="3" required></textarea>
-                    @elseif ($item->jenis == 'skala')
+                    <textarea name="jawaban[{{ $item->id_pertanyaan }}]" class="form-control" rows="3" required></textarea>
+                @elseif ($item->jenis == 'skala')
                     @for ($i = 1; $i <= 5; $i++)
                         <br>
-                        <input type="radio" name="jawaban_skala[{{ $item->id_pertanyaan }}]" value="{{ $i }}">
+                        <input type="radio" name="jawaban[{{ $item->id_pertanyaan }}]" value="{{ $i }}" required>
                         <label for="skala{{ $i }}">{{ $i }}</label><br>
                     @endfor
                 @endif
@@ -41,8 +41,35 @@
 
         <button type="submit" class="btn btn-primary">Simpan</button>
     </form>
+
 </div>
+@if (session('success'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Success!',
+                text: "{{ session('success') }}",
+                showConfirmButton: true,
+                timer: 3000
+            });
+        </script>
+    @endif
+
+    @if ($errors->any())
+        <script>
+            let errorMessages = `@foreach ($errors->all() as $error) <li>{{ $error }}</li> @endforeach`;
+            Swal.fire({
+                icon: 'error',
+                title: 'Terjadi Kesalahan!',
+                html: errorMessages,
+                showConfirmButton: true,
+                timer: 5000
+            });
+        </script>
+    @endif
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @endsection
+
 
 
 {{-- <div class="container-fluid">

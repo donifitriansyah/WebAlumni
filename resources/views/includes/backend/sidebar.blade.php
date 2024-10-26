@@ -159,8 +159,14 @@
             </li>
             <li class="nav-item {{ Route::is('lowongan.index') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('lowongan.index') }}">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <i class="fas fa-fw fa-briefcase"></i>
                     <span>Lowongan</span>
+                </a>
+            </li>
+            <li class="nav-item {{ Route::is('lowongan.index') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('lowongan.index') }}">
+                    <i class="fas fa-fw fa-file-alt"></i>
+                    <span>Lamaran</span>
                 </a>
             </li>
 
