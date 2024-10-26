@@ -28,7 +28,7 @@ use App\Http\Controllers\Alumni\AlumniTracerController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LamaranController;
 use App\Http\Controllers\Perusahaan\LowonganController as PerusahaanLowonganController;
-
+use App\Http\Controllers\Perusahaan\PerusahaanLamaranController;
 
 // Home Route
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -106,6 +106,9 @@ Route::middleware(['auth', CheckPerusahaan::class])->group(function () {
     Route::post('/lowongan/tambah-data', [PerusahaanLowonganController::class, 'store'])->name('lowongan.store');
     Route::put('/lowongan/update-data/{id}', [PerusahaanLowonganController::class, 'update'])->name('lowongan.update');
     Route::delete('/lowongan/{id}', [PerusahaanLowonganController::class, 'destroy'])->name('lowongan.destroy');
+
+    Route::get('perusahaan/lamaran', [PerusahaanLamaranController::class, 'index'])->name('lamaran.index');
+
 });
 
 Route::middleware(['auth', CheckTracerStudy::class])->group(function () {
@@ -124,7 +127,7 @@ Route::middleware(['auth', CheckTracerStudy::class])->group(function () {
 Route::middleware(['auth', CheckAlumni::class])->group(function () {
     Route::get('/tracer-study/form', [AlumniTracerController::class, 'create'])->name('tracerstudy.form');
     Route::post('/tracer-study/store', [AlumniTracerController::class, 'store'])->name('tracerstudy.store');
-    Route::post('/lamaran/store', [LamaranController::class, 'store'])->name('lamaran.store'); 
+    Route::post('/lamaran/store', [LamaranController::class, 'store'])->name('lamaran.store');
     Route::get('/lamaran/create', [LamaranController::class, 'create'])->name('lamaran.create');
 });
 
