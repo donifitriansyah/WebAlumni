@@ -26,11 +26,13 @@ class AuthenticatedSessionController extends Controller
     public function store(LoginRequest $request): RedirectResponse
     {
         $request->authenticate();
-
         $request->session()->regenerate();
 
+        // Store the success message in the session
+        session()->flash('success', 'Login Berhasil! Selamat datang di dashboard!');
+
         // Redirect to the intended route
-        return redirect()->intended(route('dashboard', absolute: false));
+        return redirect()->intended(route('dashboard'));
     }
 
     /**

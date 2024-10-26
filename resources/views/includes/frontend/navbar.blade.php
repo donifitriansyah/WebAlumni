@@ -4,7 +4,7 @@
             <img src="{{ asset('frontend/img/logo.png') }}" alt="Logo Website" />
         </div>
         <div class="nav-links-left">
-            <a href="index.html"> <i class="fas fa-home"> Home</i></a>
+            <a href="{{ route('home') }}"> <i class="fas fa-home"> Home</i></a>
             <!-- <a href="job.html">
       <i class="fas fa-briefcase"> Job</i></a> -->
       <a href="{{ route('loker') }}">

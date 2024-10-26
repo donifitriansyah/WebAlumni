@@ -103,8 +103,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="deskripsi_berita" class="form-label">Deskripsi</label>
-                            <input type="text" class="form-control" id="deskripsi_berita" name="deskripsi_berita"
-                                required>
+                            <textarea class="form-control" id="deskripsi_berita" name="deskripsi_berita" required></textarea>
                         </div>
                         <div class="mb-3">
                             <label for="link" class="form-label">Link</label>

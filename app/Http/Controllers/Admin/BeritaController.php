@@ -19,7 +19,7 @@ class BeritaController extends Controller
         $request->validate([
             'judul_berita' => 'required|string|max:255',
             'tanggal_terbit' => 'required|date',
-            'deskripsi_berita' => 'required|string|max:255',
+            'deskripsi_berita' => 'required|string',
             'link' => 'required|string|max:255',
             'gambar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);

@@ -31,16 +31,12 @@ use App\Http\Controllers\Perusahaan\LowonganController as PerusahaanLowonganCont
 
 // Home Route
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/loker',[HomeController::class, 'indexLowongan'])->name('loker');
-Route::get('/alumni',[HomeController::class, 'indexAlumni'])->name('alumni');
-Route::get('/loker/{id}', [App\Http\Controllers\HomeController::class, 'detailLowongan'])->name('loker.detail');
+Route::get('/alumni', [HomeController::class, 'indexAlumni'])->name('alumni');
 
+Route::get('/loker', [HomeController::class, 'indexLowongan'])->name('loker');
 
-// Tracer Study Routes
-// Route::middleware(['auth'])->group(function () {
-//     Route::get('/tracer-study/form', [AlumniTracerController::class, 'create'])->name('tracerstudy.form');
-//     Route::post('/tracer-study/store', [AlumniTracerController::class, 'store'])->name('tracerstudy.store');
-// });
+Route::get('/loker/{id_lowongan}', [HomeController::class, 'detailLowongan'])->name('loker.detail');
+
 
 
 
@@ -63,7 +59,6 @@ Route::get('/dashboard', function () {
 
 // Dashboard Route for Admin
 // Route::get('/dashboard/alumni', [AdminTracerController::class, 'check_data_alumni'])->name('dashboard.alumni');
-
 
 // Dashboard Route for Perusahaan
 Route::get('/dashboard/perusahaan', function () {

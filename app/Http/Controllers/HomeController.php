@@ -21,16 +21,15 @@ class HomeController extends Controller
         ]);
     }
 
+    public function indexAlumni(Request $request)
+    {
+        // Mendapatkan 6 data alumni (3 halaman dengan masing-masing 2 data per halaman)
+        $alumni = Alumni::paginate(8);
 
-public function indexAlumni(Request $request)
-{
-    // Mendapatkan 6 data alumni (3 halaman dengan masing-masing 2 data per halaman)
-    $alumni = Alumni::paginate(10);
-
-    return view('pages.alumni', [
-        'alumni' => $alumni,
-    ]);
-}
+        return view('pages.alumni', [
+            'alumni' => $alumni,
+        ]);
+    }
 
     // Method untuk menampilkan semua lowongan
     public function indexLowongan(Request $request)
@@ -45,12 +44,7 @@ public function indexAlumni(Request $request)
     // Method untuk menampilkan detail lowongan
     public function detailLowongan($id)
     {
-        // Mengambil data lowongan berdasarkan ID dan relasi dengan perusahaan
-        $loker = Lowongan::with('perusahaan')->findOrFail($id);
-
-        // Kembalikan view detail lowongan beserta data
-        return view('pages.lowongan-detail', [
-            'loker' => $loker,
-        ]);
+        $lowongan = Lowongan::with('perusahaan')->findOrFail($id);
+        return view('pages.lowongan-detail', compact('lowongan'));
     }
 }

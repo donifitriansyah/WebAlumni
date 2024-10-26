@@ -133,4 +133,15 @@ Dashboard
         </div>
 
     </div>
+    <p>{{ session('success') }}</p>
+    @if(session('success'))
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Login Berhasil',
+            text: "{{ session('success') }}",
+            confirmButtonText: 'OK'
+        });
+    </script>                                                               
+@endif
 @endsection
