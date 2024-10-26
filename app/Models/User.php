@@ -47,9 +47,10 @@ class User extends Authenticatable
         ];
     }
     public function alumni()
-    {
-        return $this->hasOne(Alumni::class, 'id_user', 'id');
-    }
+{
+    return $this->hasOne(Alumni::class, 'id_user', 'id');
+}
+
     public function perusahaan()
     {
         return $this->hasOne(Perusahaan::class, 'id_user', 'id');
