@@ -24,6 +24,7 @@
                         <thead>
                             <tr>
                                 <th>ID Lowongan</th>
+                                <th>Nama Perusahaan</th>
                                 <th>Judul Lowongan</th>
                                 <th>Posisi Pekerjaan</th>
                                 <th>Deskripsi Pekerjaan</th>
@@ -42,6 +43,7 @@
                             @foreach ($lowongans as $lowongan)
                                 <tr>
                                     <td>{{ $lowongan->id_lowongan }}</td>
+                                    <td>{{ $lowongan->perusahaan->nama_perusahaan}}</td>
                                     <td>{{ $lowongan->judul_lowongan }}</td>
                                     <td>{{ $lowongan->posisi_pekerjaan }}</td>
                                     <td>{{ $lowongan->deskripsi_pekerjaan }}</td>

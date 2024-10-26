@@ -5,6 +5,9 @@
         </div>
         <div class="nav-links-left">
             <a href="index.html"> <i class="fas fa-home"> Home</i></a>
+            <a href="{{ route('loker') }}">
+                <i class="fas fa-briefcase"> Lowongan Kerja</i></a>
+
             <!-- <a href="job.html">
       <i class="fas fa-briefcase"> Job</i></a> -->
             <a href="#bagian-about">

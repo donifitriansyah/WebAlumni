@@ -33,7 +33,8 @@ use App\Http\Controllers\Perusahaan\LowonganController as PerusahaanLowonganCont
 // });
 // Home Route
 Route::get('/', [HomeController::class, 'index'])->name('home');
-
+Route::get('/loker',[HomeController::class, 'indexLowongan'])->name('loker');
+Route::get('/loker/{id}', [App\Http\Controllers\HomeController::class, 'detailLowongan'])->name('loker.detail');
 
 // Tracer Study Routes
 Route::middleware(['auth'])->group(function () {
