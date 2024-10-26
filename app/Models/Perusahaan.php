@@ -24,7 +24,8 @@ class Perusahaan extends Model
         'jumlah_karyawan',
         'no_telp',
         'website_perusahaan',
-        'status'
+        'status',
+        'tanggal_aktif'
     ];
 
 

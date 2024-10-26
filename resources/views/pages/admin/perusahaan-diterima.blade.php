@@ -23,12 +23,9 @@ Perusahaan
                                 <th>NIB</th>
                                 <th>Alamat</th>
                                 <th>Email</th>
-                                <th>Sektor Bisnis</th>
-                                <th>Deskripsi</th>
-                                <th>Jumlah Karyawan</th>
-                                <th>No. Telepon</th>
-                                <th>Website</th>
                                 <th>Status</th>
+                                <th>Tanggal Aktivasi</th>
+                                <!-- kolom lainnya -->
                             </tr>
                         </thead>
                         <tbody>
@@ -38,12 +35,9 @@ Perusahaan
                                 <td>{{ $perusahaan->nib }}</td>
                                 <td>{{ $perusahaan->alamat }}</td>
                                 <td>{{ $perusahaan->email_perusahaan }}</td>
-                                <td>{{ $perusahaan->sektor_bisnis }}</td>
-                                <td>{{ $perusahaan->deskripsi_perusahaan }}</td>
-                                <td>{{ $perusahaan->jumlah_karyawan }}</td>
-                                <td>{{ $perusahaan->no_telp }}</td>
-                                <td>{{ $perusahaan->website_perusahaan }}</td>
                                 <td>{{ $perusahaan->status }}</td>
+                                <td>{{ $perusahaan->tanggal_aktif ? $perusahaan->tanggal_aktif->format('d M Y H:i') : '-' }}</td>
+                                <!-- kolom lainnya -->
                             </tr>
                             @endforeach
                         </tbody>

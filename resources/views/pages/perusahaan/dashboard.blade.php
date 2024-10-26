@@ -55,8 +55,15 @@ Dashboard
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Jumlah Perusahaan Aktif</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Status Keaktifan</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                    {{ auth()->user()->perusahaan->status }}
+                                    @if(auth()->user()->perusahaan->status == 'diterima' && auth()->user()->perusahaan->tanggal_aktif)
+                                        <div class="text-xs text-success mt-2">
+                                            Aktif sejak: {{ auth()->user()->perusahaan->tanggal_aktif->format('d M Y') }}
+                                        </div>
+                                    @endif
+                                </div>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-building fa-2x text-gray-300"></i>
