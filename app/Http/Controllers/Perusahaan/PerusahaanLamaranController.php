@@ -35,5 +35,12 @@ class PerusahaanLamaranController extends Controller
         return view('pages.perusahaan.lamaran', compact('lamarans'));
     }
 
+    public function updateStatus($id, $status)
+    {
+        $lamaran = Lamaran::findOrFail($id);
+        $lamaran->status = $status === 'accepted' ? 'terima' : 'tolak';
+        $lamaran->save();
 
+        return redirect()->back()->with('success', 'Status lamaran berhasil diperbarui.');
+    }
 }

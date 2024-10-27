@@ -108,6 +108,7 @@ Route::middleware(['auth', CheckPerusahaan::class])->group(function () {
     Route::delete('/lowongan/{id}', [PerusahaanLowonganController::class, 'destroy'])->name('lowongan.destroy');
 
     Route::get('perusahaan/lamaran', [PerusahaanLamaranController::class, 'index'])->name('lamaran.index');
+    Route::patch('/lamaran/{id}/status/{status}', [PerusahaanLamaranController::class, 'updateStatus'])->name('lamaran.updateStatus');
 
 });
 
