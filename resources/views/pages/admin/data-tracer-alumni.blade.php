@@ -13,11 +13,9 @@
         <div class="card-body">
             {{-- <canvas id="myChart"></canvas> --}}
             <div class="table-responsive">
-                {{-- <a href="{{route('pertanyaan.create')}}" class="mb-4 btn btn-primary">Data Kuisioner Alumni</a> --}}
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>No</th>
                             <th>Pertanyaan</th>
                             <th>Jenis Pertanyaan</th>
                             <th>Jawaban Terbuka</th>
@@ -27,7 +25,6 @@
                     <tbody>
                         @foreach ($data as $item)
                             <tr>
-                                <td>{{ $item->id }}</td>
                                 <td>{{ $item->pertanyaan->pertanyaan }}</td>
                                 <td>{{ $item->pertanyaan->jenis }}</td>
                                 <td>{{ $item->jawaban_terbuka }}</td>

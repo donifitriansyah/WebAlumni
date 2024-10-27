@@ -34,7 +34,7 @@ class HomeController extends Controller
     // Method untuk menampilkan semua lowongan
     public function indexLowongan(Request $request)
     {
-        $loker = Lowongan::all();
+        $loker = Lowongan::where('status', 'diterima')->get();
 
         return view('pages.lowongan', [
             'loker' => $loker,

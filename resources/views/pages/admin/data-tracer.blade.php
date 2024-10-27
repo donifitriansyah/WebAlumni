@@ -13,6 +13,7 @@
             <h6 class="m-0 font-weight-bold text-primary">Data Kuisioner Alumni</h6>
         </div>
         <div class="card-body d-flex justify-content-between">
+
             <div class="d-flex" style="gap: 10px">
                 @if ($count_sudah_isi != 0)
                 <div class="bg-primary rounded p-2 rounded-4">
@@ -35,6 +36,8 @@
             </div>
         </div>
         <div class="card-body">
+        <a href="{{route('tracer.export')}}" class="mb-4 btn btn-primary">Export Data Kuisioner Alumni</a>
+
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
