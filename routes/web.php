@@ -41,7 +41,8 @@ Route::get('/loker/{id_lowongan}', [HomeController::class, 'detailLowongan'])->n
 
 
 
-Route::get('/tracer/export', [TracerStudyController::class, 'export'])->name('tracer.export');
+// Route::get('/tracer/export', [TracerStudyController::class, 'export'])->name('tracer.export');
+Route::get('/tracer/consume-export', [TracerStudyController::class, 'consumeTracerExport'])->name('tracer.consume-export');
 
 
 // Main Dashboard Route
