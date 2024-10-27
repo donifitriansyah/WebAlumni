@@ -31,6 +31,20 @@
                 <form action="{{ route('profile.update', $alumni->id_alumni) }}" method="POST">
                     @csrf
                     @method('PUT')
+                    <div class="form-group">
+                        <label for="gambar">Gambar Profil</label>
+                        @if($alumni->gambar)
+                            <div>
+                                <img src="{{ asset('storage/' . $alumni->gambar) }}" alt="Current Image" style="width: 100px; height: auto; border-radius: 8px; margin-bottom: 10px;">
+                            </div>
+                        @else
+                            <div>
+                                <p>Tidak ada gambar yang diunggah.</p>
+                            </div>
+                        @endif
+                        <input type="file" class="form-control" id="gambar" name="gambar" accept="image/*">
+                        <small class="form-text text-muted">Biarkan kosong jika tidak ingin mengubah gambar.</small>
+                    </div>
 
                     <div class="form-group">
                         <label for="nama_alumni">Nama</label>

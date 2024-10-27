@@ -9,21 +9,16 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
-    {
+    public function up() {
         Schema::create('pertanyaan', function (Blueprint $table) {
-            $table->id('id_pertanyaan'); // Primary key
-            $table->text('pertanyaan'); // Teks pertanyaan
-            $table->enum('jenis', ['terbuka','skala'])->default('terbuka');
-            $table->timestamps(); // Menyimpan timestamp created_at dan updated_at
+            $table->id('id_pertanyaan');
+            $table->string('pertanyaan'); // The question text
+            $table->enum('jenis', ['terbuka', 'skala']); // Type of question
+            $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
-    {
-        Schema::dropIfExists('table_pertanyaaan');
+    public function down() {
+        Schema::dropIfExists('pertanyaan');
     }
 };

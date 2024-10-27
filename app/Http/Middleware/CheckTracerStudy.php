@@ -16,26 +16,24 @@ class CheckTracerStudy
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle($request, Closure $next)
+    public function handle(Request $request, Closure $next)
     {
         if (Auth::check()) {
             $user = Auth::user();
 
-            // Pastikan pengguna adalah alumni
-            if ($user->role == 'alumni') {
-                $alumniId = $user->alumni->id_alumni; // Ambil id_alumni dari relasi
-
-                // Periksa apakah alumni sudah mengisi tracer study
-                $tracerStudyExists = TracerStudy::where('id_alumni', $alumniId)->exists();
-
-                // Jika alumni belum mengisi tracer study, redirect ke form
-                if (!$tracerStudyExists && $request->path() !== 'tracer-study/form') {
-                    return redirect()->route('tracerstudy.form');
-                }
-
-                // Jika alumni sudah mengisi tracer study, redirect ke dashboard
-                if ($tracerStudyExists && $request->path() === 'tracer-study/form') {
-                    return redirect()->route('dashboard.alumni')->with('info', 'Anda sudah mengisi tracer study.');
+            // Check if the user is an alumni
+            if ($user->role === 'alumni') {
+                // Check the status of the alumni
+                if ($user->alumni->status === 'aktif') {
+                    // Redirect to dashboard if they try to access the tracer study form
+                    if ($request->is('tracer-study/form')) {
+                        return redirect()->route('dashboard.alumni')->with('warning', 'Anda sudah mengisi tracer study.');
+                    }
+                } elseif ($user->alumni->status === 'pasif') {
+                    // Redirect to the tracer study form if they haven't filled it yet
+                    if (!$request->is('tracer-study/form')) {
+                        return redirect()->route('tracerstudy.form')->with('warning', 'Anda harus mengisi tracer study sebelum mengakses dashboard.');
+                    }
                 }
             }
         }

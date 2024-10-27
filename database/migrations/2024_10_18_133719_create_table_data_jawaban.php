@@ -9,23 +9,18 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
-    {
+    public function up() {
         Schema::create('data_jawaban', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->integer('id_user');
-            $table->integer('id_kuisioner');  // Changed from id_pertanyaan to id_kuisioner
-            $table->string('jawaban_terbuka', 255)->nullable();
-            $table->string('jawaban_skala', 255)->nullable();
+            $table->id();
+            $table->foreignId('id_alumni')->constrained('alumni', 'id_alumni')->onDelete('cascade'); // Link directly to alumni
+            $table->foreignId('id_pertanyaan')->constrained('pertanyaan', 'id_pertanyaan')->onDelete('cascade'); // Reference to the question
+            $table->text('jawaban_terbuka')->nullable(); // Open-ended response
+            $table->integer('jawaban_skala')->nullable(); // Scale rating response (1-5)
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
-    {
-        Schema::dropIfExists('table_data_jawaban');
+    public function down() {
+        Schema::dropIfExists('data_jawaban');
     }
 };

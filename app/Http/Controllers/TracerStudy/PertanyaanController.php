@@ -1,12 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\TracerStudy;
 
 use App\Http\Controllers\Controller;
-use App\Models\JawabanTertutup;
 use App\Models\Pertanyaan;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class PertanyaanController extends Controller
 {
@@ -30,20 +28,20 @@ class PertanyaanController extends Controller
      */
     public function store(Request $request)
     {
-        // Validate the form input
+        // Validasi input
         $request->validate([
             'pertanyaan' => 'required|string|max:255',
-            'jenis' => 'required|in:terbuka,skala',
+            'jenis' => 'required'
         ]);
 
-        // Create a new question
+        // Membuat pertanyaan baru
         Pertanyaan::create([
-            'pertanyaan' => $request->input('pertanyaan'),
-            'jenis' => $request->input('jenis'),
+            'pertanyaan' => $request->pertanyaan,
+            'jenis' => $request->jenis
         ]);
 
-        // Redirect with a success message
-        return redirect()->back()->with('success', 'Pertanyaan berhasil ditambahkan.');
+        // Redirect ke halaman yang diinginkan setelah menyimpan
+        return redirect()->route('pertanyaan.index')->with('success', 'Pertanyaan berhasil ditambahkan.');
     }
 
 
@@ -68,14 +66,14 @@ class PertanyaanController extends Controller
     }
 
     public function edit($id)
-    {
-        $pertanyaan = Pertanyaan::findOrFail($id);
-        return view('pertanyaan.edit', compact('pertanyaan')); // Ganti dengan view yang sesuai
-    }
+{
+    $pertanyaan = Pertanyaan::findOrFail($id);
+    return view('pertanyaan.edit', compact('pertanyaan')); // Ganti dengan view yang sesuai
+}
 
-    public function delete($id)
-    {
+    public function delete($id) {
         Pertanyaan::findOrFail($id)->delete();
         return redirect()->back()->with('success', 'Data Berhasil di hapus');
     }
+
 }

@@ -3,72 +3,36 @@
 @section('title')
     Tracer Study
 @endsection
-
 @section('content-alumni')
 <div class="container">
-    @if(session('success'))
-        <div class="alert alert-success">{{ session('success') }}</div>
-    @endif
-
-    @if($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+    <h2>Tracer Study</h2>
 
     <form action="{{ route('tracer.store') }}" method="POST">
         @csrf
+        <input type="hidden" name="id_alumni" value="{{ Auth::user()->alumni->id_alumni }}">
 
         @foreach($pertanyaan as $item)
             <div class="form-group">
                 <label for="jawaban_{{ $item->id_pertanyaan }}">{{ $item->pertanyaan }}</label>
 
-                @if ($item->jenis == 'terbuka')
+                @if ($item->jenis === 'terbuka')
                     <textarea name="jawaban[{{ $item->id_pertanyaan }}]" class="form-control" rows="3" required></textarea>
-                @elseif ($item->jenis == 'skala')
+                @elseif ($item->jenis === 'skala')
                     @for ($i = 1; $i <= 5; $i++)
-                        <br>
                         <input type="radio" name="jawaban[{{ $item->id_pertanyaan }}]" value="{{ $i }}" required>
-                        <label for="skala{{ $i }}">{{ $i }}</label><br>
+                        <label for="jawaban_{{ $item->id_pertanyaan }}_skala{{ $i }}">{{ $i }}</label><br>
                     @endfor
                 @endif
             </div>
         @endforeach
 
-        <button type="submit" class="btn btn-primary">Simpan</button>
+        <button type="submit" class="btn btn-primary">Simpan Jawaban</button>
     </form>
 
 </div>
-@if (session('success'))
-        <script>
-            Swal.fire({
-                icon: 'success',
-                title: 'Success!',
-                text: "{{ session('success') }}",
-                showConfirmButton: true,
-                timer: 3000
-            });
-        </script>
-    @endif
-
-    @if ($errors->any())
-        <script>
-            let errorMessages = `@foreach ($errors->all() as $error) <li>{{ $error }}</li> @endforeach`;
-            Swal.fire({
-                icon: 'error',
-                title: 'Terjadi Kesalahan!',
-                html: errorMessages,
-                showConfirmButton: true,
-                timer: 5000
-            });
-        </script>
-    @endif
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @endsection
+
+
 
 
 
