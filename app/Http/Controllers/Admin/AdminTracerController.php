@@ -82,30 +82,30 @@ class AdminTracerController extends Controller
         return view('pages.admin.data-tracer-alumni', compact('data'));
     }
     public function data_by_status(String $status) {
-        $datas = Alumni::all();
+        $datas = Alumni::all(); // Mengambil semua data alumni
         $count_sudah_isi = 0;
         $count_belum_isi = 0;
 
+        // Inisialisasi array untuk menyimpan alumni yang sudah mengisi
+        $data = [];
+
         if ($status == 'sudah') {
-            $data = [];
             foreach ($datas as $dat) {
-                // Memeriksa jika alumni sudah mengisi data jawaban
+                // Memeriksa apakah alumni sudah mengisi kuesioner
                 if (DataJawaban::where('id_alumni', $dat->id_alumni)->exists()) {
-                    $dat->status = 'Sudah Mengisi';
-                    $data[] = $dat;
-                    $count_sudah_isi++;
+                    $dat->status = 'Sudah Mengisi'; // Menetapkan status
+                    $data[] = $dat; // Menyimpan alumni yang sudah mengisi
+                    $count_sudah_isi++; // Menghitung alumni yang sudah mengisi
                 }
             }
             return view('pages.admin.data-tracer', compact('data', 'count_sudah_isi', 'count_belum_isi'));
 
         } else if ($status == 'belum') {
-            $data = [];
             foreach ($datas as $dat) {
-                // Memeriksa jika alumni belum mengisi data jawaban
                 if (DataJawaban::where('id_alumni', $dat->id_alumni)->doesntExist()) {
-                    $dat->status = 'Belum Mengisi';
-                    $data[] = $dat;
-                    $count_belum_isi++;
+                    $dat->status = 'Belum Mengisi'; // Menetapkan status
+                    $data[] = $dat; // Menyimpan alumni yang belum mengisi
+                    $count_belum_isi++; // Menghitung alumni yang belum mengisi
                 }
             }
 
