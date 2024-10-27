@@ -29,17 +29,21 @@ class AdminTracerController extends Controller
         $data = Alumni::all();
         $count_sudah_isi = 0;
         $count_belum_isi = 0;
+
         foreach($data as $dat) {
-            if (DataJawaban::where('id_user', $dat->id_user)->exists()) {
+            // Ganti 'id_user' dengan 'id_alumni' atau kolom lain yang relevan
+            if (DataJawaban::where('id_alumni', $dat->id_alumni)->exists()) {
                 $dat->status = 'Sudah Mengisi';
-                $count_sudah_isi =+ 1;
+                $count_sudah_isi++;
             } else {
                 $dat->status = 'Belum Mengisi';
-                $count_belum_isi =+ 1;
+                $count_belum_isi++;
             }
         }
+
         return view('pages.admin.data-tracer', compact('data', 'count_sudah_isi', 'count_belum_isi'));
     }
+
     public function store(Request $request) {
         // dd($request);
         $request->validate([
@@ -72,10 +76,8 @@ class AdminTracerController extends Controller
     }
 
     public function data_by_user($id) {
-        $data = DataJawaban::where('id_user', $id)->get();
-        // foreach($data as $dat) {
-        //     dd($dat->pertanyaan->pertanyaan);
-        // }
+        // Menggunakan 'id_alumni' untuk mengambil jawaban
+        $data = DataJawaban::where('id_alumni', $id)->get();
 
         return view('pages.admin.data-tracer-alumni', compact('data'));
     }
@@ -86,28 +88,31 @@ class AdminTracerController extends Controller
 
         if ($status == 'sudah') {
             $data = [];
-            foreach($datas as $dat) {
-                if (DataJawaban::where('id_user', $dat->id_user)->exists()) {
+            foreach ($datas as $dat) {
+                // Memeriksa jika alumni sudah mengisi data jawaban
+                if (DataJawaban::where('id_alumni', $dat->id_alumni)->exists()) {
                     $dat->status = 'Sudah Mengisi';
                     $data[] = $dat;
-                    $count_sudah_isi += 1;
+                    $count_sudah_isi++;
                 }
             }
-            return view('pages.admin.data-tracer', compact('data', 'count_sudah_isi','count_belum_isi'));
+            return view('pages.admin.data-tracer', compact('data', 'count_sudah_isi', 'count_belum_isi'));
 
         } else if ($status == 'belum') {
             $data = [];
-            foreach($datas as $dat) {
-                if (DataJawaban::where('id_user', $dat->id_user)->doesntExist()) {
+            foreach ($datas as $dat) {
+                // Memeriksa jika alumni belum mengisi data jawaban
+                if (DataJawaban::where('id_alumni', $dat->id_alumni)->doesntExist()) {
                     $dat->status = 'Belum Mengisi';
                     $data[] = $dat;
-                    $count_belum_isi += 1;
+                    $count_belum_isi++;
                 }
             }
 
-            return view('pages.admin.data-tracer', compact('data', 'count_sudah_isi','count_belum_isi'));
+            return view('pages.admin.data-tracer', compact('data', 'count_sudah_isi', 'count_belum_isi'));
         } else {
             return redirect()->route('tracer.index');
         }
     }
+
 }

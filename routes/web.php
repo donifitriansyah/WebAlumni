@@ -81,7 +81,7 @@ Route::middleware(['auth', CheckAdmin::class])->group(function () {
     // Track data admin
     Route::get('/tracer', [AdminTracerController::class, 'index'])->name('tracer.index');
     Route::get('/tracer/{id}', [TracerStudyTC::class, 'data_by_user'])->name('tracer.data');
-    Route::get('/tracer-by-status/{status}', [TracerStudyTC::class, 'data_by_status'])->name('tracer.data-by-status');
+    Route::get('/tracer-by-status/{status}', [AdminTracerController::class, 'data_by_status'])->name('tracer.data-by-status');
 
     Route::get('/kuisioner', [AdminTracerController::class, 'kuisioner'])->name('kuisioner.alumni');
     Route::get('/alumni-pasif', [AlumniController::class, 'showPasifAlumni'])->name('alumni-pasif');
