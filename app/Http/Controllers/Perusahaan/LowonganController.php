@@ -13,7 +13,10 @@ class LowonganController extends Controller
 {
     public function index()
     {
-        $lowongans = Lowongan::with('perusahaan')->get(); // Menampilkan lowongan dengan perusahaan terkait
+        $perusahaan = Auth::user()->perusahaan;
+
+        $lowongans = Lowongan::where('id_perusahaan', $perusahaan->id_perusahaan)->get();
+        // Return the view with the job posting details
         return view('pages.perusahaan.lowongan', compact('lowongans'));
     }
     public function store(Request $request)
@@ -154,12 +157,8 @@ class LowonganController extends Controller
         return redirect()->route('lowongan.index')->with('success', 'Lowongan deleted successfully.');
     }
 
-    public function show($id_lowongan)
+    public function show()
     {
-        // Retrieve the lowongan by ID
-        $lowongan = Lowongan::findOrFail($id_lowongan);
 
-        // Return a view with the lowongan details
-        return view('lowongan.show', compact('lowongan'));
     }
 }
