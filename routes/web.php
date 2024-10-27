@@ -79,7 +79,7 @@ Route::middleware(['auth', CheckAdmin::class])->group(function () {
     Route::delete('/pertanyaan/{id}', [TracerStudyPC::class, 'delete'])->name('pertanyaan.delete');
 
     // Track data admin
-    Route::get('/tracer', [TracerStudyTC::class, 'index'])->name('tracer.index');
+    Route::get('/tracer', [AdminTracerController::class, 'index'])->name('tracer.index');
     Route::get('/tracer/{id}', [TracerStudyTC::class, 'data_by_user'])->name('tracer.data');
     Route::get('/tracer-by-status/{status}', [TracerStudyTC::class, 'data_by_status'])->name('tracer.data-by-status');
 
