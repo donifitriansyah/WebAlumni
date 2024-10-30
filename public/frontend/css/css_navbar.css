@@ -1,5 +1,6 @@
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', 'Roboto', sans-serif;  /* Changed from Arial to Poppins/Roboto */
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -24,7 +25,7 @@ body {
 }
 
 .logo img {
-    height: 40px;
+    height: 70px;
     margin-left: 50px;
 }
 
@@ -38,7 +39,6 @@ body {
     margin-left: 20px;
 }
 
-
 .nav-links-left a {
     color: #f2f2f2;
     text-align: center;
@@ -47,7 +47,6 @@ body {
 }
 
 .nav-links-left a:hover {
-    /* background-color: #ddd; */
     color: #007bff;
 }
 
@@ -58,13 +57,11 @@ body {
 .right-nav a {
     color: #f2f2f2;
     text-align: center;
-    /* padding: 14px 5px; */
     text-decoration: none;
     margin-right: 60px;
 }
 
 .right-nav a:hover {
-    /* background-color: #ddd; */
     color: #007bff;
 }
 
@@ -73,5 +70,5 @@ body {
 }
 
 .menu-toggle:hover {
-    color: #007bff ;
+    color: #007bff;
 }
