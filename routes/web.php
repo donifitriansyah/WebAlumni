@@ -56,8 +56,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
                 return redirect('/'); // Redirect to home if role not recognized
         }
     })->name('dashboard');
-    
-    Route::get('/dashboard', [PerusahaanPerusahaanController::class, 'showDashboard'])->name('dashboard.perusahaan');
+
+    Route::get('/dashboard/perusahaan', [PerusahaanPerusahaanController::class, 'showDashboard'])->name('dashboard.perusahaan');
 
     // Perusahaan specific routes
     Route::middleware([CheckPerusahaan::class])->prefix('perusahaan')->group(function () {
@@ -112,10 +112,11 @@ Route::middleware(['auth', CheckAdmin::class])->group(function () {
 });
 
 // Alumni Routes
-Route::middleware(['auth', CheckAlumni::class])->group(function () {
+Route::middleware(['auth', CheckTracerStudy::class])->group(function () {
     Route::get('/dashboard/alumni', function () {
         return view('pages.alumni.dashboard');
     })->name('dashboard.alumni');
+    Route::get('/tracer-study/form', [TracerController::class, 'showForm'])->name('tracerstudy.form');
 
     Route::get('/profile/alumni/{id_alumni}', [ProfileAlumniController::class, 'index'])->name('profile.index');
     Route::put('/profile/alumni-update/{id_alumni}', [ProfileAlumniController::class, 'update'])->name('profile.update');
@@ -126,7 +127,6 @@ Route::middleware(['auth', CheckAlumni::class])->group(function () {
     Route::post('/lamaran/store', [LamaranController::class, 'store'])->name('lamaran.store');
     Route::get('/lamaran/create', [LamaranController::class, 'create'])->name('lamaran.create');
 
-    Route::get('/tracer-study/form', [TracerController::class, 'showForm'])->name('tracerstudy.form');
 });
 
 // Tracer Study Store Route
