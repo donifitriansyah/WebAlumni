@@ -18,7 +18,6 @@
                    <br> Kami sangat menghargai kesediaan Alumni dalam meluangkan waktunya untuk kegiatan ini <br>Semoga kegiatan Tracer Study ini dapat menjadi amal jariyah bagi kita semua. <br> Atas Perhatian dan Kerjasamanya, kami mengucapkan terima kasih yang sebesar-besarnya.
                 </p>
 
-                <!-- Tambahkan link Google Form jika diperlukan -->
                 <a href="#" class="text-primary fw-bold" data-bs-dismiss="modal">Kalau Merasa Sudah KLIK Disini Yaa</a>
             </div>
             <div class="modal-footer">

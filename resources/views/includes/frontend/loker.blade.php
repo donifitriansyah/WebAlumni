@@ -1,4 +1,4 @@
-<h2>Lowongan Pekerjaan</h2>
+<h2 class="mt-5">Lowongan Pekerjaan</h2>
 <div class="job-list">
     @foreach ($loker as $item)
         <div class="job-item">
