@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title')
-Dashboard
+    Dashboard
 @endsection
 @section('content-admin')
     <div class="container-fluid">
@@ -57,7 +57,8 @@ Dashboard
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Jumlah Perusahaan Aktif</div>
+                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Jumlah Perusahaan
+                                    Aktif</div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $activeCompanies }}</div>
                             </div>
                             <div class="col-auto">
@@ -73,7 +74,8 @@ Dashboard
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Jumlah Perusahaan Non-Aktif</div>
+                                <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Jumlah Perusahaan
+                                    Non-Aktif</div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $nonActiveCompanies }}</div>
                             </div>
                             <div class="col-auto">
@@ -133,15 +135,27 @@ Dashboard
         </div>
 
     </div>
-    <p>{{ session('success') }}</p>
-    @if(session('success'))
-    <script>
-        Swal.fire({
-            icon: 'success',
-            title: 'Login Berhasil',
-            text: "{{ session('success') }}",
-            confirmButtonText: 'OK'
-        });
-    </script>                                                               
-@endif
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Berhasil!',
+                text: "{{ session('success') }}",
+                showConfirmButton: true,
+                timer: 3000 // Optional: automatically close the alert after 3 seconds
+            });
+        </script>
+    @endif
+
+    @if ($errors->has('login_error'))
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops!',
+                text: "{{ implode(', ', $errors->get('login_error')) }}",
+                showConfirmButton: true,
+                timer: 3000 // Optional: automatically close the alert after 3 seconds
+            });
+        </script>
+    @endif
 @endsection

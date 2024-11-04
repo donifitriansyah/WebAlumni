@@ -157,18 +157,21 @@
                     <span>Dashboard</span>
                 </a>
             </li>
-            <li class="nav-item {{ Route::is('lowongan.index') ? 'active' : '' }}">
-                <a class="nav-link" href="{{ route('lowongan.index') }}">
-                    <i class="fas fa-fw fa-briefcase"></i>
-                    <span>Lowongan</span>
-                </a>
-            </li>
-            <li class="nav-item {{ Route::is('lamaran.index') ? 'active' : '' }}">
-                <a class="nav-link" href="{{ route('lamaran.index') }}">
-                    <i class="fas fa-fw fa-file-alt"></i>
-                    <span>Lamaran</span>
-                </a>
-            </li>
+            @if (Auth::user()->perusahaan->status !== 'menunggu')
+            
+                <li class="nav-item {{ Route::is('lowongan.index') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('lowongan.index') }}">
+                        <i class="fas fa-fw fa-briefcase"></i>
+                        <span>Lowongan</span>
+                    </a>
+                </li>
+                <li class="nav-item {{ Route::is('lamaran.index') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('lamaran.index') }}">
+                        <i class="fas fa-fw fa-file-alt"></i>
+                        <span>Lamaran</span>
+                    </a>
+                </li>
+            @endif
 
         @break
     @endswitch

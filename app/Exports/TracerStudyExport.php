@@ -3,37 +3,24 @@
 namespace App\Exports;
 
 use App\Models\DataJawaban;
-use App\Models\TracerStudy;
-use Maatwebsite\Excel\Concerns\FromCollection;
-use Maatwebsite\Excel\Concerns\WithHeadings;
+use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 
-class TracerStudyExport implements FromCollection, WithHeadings
+class TracerStudyExport implements WithMultipleSheets
 {
-    public function collection()
+    public function sheets(): array
     {
-        $data = DataJawaban::with(['alumni', 'pertanyaan']) // Pastikan relasi sudah didefinisikan
+        $sheets = [];
+
+        // Get unique NIMs with alumni data
+        $alumniData = DataJawaban::with(['alumni', 'pertanyaan'])
             ->get()
-            ->map(function ($jawaban) {
-                return [
-                    'nim' => $jawaban->alumni->nim, // Asumsikan nim ada di model Alumni
-                    'nama' => $jawaban->alumni->nama_alumni, // Asumsikan nama ada di model Alumni
-                    'pertanyaan' => $jawaban->pertanyaan->pertanyaan, // Asumsikan pertanyaan ada di model Pertanyaan
-                    'jawaban_terbuka' => $jawaban->jawaban_terbuka,
-                    'jawaban_skala' => $jawaban->jawaban_skala,
-                ];
-            });
+            ->groupBy('alumni.nim');
 
-        return $data;
-    }
+        foreach ($alumniData as $nim => $data) {
+            // Add a new sheet for each NIM
+            $sheets[] = new TracerStudyPerNimSheet($nim, $data);
+        }
 
-    public function headings(): array
-    {
-        return [
-            'NIM',
-            'Nama Alumni',
-            'Pertanyaan',
-            'Jawaban Terbuka',
-            'Jawaban Skala',
-        ];
+        return $sheets;
     }
 }

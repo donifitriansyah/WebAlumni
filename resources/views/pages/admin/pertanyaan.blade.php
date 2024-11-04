@@ -24,7 +24,7 @@
                     <tbody>
                         @foreach ($data as $item)
                             <tr>
-                                <td>{{ $item->id_pertanyaan }}</td>
+                                <td>{{ $loop->iteration }}</td>
                                 <td>{{ $item->pertanyaan }}</td>
                                 <td>{{ $item->jenis }}</td>
                                 <td class="d-flex" style="gap: 4px">

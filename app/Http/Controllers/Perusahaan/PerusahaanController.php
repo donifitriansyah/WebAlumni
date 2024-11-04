@@ -7,8 +7,10 @@ use Illuminate\Http\Request;
 
 class PerusahaanController extends Controller
 {
-    public function create()
+    public function showDashboard(Request $request)
     {
-        
+        $perusahaan = $request->user()->perusahaan;
+
+        return view('pages.perusahaan.dashboard', compact('perusahaan'));
     }
 }

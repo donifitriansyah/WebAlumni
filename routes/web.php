@@ -26,6 +26,7 @@ use App\Http\Controllers\Admin\LowonganController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LamaranController;
 use App\Http\Controllers\Perusahaan\LowonganController as PerusahaanLowonganController;
+use App\Http\Controllers\Perusahaan\PerusahaanController as PerusahaanPerusahaanController;
 use App\Http\Controllers\Perusahaan\PerusahaanLamaranController;
 use App\Http\Controllers\TracerStudy\TracerController as TracerStudyTC;
 use App\Http\Controllers\TracerStudy\PertanyaanController as TracerStudyPC;
@@ -41,8 +42,8 @@ Route::get('/loker/{id_lowongan}', [HomeController::class, 'detailLowongan'])->n
 
 
 
-// Route::get('/tracer/export', [TracerStudyController::class, 'export'])->name('tracer.export');
-Route::get('/tracer/consume-export', [TracerStudyController::class, 'consumeTracerExport'])->name('tracer.consume-export');
+Route::get('/tracer/export', [TracerStudyController::class, 'export'])->name('tracer.export');
+// Route::get('/tracer/consume-export', [TracerStudyController::class, 'consumeTracerExport'])->name('tracer.consume-export');
 
 
 // Main Dashboard Route
@@ -66,9 +67,6 @@ Route::get('/dashboard', function () {
 // Route::get('/dashboard/alumni', [AdminTracerController::class, 'check_data_alumni'])->name('dashboard.alumni');
 
 // Dashboard Route for Perusahaan
-Route::get('/dashboard/perusahaan', function () {
-    return view('pages.perusahaan.dashboard'); // Company dashboard
-})->middleware(['auth',])->name('dashboard.perusahaan');
 
 // Admin Routes
 Route::middleware(['auth', CheckAdmin::class])->group(function () {
@@ -104,16 +102,18 @@ Route::middleware(['auth', CheckAdmin::class])->group(function () {
     Route::put('/berita/update-data/{id}', [BeritaController::class, 'update'])->name('berita.update');
     Route::delete('/berita/{id}', [BeritaController::class, 'destroy'])->name('berita.destroy');
 });
+Route::get('/dashboard', [PerusahaanPerusahaanController::class, 'showDashboard'])->name('dashboard.perusahaan');
 
-Route::middleware(['auth', CheckPerusahaan::class])->group(function () {
+Route::middleware(['auth', CheckPerusahaan::class])->prefix('perusahaan')->group(function () {
     Route::get('/lowongan', [PerusahaanLowonganController::class, 'index'])->name('lowongan.index');
     Route::post('/lowongan/tambah-data', [PerusahaanLowonganController::class, 'store'])->name('lowongan.store');
     Route::put('/lowongan/update-data/{id}', [PerusahaanLowonganController::class, 'update'])->name('lowongan.update');
     Route::delete('/lowongan/{id}', [PerusahaanLowonganController::class, 'destroy'])->name('lowongan.destroy');
 
-    Route::get('perusahaan/lamaran', [PerusahaanLamaranController::class, 'index'])->name('lamaran.index');
+    Route::get('/lamaran', [PerusahaanLamaranController::class, 'index'])->name('lamaran.index');
     Route::patch('/lamaran/{id}/status/{status}', [PerusahaanLamaranController::class, 'updateStatus'])->name('lamaran.updateStatus');
 });
+
 
 Route::post('/tracer/store', [TracerController::class, 'store'])->name('tracer.store');
 Route::middleware(['auth', CheckTracerStudy::class])->group(function () {
@@ -122,7 +122,6 @@ Route::middleware(['auth', CheckTracerStudy::class])->group(function () {
     })->name('dashboard.alumni');
     Route::get('/profile/alumni/{id_alumni}', [ProfileAlumniController::class, 'index'])->name('profile.index');
     Route::put('/profile/alumni-update/{id_alumni}', [ProfileAlumniController::class, 'update'])->name('profile.update');
-    Route::get('/lowongan', [PerusahaanLowonganController::class, 'index'])->name('lowongan.index');
     Route::get('/lamaran/alumni', [LamaranAlumniController::class, 'index'])->middleware(['auth', 'verified'])->name('lamaran.alumni');
     Route::get('/history/lamaran', [HistoryAlumniController::class, 'index'])->name('history.lamaran');
     Route::get('/job/save', [JobAlumniController::class, 'index'])->name('job');

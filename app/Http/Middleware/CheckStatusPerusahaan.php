@@ -4,10 +4,10 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpFoundation\Response;
 
-class CheckPerusahaan
+class CheckStatusPerusahaan
 {
     /**
      * Handle an incoming request.
@@ -16,13 +16,13 @@ class CheckPerusahaan
      */
     public function handle(Request $request, Closure $next)
     {
-        // Get the authenticated user's perusahaan record
+        // Get the authenticated user
         $user = Auth::user();
 
         // Check if the user's perusahaan status is "menunggu"
-        if ($user && $user->perusahaan && $user->perusahaan->status === 'menunggu') {
-            // Redirect to the dashboard with an error message
-            return redirect()->route('dashboard')->with('error', 'Your perusahaan status is pending approval. You cannot access this area.');
+        if ($user->perusahaan && $user->perusahaan->status === 'menunggu') {
+            // Redirect to the dashboard with a message if status is "menunggu"
+            return redirect()->route('dashboard')->with('info', 'Your account is awaiting approval.');
         }
 
         return $next($request);
