@@ -126,12 +126,12 @@
             </a>
         </li>
 
-        <li class="nav-item {{ Route::is('lamaran.alumni') ? 'active' : '' }}">
+        {{-- <li class="nav-item {{ Route::is('lamaran.alumni') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('lamaran.alumni') }}">
                 <i class="fas fa-fw fa-file-alt"></i>
                 <span>Lamaran Alumni</span>
             </a>
-        </li>
+        </li> --}}
 
         <li class="nav-item {{ Route::is('history.lamaran') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('history.lamaran') }}">
@@ -158,7 +158,7 @@
                 </a>
             </li>
             @if (Auth::user()->perusahaan->status !== 'menunggu')
-            
+
                 <li class="nav-item {{ Route::is('lowongan.index') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('lowongan.index') }}">
                         <i class="fas fa-fw fa-briefcase"></i>
