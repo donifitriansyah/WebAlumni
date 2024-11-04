@@ -22,6 +22,7 @@ use App\Http\Controllers\Admin\PerusahaanController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Middleware\CheckPerusahaan;
 use App\Http\Controllers\Admin\LowonganController;
+use App\Http\Controllers\Alumni\AlumniDashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LamaranController;
 use App\Http\Controllers\Perusahaan\LowonganController as PerusahaanLowonganController;
@@ -113,9 +114,8 @@ Route::middleware(['auth', CheckAdmin::class])->group(function () {
 
 // Alumni Routes
 Route::middleware(['auth', CheckTracerStudy::class])->group(function () {
-    Route::get('/dashboard/alumni', function () {
-        return view('pages.alumni.dashboard');
-    })->name('dashboard.alumni');
+    Route::get('/dashboard/alumni', [AlumniDashboardController::class, 'showDashboard'])->name('dashboard.alumni');
+
     Route::get('/tracer-study/form', [TracerController::class, 'showForm'])->name('tracerstudy.form');
 
     Route::get('/profile/alumni/{id_alumni}', [ProfileAlumniController::class, 'index'])->name('profile.index');
@@ -123,7 +123,6 @@ Route::middleware(['auth', CheckTracerStudy::class])->group(function () {
 
     Route::get('/lamaran/alumni', [LamaranAlumniController::class, 'index'])->name('lamaran.alumni');
     Route::get('/history/lamaran', [HistoryAlumniController::class, 'index'])->name('history.lamaran');
-    Route::get('/job/save', [JobAlumniController::class, 'index'])->name('job');
     Route::post('/lamaran/store', [LamaranController::class, 'store'])->name('lamaran.store');
     Route::get('/lamaran/create', [LamaranController::class, 'create'])->name('lamaran.create');
 

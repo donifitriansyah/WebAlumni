@@ -119,6 +119,7 @@
             </a>
         </li>
 
+
         <li class="nav-item {{ Route::is('profile.index', Auth::user()->alumni->id_alumni) ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('profile.index', Auth::user()->alumni->id_alumni) }}">
                 <i class="fas fa-fw fa-user"></i>
@@ -140,12 +141,6 @@
             </a>
         </li>
 
-        <li class="nav-item {{ Route::is('job') ? 'active' : '' }}">
-            <a class="nav-link" href="{{ route('job') }}">
-                <i class="fas fa-fw fa-bookmark"></i>
-                <span>Job Save</span>
-            </a>
-        </li>
 
         @break
 
@@ -157,8 +152,9 @@
                     <span>Dashboard</span>
                 </a>
             </li>
+
             @if (Auth::user()->perusahaan->status !== 'menunggu')
-            
+
                 <li class="nav-item {{ Route::is('lowongan.index') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('lowongan.index') }}">
                         <i class="fas fa-fw fa-briefcase"></i>

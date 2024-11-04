@@ -39,9 +39,9 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-user @error('email') is-invalid @enderror"
-                                        name="email" value="{{ old('email') }}" placeholder="Email" required>
-                                    @error('email')
+                                    <input type="email" class="form-control form-control-user @error('email_perusahaan') is-invalid @enderror"
+                                        name="email_perusahaan" value="{{ old('email_perusahaan') }}" placeholder="Email Perusahaan" required>
+                                    @error('email_perusahaan')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -90,15 +90,7 @@
                                         </span>
                                     @enderror
                                 </div>
-                                <div class="form-group">
-                                    <input type="email" class="form-control form-control-user @error('email_perusahaan') is-invalid @enderror"
-                                        name="email_perusahaan" value="{{ old('email_perusahaan') }}" placeholder="Email Perusahaan" required>
-                                    @error('email_perusahaan')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
+
                                 <div class="form-group">
                                     <input type="text" class="form-control form-control-user @error('sektor_bisnis') is-invalid @enderror"
                                         name="sektor_bisnis" value="{{ old('sektor_bisnis') }}" placeholder="Sektor Bisnis" required>

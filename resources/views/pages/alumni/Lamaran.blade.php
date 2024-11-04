@@ -17,7 +17,7 @@ Lamaran Alumni
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Judl Lowongan</th>
+                            <th>Judul Lowongan</th>
                             <th>CV</th>
                             <th>Transkrip Nilai</th>
                             <th>Portofolio</th>
@@ -33,7 +33,15 @@ Lamaran Alumni
                                 <td><a href="{{ asset('storage/' . $lamaran->cv) }}" target="_blank">View CV</a></td>
                                 <td><a href="{{ asset('storage/' . $lamaran->transkrip_nilai) }}" target="_blank">View Transkrip</a></td>
                                 <td><a href="{{ asset('storage/' . $lamaran->portofolio) }}" target="_blank">View Portofolio</a></td>
-                                <td>{{ $lamaran->status }}</td>
+                                <td>
+                                    @if ($lamaran->status === 'terima')
+                                        Diterima
+                                    @elseif ($lamaran->status === 'tolak')
+                                        Ditolak
+                                    @else
+                                        {{ $lamaran->status }}
+                                    @endif
+                                </td>
                                 <td>{{ $lamaran->created_at }}</td>
                                 <td>
                                     <!-- Button trigger modal for Lowongan details -->
