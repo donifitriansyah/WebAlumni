@@ -3,7 +3,7 @@
         <h1>Rilis Berita</h1>
         <div class="news-slides">
             <div class="news-slide">
-                <img src="{{ asset('frontend/images/banner-berita-2.png') }}" alt="berita-acara-1">
+                <img src="{{ asset('frontend/images/banner-berita-3.png') }}" alt="berita-acara-1">
             </div>
             <div class="news-slide">
                 <img src="{{ asset('frontend/images/bannerBerita.png') }}" alt="berita-acara-2">

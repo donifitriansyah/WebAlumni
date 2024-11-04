@@ -39,6 +39,13 @@
                 </a>
             </li>
 
+            <li class="nav-item {{Route::is('home') ? 'active' : ''}}">
+                <a class="nav-link" href="{{ route('home')}}">
+                    <i class="fas fa-fw fa-home"></i>
+                    <span>Home</span>
+                </a>
+            </li>
+
             <li class="nav-item {{ Route::is('alumni-aktif', 'alumni-pasif') ? 'active' : '' }}">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAlumni"
                    aria-expanded="true" aria-controls="collapseAlumni">
@@ -119,6 +126,13 @@
             </a>
         </li>
 
+        <li class="nav-item {{Route::is('home') ? 'active' : ''}}">
+            <a class="nav-link" href="{{ route('home')}}">
+                <i class="fas fa-fw fa-home"></i>
+                <span>Home</span>
+            </a>
+        </li>
+
         <li class="nav-item {{ Route::is('profile.index', Auth::user()->alumni->id_alumni) ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('profile.index', Auth::user()->alumni->id_alumni) }}">
                 <i class="fas fa-fw fa-user"></i>
@@ -157,6 +171,14 @@
                     <span>Dashboard</span>
                 </a>
             </li>
+
+            <li class="nav-item {{Route::is('home') ? 'active' : ''}}">
+                <a class="nav-link" href="{{ route('home')}}">
+                    <i class="fas fa-fw fa-home"></i>
+                    <span>Home</span>
+                </a>
+            </li>
+            
             <li class="nav-item {{ Route::is('lowongan.index') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('lowongan.index') }}">
                     <i class="fas fa-fw fa-briefcase"></i>
