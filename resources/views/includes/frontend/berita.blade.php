@@ -13,7 +13,7 @@
                 <!-- Teks dan link untuk banner ketiga -->
                 <div class="banner-content">
                     <h2>D'Career Website</h2>
-                    <a href="job.html" target="_blank" class="btn">Find Your Job</a>
+                    <a href="{{ route('loker') }}" target="_blank" class="btn">Find Your Job</a>
                 </div>
             </div>
         </div>
