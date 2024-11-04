@@ -56,10 +56,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
                 return redirect('/'); // Redirect to home if role not recognized
         }
     })->name('dashboard');
+    
+    Route::get('/dashboard', [PerusahaanPerusahaanController::class, 'showDashboard'])->name('dashboard.perusahaan');
 
     // Perusahaan specific routes
     Route::middleware([CheckPerusahaan::class])->prefix('perusahaan')->group(function () {
-        Route::get('/dashboard', [PerusahaanPerusahaanController::class, 'showDashboard'])->name('dashboard.perusahaan');
 
         Route::get('/lowongan', [PerusahaanLowonganController::class, 'index'])->name('lowongan.index');
         Route::post('/lowongan/tambah-data', [PerusahaanLowonganController::class, 'store'])->name('lowongan.store');
