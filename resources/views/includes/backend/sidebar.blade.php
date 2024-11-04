@@ -140,12 +140,12 @@
             </a>
         </li>
 
-        <li class="nav-item {{ Route::is('job') ? 'active' : '' }}">
+        <!-- <li class="nav-item {{ Route::is('job') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('job') }}">
                 <i class="fas fa-fw fa-bookmark"></i>
                 <span>Job Save</span>
             </a>
-        </li>
+        </li> -->
 
         @break
 
