@@ -39,15 +39,6 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-user @error('email') is-invalid @enderror"
-                                        name="email" value="{{ old('email') }}" placeholder="Email" required>
-                                    @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                                <div class="form-group">
                                     <input type="password" class="form-control form-control-user @error('password') is-invalid @enderror"
                                         name="password" placeholder="Password" required>
                                     @error('password')
