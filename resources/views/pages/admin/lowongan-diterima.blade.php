@@ -19,7 +19,7 @@ Perusahaan
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
-                                <th>id_lowongan</th>
+                                <th>No.</th>
                                 <th>Judul Lowongan</th>
                                 <th>Posisi Pekerjaan</th>
                                 <th>Lokasi Penempatan</th>
@@ -30,7 +30,7 @@ Perusahaan
                         <tbody>
                             @foreach($showLowonganDiterima as $lowongan)
                             <tr>
-                                <td>{{ $lowongan->id_lowongan }}</td>
+                                <td>{{ $loop->iteration }}</td>
                                 <td>{{ $lowongan->judul_lowongan }}</td>
                                 <td>{{ $lowongan->posisi_pekerjaan }}</td>
                                 <td>{{ $lowongan->lokasi }}</td>

@@ -19,6 +19,7 @@ Perusahaan
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
+                                <th>No.</th>
                                 <th>Nama Perusahaan</th>
                                 <th>NIB</th>
                                 <th>Alamat</th>
@@ -34,6 +35,7 @@ Perusahaan
                         <tbody>
                             @foreach($activePerusahaan as $perusahaan)
                             <tr>
+                                <td>{{ $loop->iteration }}</td>
                                 <td>{{ $perusahaan->nama_perusahaan }}</td>
                                 <td>{{ $perusahaan->nib }}</td>
                                 <td>{{ $perusahaan->alamat }}</td>

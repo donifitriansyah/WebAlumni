@@ -20,7 +20,7 @@ Dashboard
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
-                                <th>ID User</th>
+                                <th>No.</th>
                                 <th>Nama Alumni</th>
                                 <th>NIM</th>
                                 <th>Tanggal Lahir</th>
@@ -33,7 +33,7 @@ Dashboard
                         <tbody>
                             @foreach($alumniAktif as $alumni)
                             <tr>
-                                <td>{{ $alumni->id_user }}</td>
+                                <td>{{ $loop->iteration }}</td>
                                 <td>{{ $alumni->nama_alumni }}</td>
                                 <td>{{ $alumni->nim }}</td>
                                 <td>{{ $alumni->tanggal_lahir }}</td>
