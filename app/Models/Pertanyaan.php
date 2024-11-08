@@ -13,7 +13,8 @@ class Pertanyaan extends Model
     protected $primaryKey = 'id_pertanyaan'; // Nama primary key
 
     protected $fillable = [
-        'pertanyaan', // Kolom yang bisa diisi
+        'pertanyaan',
+        'jenis',// Kolom yang bisa diisi
     ];
 
     public $timestamps = true; // Mengaktifkan timestamps (created_at, updated_at)
