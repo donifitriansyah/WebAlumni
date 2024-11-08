@@ -24,7 +24,7 @@ class HomeController extends Controller
     public function indexAlumni(Request $request)
     {
         // Mendapatkan 6 data alumni (3 halaman dengan masing-masing 2 data per halaman)
-        $alumni = Alumni::paginate(8);
+        $alumni = Alumni::paginate(3);
 
         return view('pages.alumni', [
             'alumni' => $alumni,

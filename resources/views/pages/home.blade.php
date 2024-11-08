@@ -27,7 +27,6 @@
     </div>
 </div>
 
-
 @section('content')
     <!-- BERITA -->
     <!-- cssassep/bannerBerita2.css | javascript/banner.js -->

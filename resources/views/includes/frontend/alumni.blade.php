@@ -1,5 +1,5 @@
 <section id="bagian-job">
-    <h2>Alumni</h2>
+    <h2 style="margin-top: 50px;">Alumni</h2>
     <div class="alumni-list">
         @foreach ($alumni as $item)
 
